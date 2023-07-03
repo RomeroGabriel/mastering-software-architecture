@@ -4,6 +4,8 @@ docs_dir: "documentation"
 
 nav:
   - Home: index.md
+  - Basic:
+    - What's Software Architecture?: basic/whats_software_arc.md
 
 theme:
   name: material
