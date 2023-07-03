@@ -1,0 +1,4 @@
+mkdocs==1.4.3
+mkdocs-material==9.1.17
+mkdocstrings==0.22.0
+markdown-exec[ansi]==1.6.0
