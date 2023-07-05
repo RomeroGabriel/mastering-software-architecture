@@ -1,11 +1,11 @@
 site_name: Mastering Software Architecture
-repo_url: https://github.com/RomeroGabriel/mastering-software-architecture
 docs_dir: "documentation"
 
 nav:
   - Home: index.md
   - Basic:
     - What's Software Architecture?: basic/whats_software_arc.md
+    - Expectations of an Architect: basic/expectations_of_architect.md
 
 theme:
   name: material
