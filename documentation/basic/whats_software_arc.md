@@ -39,7 +39,7 @@ Architecture decisions establish the **guidelines for system construction**. The
 
 ### Design principles
 
-![Design principles are guidelines for constructing systems](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/basic/arch_charac.png)
+![Design principles are guidelines for constructing systems](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/basic/arch_principle.png)
 > *Design principles are guidelines for constructing systems*
 
 The design principles is a **guideline** rather than a hard-and-fast rule like architecture decisions.
