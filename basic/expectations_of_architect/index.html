@@ -1,0 +1,622 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../whats_software_arc/">
+      
+      
+      <link rel="icon" href="../../images/arch.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.17">
+    
+    
+      
+        <title>Expectations of an Architect - Mastering Software Architecture</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.26e3688c.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_markdown_exec_ansi.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="yellow">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#expectations-of-an-architect" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Mastering Software Architecture" class="md-header__button md-logo" aria-label="Mastering Software Architecture" data-md-component="logo">
+      
+  <img src="../../images/arch.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Mastering Software Architecture
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Expectations of an Architect
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../whats_software_arc/" class="md-tabs__link md-tabs__link--active">
+        Basic
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Mastering Software Architecture" class="md-nav__button md-logo" aria-label="Mastering Software Architecture" data-md-component="logo">
+      
+  <img src="../../images/arch.png" alt="logo">
+
+    </a>
+    Mastering Software Architecture
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Basic
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Basic
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../whats_software_arc/" class="md-nav__link">
+        What's Software Architecture?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Expectations of an Architect
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Expectations of an Architect
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#make-architecture-decisions" class="md-nav__link">
+    Make architecture decisions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#continually-analyze-the-architecture" class="md-nav__link">
+    Continually analyze the architecture
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keep-current-with-latest-trends" class="md-nav__link">
+    Keep current with latest trends
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ensure-compliance-with-decisions" class="md-nav__link">
+    Ensure compliance with decisions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diverse-exposure-and-experience" class="md-nav__link">
+    Diverse exposure and experience
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#have-business-domain-knowledge" class="md-nav__link">
+    Have business domain knowledge
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#possess-interpersonal-skills" class="md-nav__link">
+    Possess interpersonal skills
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understand-and-navigate-politics" class="md-nav__link">
+    Understand and navigate politics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#make-architecture-decisions" class="md-nav__link">
+    Make architecture decisions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#continually-analyze-the-architecture" class="md-nav__link">
+    Continually analyze the architecture
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keep-current-with-latest-trends" class="md-nav__link">
+    Keep current with latest trends
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ensure-compliance-with-decisions" class="md-nav__link">
+    Ensure compliance with decisions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diverse-exposure-and-experience" class="md-nav__link">
+    Diverse exposure and experience
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#have-business-domain-knowledge" class="md-nav__link">
+    Have business domain knowledge
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#possess-interpersonal-skills" class="md-nav__link">
+    Possess interpersonal skills
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understand-and-navigate-politics" class="md-nav__link">
+    Understand and navigate politics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="expectations-of-an-architect">Expectations of an Architect</h1>
+<p>Defining the role of a software architect can be challenging, as it encompasses various aspects. However, it is essential to outline the <strong>expectations and responsibilities</strong> associated with the architect's role.</p>
+<ul>
+<li>Make architecture decisions</li>
+<li>Continually analyze the architecture</li>
+<li>Keep current with latest trends</li>
+<li>Ensure compliance with decisions</li>
+<li>Diverse exposure and experience</li>
+<li>Have business domain knowledge</li>
+<li>Possess interpersonal skills</li>
+<li>Understand and navigate politics</li>
+</ul>
+<hr />
+<h2 id="make-architecture-decisions">Make architecture decisions</h2>
+<blockquote>
+<p>An architect is expected to define the <a href="https://romerogabriel.github.io/mastering-software-architecture/basic/whats_software_arc/#architecture-decisions">architecture decisions</a> and <a href="https://romerogabriel.github.io/mastering-software-architecture/basic/whats_software_arc/#design-principles">design principles</a> used to guide technology decisions within the team, the department, or across the enterprise.</p>
+</blockquote>
+<p>When it comes to making architecture decisions, <strong>guidance is crucial</strong>. Instead of strictly specifying technology choices, the role of an <strong>architect  should guide rather than specify technology choices</strong>.</p>
+<p>For instance, rather than explicitly stating that React.js should be used for the frontend, <strong>which is a technical decision</strong>, the architect should <strong>guide development teams towards choosing</strong> a reactive-based framework for the frontend, offering options like Angular, React.js, Vue.js, and others. It is important to assess whether the <strong>architecture decision is guiding teams</strong> to make their own technical choices or if it imposes a specific technology upon them, which may hinder their decision-making process.</p>
+<p>While the role of an architect primarily focuses on guiding rather than specifying technology choices, there are situations where specific technology decisions become necessary to <strong>preserve a particular architectural characteristics</strong> like scalability, performance, or availability. Even though these decisions involve choosing a particular technology, they still fall within the realm of architectural decisions.</p>
+<p>However, it's important to acknowledge that finding the right decision in such cases can be challenging. The topic of making architecture decisions will be further explored and discussed in subsequent sections.</p>
+<hr />
+<h2 id="continually-analyze-the-architecture">Continually analyze the architecture</h2>
+<blockquote>
+<p>An architect is expected to continually analyze the architecture and current technology environment and then recommend solutions for improvement.</p>
+</blockquote>
+<p>This responsibility refers to <strong>architecture vitality</strong>, analyzing how well the <strong>architecture can sustain itself over time</strong>. It is not a common concern, as many architectures e<strong>ncounter structural decay</strong> when developers introduce code or design changes that affect the required architectural characteristics.</p>
+<p>Additionally, <strong>testing and release environments often tend to be overlooked</strong> in this context. If the testing and release processes consume excessive time, it becomes challenging to achieve overall agility in the architecture.</p>
+<hr />
+<h2 id="keep-current-with-latest-trends">Keep current with latest trends</h2>
+<blockquote>
+<p>An architect is expected to keep current with the latest technology and industry trends.</p>
+</blockquote>
+<p>Keeping up with the latest trends is crucial for staying relevant in the field of architecture. The <strong>decisions made by an architect often have long-lasting effects and can be challenging to modify later on</strong>. By actively staying informed about and embracing key trends, architects can <strong>better prepare for the future and make well-informed decisions</strong> that align with industry advancements. This proactive approach ensures that architectural decisions are forward-thinking and capable of meeting evolving needs and challenges.</p>
+<hr />
+<h2 id="ensure-compliance-with-decisions">Ensure compliance with decisions</h2>
+<blockquote>
+<p>An architect is expected to ensure compliance with architecture decisions and design principles.</p>
+</blockquote>
+<p>One of the key responsibilities of an architect is to ensure that d<strong>evelopment teams are following the architecture decisions and design principles</strong>. By enforcing compliance, the architect <strong>helps prevent violations that could compromise the desired architectural characteristics</strong> and impede the expected functionality of the application or system.</p>
+<p>For instance, consider a scenario where there is a restriction on database access, allowing only the business and services layers (excluding the presentation layer) to communicate with the database. This architectural decision necessitates passing through all layers, even for a simple query originating from the presentation layer. However, <strong>this decision serves a specific purpose: to control changes</strong>. By enforcing this approach, database modifications can be implemented without affecting the presentation layer, thus ensuring a greater degree of flexibility and mitigating potential disruptions.</p>
+<hr />
+<h2 id="diverse-exposure-and-experience">Diverse exposure and experience</h2>
+<blockquote>
+<p>An architect is expected to have exposure to multiple and diverse technologies, frameworks, platforms, and environments.</p>
+</blockquote>
+<p>As an architect, it is <strong>not necessary to be an expert in every framework, platform, or programming language</strong>. However, it is crucial to <strong>have a diverse exposure and familiarity with a variety of technologies</strong>. This includes knowing how to interface with multiple systems and services based on different technologies.</p>
+<p>A skilled software architect actively <strong>seeks opportunities to gain experience</strong> in various languages, platforms, and technologies. Rather than focusing solely on technical depth, it is important to <strong>prioritize technical breadth</strong>. For example, instead of being an expert in just one caching product, <strong>it is more valuable for an architect to be familiar with the features, advantages, and disadvantages of multiple caching products</strong>. This broader understanding allows for informed decision-making when choosing the most suitable caching solution for a given scenario.</p>
+<p>By continuously <strong>expanding their technical breadth</strong>, an architect can effectively navigate diverse technology landscapes, make informed decisions, and <strong>provide valuable guidance in selecting the right tools and technologies for a project</strong>. This breadth of exposure and experience enhances their ability to design robust and scalable solutions that align with business requirements.</p>
+<hr />
+<h2 id="have-business-domain-knowledge">Have business domain knowledge</h2>
+<blockquote>
+<p>An architect is expected to have a certain level of business domain expertise.</p>
+</blockquote>
+<p>Having a <strong>strong understanding of the business domain</strong> is a fundamental expectation for an architect. Without this knowledge, it becomes challenging to <strong>comprehend the business problem, goals, and requirements</strong>, making it difficult to devise an effective architecture. Additionally, lacking business domain knowledge <strong>diminishes the architect's credibility</strong> when communicating with stakeholders and business users.</p>
+<hr />
+<h2 id="possess-interpersonal-skills">Possess interpersonal skills</h2>
+<blockquote>
+<p>An architect is expected to possess exceptional interpersonal skills, including teamwork, facilitation, and leadership.</p>
+</blockquote>
+<p>Being an effective software architect involves <strong>more than just providing technical guidance</strong>. It requires possessing <strong>strong interpersonal skills and the ability to lead development teams through the implementation</strong> of the architecture. In fact, leadership skills are considered equally important, if not more so, than technical expertise for a successful architect.</p>
+<h2 id="understand-and-navigate-politics">Understand and navigate politics</h2>
+<blockquote>
+<p>An architect is expected to understand the political climate of the enterprise and be able to navigate the politics.</p>
+</blockquote>
+<p>In the realm of software architecture, it is essential for architects to possess the ability to understand and navigate the intricacies of organizational politics. While developers often have the freedom to make alterations like refactoring code using the strategy pattern <strong>without seeking approval, architects face different challenges</strong>.</p>
+<p>Consider a scenario where an architect is responsible for a large customer relationship management (CRM) system and encounters issues with controlling database access from other systems. To address this, the architect decides to implement application silos, ensuring that each application's database is accessible only to the corresponding application. This decision empowers the architect to have better control over customer data, security, and change control.</p>
+<p>However, unlike the previous developer scenario, <strong>architectural decisions of this magnitude are likely to be met with resistance from various stakeholders</strong> within the company. For instance, if other applications can no longer access the database directly, they would need to request data from the CRM system through remote access calls using protocols like REST or SOAP. This shift in approach <strong>triggers challenges from different quarters</strong>. Product owners, project managers, and business stakeholders may express concerns about increased costs or additional effort required. Developers may also challenge the decision, presenting alternative approaches they believe to be superior.</p>
+<p>In such situations, architects must skillfully navigate the company's politics and employ <strong>effective negotiation techniques to gain approval for their decisions</strong>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture</a></li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.tabs.instant", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b425cdc4.min.js"></script>
+      
+    
+  </body>
+</html>
