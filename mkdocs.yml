@@ -7,7 +7,9 @@ nav:
     - What's Software Architecture?: basic/whats_software_arc.md
     - Expectations of an Architect: basic/expectations_of_architect.md
     - Architectural Thinking: basic/architectural_thinking.md
-    - Modularity: basic/modularity.md
+  - Modularity: 
+    - Definition: modularity/index.md
+    - Measuring Modularity: modularity/measuring.md
 
 theme:
   name: material
