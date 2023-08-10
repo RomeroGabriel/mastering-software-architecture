@@ -10,6 +10,8 @@ nav:
   - Modularity: 
     - Definition: modularity/index.md
     - Measuring Modularity: modularity/measuring.md
+  - Architecture Characteristics: 
+    - Definition: arch_characteristics/arch_characteristics.md
 
 theme:
   name: material
@@ -18,8 +20,8 @@ theme:
   favicon: images/arch.png
   palette:
       scheme: slate
-      primary: black
-      accent: yellow
+      primary: red
+      accent: blue
   features:
     - navigation.tabs
     - navigation.tabs.sticky
