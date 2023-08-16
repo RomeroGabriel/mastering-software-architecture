@@ -12,6 +12,7 @@ nav:
     - Measuring Modularity: modularity/measuring.md
   - Architecture Characteristics: 
     - Definition: arch_characteristics/arch_characteristics.md
+    - Identifying: arch_characteristics/identifying_characteristics.md
 
 theme:
   name: material
