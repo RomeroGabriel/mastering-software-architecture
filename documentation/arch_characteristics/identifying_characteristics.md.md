@@ -26,6 +26,8 @@ Most of the time, `architecture characteristics come from talking to key domain 
 
 > Translate from domain concerns to architecture characteristics from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
-However, it's important to note that t`his translation isn't a strict rule to blindly follow`. This is a common pitfall that many architects encounter when translating domain concerns. Being agile doesn't always mean getting to the market quickly. Time to market is a mix of agility, testability, and deployability. `Concentrating solely on one characteristic can lead to issues when trying to achieve goals`. For instance, focusing solely on performance when delivering a feature might cause availability problems when needed. And if the domain grows, will the system be able to scale?
+However, it's important to note that `this translation isn't a strict rule to blindly follow`. This is a common pitfall that many architects encounter when translating domain concerns. Being agile doesn't always mean getting to the market quickly. Time to market is a mix of agility, testability, and deployability. `Concentrating solely on one characteristic can lead to issues when trying to achieve goals`. For instance, focusing solely on performance when delivering a feature might cause availability problems when needed. And if the domain grows, will the system be able to scale?
 
 ## Extracting Architecture Characteristics from Requirements
+
+Certain architecture characteristics are `derived from clear statements in requirements documents`, such as the expected number of users or peak usage times for the application. Others are `based on the inherent domain knowledge possessed by architects`. For example, an architect experienced in finance systems knows when and where to scale the software artifacts effectively.
