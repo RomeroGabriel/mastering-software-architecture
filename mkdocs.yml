@@ -13,6 +13,7 @@ nav:
   - Architecture Characteristics: 
     - Definition: arch_characteristics/arch_characteristics.md
     - Identifying: arch_characteristics/identifying_characteristics.md
+    - Measuring and Governing: arch_characteristics/measuring_governing.md
 
 theme:
   name: material
@@ -35,6 +36,9 @@ plugins:
   - markdown-exec
 
 markdown_extensions:
+  - footnotes
+  - admonition
+  - pymdownx.details
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
