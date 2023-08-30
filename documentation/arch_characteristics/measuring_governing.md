@@ -49,6 +49,16 @@ Certain `architecture characteristics align with software development processes`
 
 ## Governance and Fitness Functions
 
-### Governing Architecture Characteristics
+After architects define and prioritize architecture characteristics, `how can they ensure that developers prioritize those too?` In many software projects, urgency dominates, yet architects still require a governance mechanism.
+
+`Architecture governance encompasses all aspects of the software development process that architects aim to influence`, such as maintaining software quality within an organization.
+
+There are increasingly advanced solutions available to help architects address this challenge. The book [Building Evolutionary Architectures](https://learning.oreilly.com/library/view/building-evolutionary-architectures/9781491986356/) introduces a set of `techniques known as fitness functions, which can automate various aspects of this process.`
 
 ### Fitness Functions
+
+A fitness function is a `guidance mechanism`. It's a way to measure how closely the `output of an objective function aligns with achieving a specific goal`. For instance, when evaluating an algorithm that tackles the [traveling salesperson problem](https://en.wikipedia.org/wiki/Travelling_salesman_problem), `one fitness function might check how long the route is and aim for the shortest one`. Another could look at `how much it costs and try to keep that cost low`. Yet another might consider how much time the salesperson is away and try to make the travel time shorter.
+
+`Architecture fitness functions refer to any method that offers an objective evaluation of an architecture characteristic or a combination of them`. These functions encompass various verification methods, depending on their application: metrics, monitors, unit testing libraries, chaos engineering, and more.
+
+For more information and examples, [Fitness function-driven development](https://www.thoughtworks.com/insights/articles/fitness-function-driven-development)
