@@ -31,3 +31,7 @@ However, it's important to note that `this translation isn't a strict rule to bl
 ## Extracting Architecture Characteristics from Requirements
 
 Certain architecture characteristics are `derived from clear statements in requirements documents`, such as the expected number of users or peak usage times for the application. Others are `based on the inherent domain knowledge possessed by architects`. For example, an architect experienced in finance systems knows when and where to scale the software artifacts effectively.
+
+## References
+
+- [Fundamentals of Software Architecture](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)

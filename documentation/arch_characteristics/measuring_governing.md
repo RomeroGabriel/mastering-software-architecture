@@ -62,3 +62,7 @@ A fitness function is a `guidance mechanism`. It's a way to measure how closely 
 `Architecture fitness functions refer to any method that offers an objective evaluation of an architecture characteristic or a combination of them`. These functions encompass various verification methods, depending on their application: metrics, monitors, unit testing libraries, chaos engineering, and more.
 
 For more information and examples, [Fitness function-driven development](https://www.thoughtworks.com/insights/articles/fitness-function-driven-development)
+
+## References
+
+- [Fundamentals of Software Architecture](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
