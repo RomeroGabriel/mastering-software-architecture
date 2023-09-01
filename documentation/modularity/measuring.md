@@ -104,7 +104,7 @@ To now more about:
 
 #### Static Connascence
 
-Static connascence is a measure of `source-code-level coupling`. Architects assess the types of static connascence to determine the degree of coupling, whether afferent (incoming) or efferent (outgoing).
+Static connascence is a measure of `source-code-level coupling`. Architects assess the types of static connascence to determine the degree of coupling, whether afferent (incoming) or efferent (outgoing). For example, in a microservices architecture, if `two services share the same class definition`, such as address, we say they are statically connected to each other. Changing the shared class requires modifications in both services.
 
 #### Dynamic Connascence
 
