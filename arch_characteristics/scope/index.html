@@ -9,13 +9,15 @@
       
       
       
+        <link rel="prev" href="../measuring_governing/">
+      
       
       <link rel="icon" href="../../images/arch.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.17">
     
     
       
-        <title>Identifying Architectural Characteristics - Mastering Software Architecture</title>
+        <title>Scope - Mastering Software Architecture</title>
       
     
     
@@ -65,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#identifying-architectural-characteristics" class="md-skip">
+        <a href="#scope-of-architecture-characteristics" class="md-skip">
           Skip to content
         </a>
       
@@ -99,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Identifying Architectural Characteristics
+              Scope
             
           </span>
         </div>
@@ -199,13 +201,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../arch_characteristics/" class="md-tabs__link">
+      <a href="../arch_characteristics/" class="md-tabs__link md-tabs__link--active">
         Architecture Characteristics
       </a>
     </li>
@@ -410,14 +414,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
       
       
       
@@ -426,7 +432,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
           Architecture Characteristics
@@ -453,7 +459,7 @@
   
   
     <li class="md-nav__item">
-      <a href="." class="md-nav__link">
+      <a href="../identifying_characteristics.md" class="md-nav__link">
         Identifying
       </a>
     </li>
@@ -479,11 +485,59 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../scope/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Scope
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Scope
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#architectural-quanta-and-granularity" class="md-nav__link">
+    Architectural Quanta and Granularity
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -522,28 +576,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#extracting-architecture-characteristics-from-domain-concerns" class="md-nav__link">
-    Extracting Architecture Characteristics from Domain Concerns
-  </a>
-  
-    <nav class="md-nav" aria-label="Extracting Architecture Characteristics from Domain Concerns">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#architects-vs-stakeholders" class="md-nav__link">
-    Architects vs Stakeholders
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#extracting-architecture-characteristics-from-requirements" class="md-nav__link">
-    Extracting Architecture Characteristics from Requirements
+  <a href="#architectural-quanta-and-granularity" class="md-nav__link">
+    Architectural Quanta and Granularity
   </a>
   
 </li>
@@ -570,51 +604,31 @@
                   
 
 
-<h1 id="identifying-architectural-characteristics">Identifying Architectural Characteristics</h1>
-<p>It's really important identifying architectural characteristics to <code>start creating or checking an existing architecture</code>. To figure out the right architectural stuff, an architect needs to <code>understand the domain problem well</code>. Also, working together with domain stakeholders is crucial to <code>decide what really matters</code>.</p>
-<p>To find the architectural features in a project, there are at least three ways: you can get them from <code>domain concerns, project requirements, and and implicit domain knowledge</code>.</p>
-<h2 id="extracting-architecture-characteristics-from-domain-concerns">Extracting Architecture Characteristics from Domain Concerns</h2>
-<p>An architect must be able to <code>translate domain concerns to identify the right architectural characteristics</code>. By <code>understanding the key domain goals and domain situation</code>, the architect can <code>turn those worries into features</code>. These features then guide the smart choices for the architecture.</p>
-<p>One tip is when working with the domain stakeholders to decide the important architecture features, <code>try to keep the list of architectural characteristics short</code>. <code>Every feature added makes the design more complex and that's risky</code>. Don't get caught up in the number of features, but rather <code>focus on keeping the design simple</code>.</p>
-<h3 id="architects-vs-stakeholders">Architects vs Stakeholders</h3>
-<p>When architects and stakeholders are figuring out which architecture characteristics to focus on, it's a good idea to <code>let domain stakeholders choose the top three most important ones</code>. This <code>helps avoid problems since not everyone agrees</code> on the priority of each characteristic. This way, it's easier to <code>find common ground and helps the architect analyze trade-offs when making vital architecture decisions</code>.</p>
-<p>Most of the time, <code>architecture characteristics come from talking to key domain stakeholders and working together to figure out what matters</code>. The challenge is that architects and domain stakeholders use different terms. Architects talk about things like scalability and interoperability, while domain stakeholders talk about stuff like user happiness and getting things done quickly. The table below helps translate from domain concerns to architecture characteristics.</p>
-<table>
-<thead>
-<tr>
-<th>Domain concern</th>
-<th>Architecture characteristics</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Mergers and acquisitions</td>
-<td>Interoperability, scalability, adaptability, extensibility</td>
-</tr>
-<tr>
-<td>Time to market</td>
-<td>Agility, testability, deployability</td>
-</tr>
-<tr>
-<td>User satisfaction</td>
-<td>Performance, availability, fault tolerance, testability, deployability, agility, security</td>
-</tr>
-<tr>
-<td>Competitive advantage</td>
-<td>Agility, testability, deployability, scalability, availability, fault tolerance</td>
-</tr>
-<tr>
-<td>Time and budget</td>
-<td>Simplicity, feasibility</td>
-</tr>
-</tbody>
-</table>
+<h1 id="scope-of-architecture-characteristics">Scope of Architecture Characteristics</h1>
+<p>In the past, within the realm of software architecture, <code>the scope of architecture characteristics was traditionally placed at the system level</code>. For instance, scalability was discussed with the entire system in mind, as most systems were monolithic. However, <code>this is no longer accurate today</code>, as the field has evolved, exemplified by the emergence of microservices.</p>
+<p>There are various <code>code-level metrics</code> that enable architects to analyze the structural aspects of an architecture. However, these metrics often offer insights into low-level code specifics, <code>rather than the entirety of a system's components</code>. For example, databases can significantly influence various architecture characteristics, particularly operational ones. Code performance won't matter if the database doesn't scale.</p>
+<p>Architects must also consider <code>external components beyond the codebase that can influence these characteristics</code>. Furthermore, it's crucial to measure these types of dependencies.</p>
+<h2 id="architectural-quanta-and-granularity">Architectural Quanta and Granularity</h2>
+<p>To define the architecture quantum, we needed a measure of how components are “wired” together, which corresponds to the <a href="../../modularity/measuring/#connascence">connascence</a> concept. Connascence map dependencies between components, classifying them between <a href="../../modularity/measuring/#static-connascence">static connascence</a> or <a href="../../modularity/measuring/#dynamic-connascence">dynamic connascence</a>.</p>
+<p>The definition about architecture quantum is:</p>
 <blockquote>
-<p>Translate from domain concerns to architecture characteristics from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+<p>An independently deployable artifact with high functional cohesion and synchronous connascence</p>
 </blockquote>
-<p>However, it's important to note that <code>this translation isn't a strict rule to blindly follow</code>. This is a common pitfall that many architects encounter when translating domain concerns. Being agile doesn't always mean getting to the market quickly. Time to market is a mix of agility, testability, and deployability. <code>Concentrating solely on one characteristic can lead to issues when trying to achieve goals</code>. For instance, focusing solely on performance when delivering a feature might cause availability problems when needed. And if the domain grows, will the system be able to scale?</p>
-<h2 id="extracting-architecture-characteristics-from-requirements">Extracting Architecture Characteristics from Requirements</h2>
-<p>Certain architecture characteristics are <code>derived from clear statements in requirements documents</code>, such as the expected number of users or peak usage times for the application. Others are <code>based on the inherent domain knowledge possessed by architects</code>. For example, an architect experienced in finance systems knows when and where to scale the software artifacts effectively.</p>
+<details class="info">
+<summary>Independently deployable</summary>
+<p>An architectural quantum is a <code>self-sufficient unit that includes everything needed to work on its own within the larger architecture</code>. For instance, if an application relies on a database, the database is considered part of this self-contained unit because the application can't function without it..</p>
+</details>
+<details class="info">
+<summary>High functional cohesion</summary>
+<p>Functional cohesion in component design <code>measures how well the code within a component serves a single, meaningful purpose</code>.
+In microservices architectures, high functional cohesion is particularly important because each service is typically designed to handle a specific workflow or function, ensuring clarity and efficiency in the system's organization.</p>
+</details>
+<details class="info">
+<summary>Synchronous connascence</summary>
+<p>Synchronous connascence <code>refers to synchronous calls within an application context or between distributed services within an architecture quantum</code>.
+In a microservices architecture, when one service calls another synchronously, it's crucial that both services have similar operational architecture characteristics. If there's a significant difference in scalability between the caller and callee, issues like timeouts and reliability problems may arise.</p>
+</details>
+<p>The concept of <code>architecture quantum provides the new scope for architecture characteristics</code>. In modern systems, <code>architects define these characteristics at the quantum level/specific parts</code>, rather than at the system level/whole system.  By <code>focusing on a more specific scope for essential operational concerns, architects can detect architectural challenges early</code>, which can lead to the development of hybrid architectures.</p>
 <h2 id="references">References</h2>
 <ul>
 <li><a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture</a></li>

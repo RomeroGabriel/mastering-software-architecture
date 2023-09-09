@@ -592,6 +592,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arch_characteristics/scope/" class="md-nav__link">
+        Scope
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -814,7 +828,7 @@
 </li>
 </ol>
 <h4 id="static-connascence">Static Connascence</h4>
-<p>Static connascence is a measure of <code>source-code-level coupling</code>. Architects assess the types of static connascence to determine the degree of coupling, whether afferent (incoming) or efferent (outgoing).</p>
+<p>Static connascence is a measure of <code>source-code-level coupling</code>. Architects assess the types of static connascence to determine the degree of coupling, whether afferent (incoming) or efferent (outgoing). For example, in a microservices architecture, if <code>two services share the same class definition</code>, such as address, we say they are statically connected to each other. Changing the shared class requires modifications in both services.</p>
 <h4 id="dynamic-connascence">Dynamic Connascence</h4>
 <p>Dynamic connascence is a metric that <code>analyzes calls at runtime</code>, focusing on how different parts of the software interact with each other during execution. It helps architects understand the runtime coupling and dependencies between various components and modules, providing insights into <code>potential performance bottlenecks and areas for optimization</code>.</p>
 <h2 id="references">References</h2>
