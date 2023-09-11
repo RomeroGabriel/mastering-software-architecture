@@ -10,6 +10,7 @@ nav:
   - Modularity: 
     - Definition: modularity/index.md
     - Measuring Modularity: modularity/measuring.md
+  - Components: components/index.md
   - Architecture Characteristics: 
     - Definition: arch_characteristics/arch_characteristics.md
     - Identifying: arch_characteristics/identifying_characteristics.md
