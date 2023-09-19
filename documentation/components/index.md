@@ -70,6 +70,31 @@ Developers often work with components that have been collaboratively designed wi
 
 `It's important to note that developers shouldn't consider the architect's design as final`. Software design is an iterative process, and the initial design should be seen as a starting point. During implementation, more details and refinements may emerge, leading to improvements in the design.
 
+## Component Identification Flow
+
+Identifying components is `best achieved through an iterative process that generates candidates and refines them based on feedback`. The following stages outline a typical component identification workflow. In certain specialized domains, additional steps may be introduced, such as security or auditing procedures, to adapt to specific requirements.
+
+??? info "Identifying Initial Components"
+    In the early stages of a software project, `architects face the task of determining the initial top-level components`. This choice is `influenced by the type of` [top-level partitioning](#architecture-partitioning) they select. Beyond this, architects have the creative freedom to define components as they see fit, and then align domain functionality with these components to `determine where specific behaviors should reside`.
+
+    It's important to note that `achieving an optimal design with this initial set of components is quite challenging`. This is why architects must engage in an iterative process of component design refinement to enhance the overall system design.
+
+??? info "Assign Requirements to Components"
+    Once an architect has identified the initial components, the `next step is to see how the project's requirements or user stories fit with these components`. It might involve creating new components, consolidating existing ones, or even splitting components if they carry too much responsibility.
+
+    Remember, `this doesn't have to be super precise right away. The main goal is to create a basic structure that can be adjusted and improved` as the project progresses, with input from architects, tech leads, and developers.
+
+??? info "Analyze Roles and Responsibilities"
+    The architect also `checks if the roles and responsibilities mentioned in the requirements match the component granularity`. This means making sure that the way people and tasks are organized aligns with how the components are structured. `Finding the right level of granularity for components can be challenging, which is why this iterative process is crucial`.
+
+??? info "Analyze Architecture Characteristics"
+    `When assigning requirements to components, architects should consider the previously identified architecture characteristics`. For example, if one part of the system deals with many users simultaneously, and another part with only a few, their architectural needs will vary. While a simple approach might suggest one component for user interaction, analyzing the architecture characteristics may lead to splitting it into multiple components. `This helps tailor the design to the system's specific requirements`.
+
+??? info "Restructure Components"
+    `Feedback plays a crucial role in software design`. Architects must continuously refine their component design in collaboration with developers. `Designing software often presents unexpected challenges, and it's impossible to anticipate every issue that may arise`. Therefore, an iterative approach to component design is essential.
+
+    Firstly, it's challenging to foresee all the unique scenarios and edge cases that might require redesign. Secondly, `as the architecture and development progress, a more nuanced understanding of where specific functions and responsibilities should reside emerges`. This iterative process allows for a more robust and adaptable software design.
+
 ## References
 
 - [Fundamentals of Software Architecture](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
