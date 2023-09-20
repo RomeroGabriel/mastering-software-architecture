@@ -95,6 +95,36 @@ Identifying components is `best achieved through an iterative process that gener
 
     Firstly, it's challenging to foresee all the unique scenarios and edge cases that might require redesign. Secondly, `as the architecture and development progress, a more nuanced understanding of where specific functions and responsibilities should reside emerges`. This iterative process allows for a more robust and adaptable software design.
 
+## Component Design
+
+Creating a component design involves `many techniques, each with its own pros and cons`. `The architect's job is to analyze requirements and decide on the fundamental building blocks for the application`. These techniques vary depending on the team's development process and organizational preferences.
+
+Architects, often `working with others, establish an initial component design based on their understanding of the system and their chosen approach for breaking it down`, whether by technical or domain considerations. The aim is to create an `initial design that divides the problem into manageable chunks while considering various architecture aspects`.
+
+??? danger "Entity Trap"
+    The entity trap is a common anti-pattern illustrated in the image below.
+
+    ![Building an architecture as an object-relational mapping from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/components/entity_trap.png)
+    > *Building an architecture as an object-relational mapping from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)*
+
+    It occurs when an architect `creates components for each entity identified in the requirements, resembling an object-relational mapping (ORM) framework for a database`. This approach is not true architecture but rather a way to handle simple database CRUD operations. ORM frameworks are available for this purpose.
+
+    The problem with the entity trap is that it `inaccurately maps database relationships to application workflows, which is rarely the case in practice`. This anti-pattern typically reflects a `lack of consideration for the actual application workflows`.
+
+### Actor/Actions Approach
+
+The actor/actions approach is a common method that architects use to align requirements with components. In this approach, inspired by the Rational Unified Process, `architects identify actors who interact with the application and define the actions these actors can perform`. This approach helps discover the typical users of the system and the actions they might take.
+
+The actor/actions approach remains popular and is `effective when requirements involve distinct roles and their associated actions`. `This method of component design is suitable for various types of systems, whether they are monolithic or distributed`.
+
+### Event Storming Approach
+
+The event storming approach to component discovery originates from domain-driven design (DDD) and is closely associated with microservices. In event storming, `the architect anticipates that the project will rely on messages and events for communication between components`. To implement this, `the team identifies the events that take place in the system based on requirements and identified roles`. Components are then built around these event and message handlers. `This approach is particularly effective in distributed architectures like microservices that heavily rely on events and messages, as it assists architects in defining the messages used in the system`.
+
+### Workflow Approach
+
+An alternative to event storming, `which provides a more generic option for architects who are not utilizing domain-driven design (DDD) or messaging`. In the workflow approach, c`omponents are designed around workflows, similar to event storming, but without the specific requirement of constructing a message-based system`. `This approach involves identifying key roles, determining the types of workflows these roles are involved in, and then creating components based on these identified activities`.
+
 ## References
 
 - [Fundamentals of Software Architecture](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
