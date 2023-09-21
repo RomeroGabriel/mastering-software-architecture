@@ -27,6 +27,14 @@ The definition about architecture quantum is:
 
 The concept of `architecture quantum provides the new scope for architecture characteristics`. In modern systems, `architects define these characteristics at the quantum level/specific parts`, rather than at the system level/whole system.  By `focusing on a more specific scope for essential operational concerns, architects can detect architectural challenges early`, which can lead to the development of hybrid architectures.
 
+### Choosing Between Monolithic x Distributed Architectures
+
+The choice between a monolithic and distributed architecture `depends on the scope of architecture characteristics`. A monolithic architecture consists of a single deployable unit that contains all system functionality and is typically connected to a single database. In contrast, a distributed architecture involves multiple services running independently, communicating through networking protocols.
+
+The decision hinges on how many architecture quanta are discovered during the design process. `If the system can function effectively with a single quantum (meaning one set of architecture characteristics), a monolithic architecture is advantageous`. However, `if different components require distinct architecture characteristics, a distributed architecture` is necessary to accommodate these variations.
+
+The ability to make this fundamental architectural decision early in the design process underscores the benefits of using the architecture quantum to analyze architecture characteristics' scope and coupling.
+
 ## References
 
 - [Fundamentals of Software Architecture](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
