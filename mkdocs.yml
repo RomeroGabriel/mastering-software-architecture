@@ -16,6 +16,8 @@ nav:
     - Identifying: arch_characteristics/identifying_characteristics.md
     - Measuring and Governing: arch_characteristics/measuring_governing.md
     - Scope: arch_characteristics/scope.md
+  - Architecture Styles:
+    - Introduction: arch_styles/index.md
 
 theme:
   name: material
