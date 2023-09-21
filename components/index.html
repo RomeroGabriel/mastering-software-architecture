@@ -1,0 +1,1012 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../modularity/measuring/">
+      
+      
+        <link rel="next" href="../arch_characteristics/arch_characteristics/">
+      
+      <link rel="icon" href="../images/arch.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.17">
+    
+    
+      
+        <title>Components - Mastering Software Architecture</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.26e3688c.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_markdown_exec_ansi.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="blue">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#components" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Mastering Software Architecture" class="md-header__button md-logo" aria-label="Mastering Software Architecture" data-md-component="logo">
+      
+  <img src="../images/arch.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Mastering Software Architecture
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Components
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../basic/whats_software_arc/" class="md-tabs__link">
+        Basic
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../modularity/" class="md-tabs__link">
+        Modularity
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="./" class="md-tabs__link md-tabs__link--active">
+      Components
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../arch_characteristics/arch_characteristics/" class="md-tabs__link">
+        Architecture Characteristics
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../arch_styles/" class="md-tabs__link">
+        Architecture Styles
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Mastering Software Architecture" class="md-nav__button md-logo" aria-label="Mastering Software Architecture" data-md-component="logo">
+      
+  <img src="../images/arch.png" alt="logo">
+
+    </a>
+    Mastering Software Architecture
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Basic
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Basic
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic/whats_software_arc/" class="md-nav__link">
+        What's Software Architecture?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic/expectations_of_architect/" class="md-nav__link">
+        Expectations of an Architect
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic/architectural_thinking/" class="md-nav__link">
+        Architectural Thinking
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Modularity
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Modularity
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modularity/" class="md-nav__link">
+        Definition
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modularity/measuring/" class="md-nav__link">
+        Measuring Modularity
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Components
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Components
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#component-scope" class="md-nav__link">
+    Component Scope
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architect-role" class="md-nav__link">
+    Architect Role
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-partitioning" class="md-nav__link">
+    Architecture Partitioning
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture Partitioning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#technical-partitioning" class="md-nav__link">
+    Technical Partitioning
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#domain-partitioning" class="md-nav__link">
+    Domain Partitioning
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#developer-role" class="md-nav__link">
+    Developer Role
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#component-identification-flow" class="md-nav__link">
+    Component Identification Flow
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#component-design" class="md-nav__link">
+    Component Design
+  </a>
+  
+    <nav class="md-nav" aria-label="Component Design">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#actoractions-approach" class="md-nav__link">
+    Actor/Actions Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-storming-approach" class="md-nav__link">
+    Event Storming Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflow-approach" class="md-nav__link">
+    Workflow Approach
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          Architecture Characteristics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Architecture Characteristics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arch_characteristics/arch_characteristics/" class="md-nav__link">
+        Definition
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arch_characteristics/identifying_characteristics.md" class="md-nav__link">
+        Identifying
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arch_characteristics/measuring_governing/" class="md-nav__link">
+        Measuring and Governing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arch_characteristics/scope/" class="md-nav__link">
+        Scope
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          Architecture Styles
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Architecture Styles
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arch_styles/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#component-scope" class="md-nav__link">
+    Component Scope
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architect-role" class="md-nav__link">
+    Architect Role
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-partitioning" class="md-nav__link">
+    Architecture Partitioning
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture Partitioning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#technical-partitioning" class="md-nav__link">
+    Technical Partitioning
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#domain-partitioning" class="md-nav__link">
+    Domain Partitioning
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#developer-role" class="md-nav__link">
+    Developer Role
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#component-identification-flow" class="md-nav__link">
+    Component Identification Flow
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#component-design" class="md-nav__link">
+    Component Design
+  </a>
+  
+    <nav class="md-nav" aria-label="Component Design">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#actoractions-approach" class="md-nav__link">
+    Actor/Actions Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-storming-approach" class="md-nav__link">
+    Event Storming Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflow-approach" class="md-nav__link">
+    Workflow Approach
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="components">Components</h1>
+<p>Modules are groups of related code, but architects often focus on <code>components, which are the physical versions of modules</code>. These components are packaged differently depending on the programming language, such as jar files in Java or DLLs in .NET.</p>
+<h2 id="component-scope">Component Scope</h2>
+<p>Components provide a language-specific way to group artifacts together, often by nesting them to create layers. It's helpful to divide the concept of components as shown in the image below.</p>
+<p><img alt="Different varieties of components from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/components/component_scope.png" /></p>
+<blockquote>
+<p><em>Different varieties of components from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></em></p>
+</blockquote>
+<details class="info">
+<summary>Wrapper of Related Code</summary>
+<p>The simplest form of a component is one that <code>wraps code at a higher level of modularity than classes or functions</code>. This is often <code>referred to as a library</code>. Libraries typically run in the same memory address as the calling code and communicate via language function call mechanisms. Libraries are usually compile-time dependencies.</p>
+</details>
+<details class="info">
+<summary>Layer or Subsystem &amp; Event Processor</summary>
+<p>Components can also take the form of subsystems or layers within an architecture, serving as the deployable units of work for many event processors.</p>
+</details>
+<details class="info">
+<summary>Distributed Service</summary>
+<p>Distributed services tend to <code>run in their own separate address spaces and communicate</code> using low-level networking protocols like TCP/IP or higher-level formats like REST or message queues. <code>They are stand-alone and deployable units in architectures</code> such as microservices.</p>
+</details>
+<p><code>Components are the basic building blocks in architecture</code> and are a crucial consideration for architects. <code>One of the key decisions architects must make is how to divide the architecture into top-level components</code>. While architects are not obligated to use components, they often find them beneficial as they provide a higher level of modularity.</p>
+<h2 id="architect-role">Architect Role</h2>
+<p><code>The architect typically plays a central role in defining, refining, managing, and overseeing components within an architecture</code>.  This work is done in collaboration with various stakeholders, including business analysts, subject matter experts, developers, QA engineers, operations teams, and enterprise architects, to create the initial software design.</p>
+<p>In most cases, components represent the lowest level of the software system that an architect directly interacts with. These components are composed of classes or functions, depending on the implementation platform. The detailed design of these classes or functions often falls under the responsibility of tech leads or developers. While <code>architects may involve themselves in class design, especially when applying design patterns, they should avoid micromanaging every decision throughout the system</code>. Allowing other roles to make significant decisions is essential for empowering the next generation of architects.</p>
+<p><code>One of the architect's initial tasks on a new project is to identify components</code>. However, before doing so, architects must have a clear understanding of how to partition the overall architecture effectively.</p>
+<h2 id="architecture-partitioning">Architecture Partitioning</h2>
+<p>In software architecture, <code>there are always trade-offs to consider, including how architects design components within an architecture</code>. <code>Components serve as general containers, allowing architects to structure the system as they see fit</code>. There are several common styles available, each with its own set of trade-offs to consider.</p>
+<p>Let's consider two common architecture styles shown below.</p>
+<p><img alt="Two types of top-level architecture partitioning: layered and modular from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/components/archit_partitioning.png" /></p>
+<blockquote>
+<p>Two types of top-level architecture partitioning: layered and modular from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+</blockquote>
+<details class="info">
+<summary>Technical Partitioning as a version of Layer Monolith</summary>
+<p>In the <strong>layer monolith</strong>, <code>the architecture is divided into layers</code> each with specific responsibilities.</p>
+</details>
+<details class="info">
+<summary>Domain Partitioning as a version of Modular Monolith</summary>
+<p>In the <strong>modular monolith</strong>, <code>organized around domains or business functionalities</code></p>
+</details>
+<p>It's important to note that in each of these variations, <code>the top-level components (layers or components) often contain embedded sub-components</code>. The choice of <code>top-level partitioning is a critical decision for architects, as it defines the fundamental architecture style and the way code is organized</code>.</p>
+<h3 id="technical-partitioning">Technical Partitioning</h3>
+<p>When organizing a codebase <code>through technical partitioning, code is grouped based on its technical aspects</code>.  For instance, code responsible for interacting with a database is placed in the persistence layer. This approach ensures that <code>code with similar technical concerns resides within a single layer of the architecture</code>.</p>
+<details class="example">
+<summary>Model-View-Controller (MVC)</summary>
+<p>One classic example of this approach is the <code>Model-View-Controller (MVC)</code> design pattern. <code>MVC separates code into distinct components</code>, including the model (data and logic), view (user interface), and controller (intermediary between model and view). <code>This separation simplifies code organization and enhances comprehensibility</code>.</p>
+</details>
+<p>In technical partitioning, a key principle is to separate technical concerns. <code>This separation results in different levels of decoupling</code>. For instance, if we consider the <code>service layer</code>, it's primarily connected to the persistence layer below it and the business rules layer above it. <code>This means that any changes made to the persistence layer will likely only impact these adjacent layers</code>.</p>
+<p>This partitioning style is valuable because it <code>minimizes the potential for changes in one part of the system to create significant impacts on other components</code>. It helps reduce the cascading effects of modifications on dependent parts of the architecture.</p>
+<p>In layered architecture, <code>there's an interesting impact on how companies organize their project teams.</code> It often leads to a situation where backend developers work together in one department, database administrators (DBAs) in another, and the presentation team in yet another department.</p>
+<h3 id="domain-partitioning">Domain Partitioning</h3>
+<p>Another way to structure architecture is through domain partitioning, which is <code>inspired by the Domain-Driven Design (DDD) approach</code>. In DDD, architects <code>identify separate and independent domains or workflows</code> within a complex software system. While each of these domains may have its own layers, such as a business rules layer and its own persistence library, <code>the main focus of domain partitioning is on these separate domains</code>. For instance, CatalogCheckout represents a specific domain within your system. And may have a diffent persistence library than others components.<code>This approach aligns well with how changes typically happen in projects</code>.</p>
+<p>In a <code>technically layered architecture, a common business workflow like CatalogCheckout is spread across multiple layers</code>, with code related to it present in each layer. However, in <code>domain partitioning, CatalogCheckout's code is concentrated within its own sub-component</code>, resulting in a more focused and organized structure.</p>
+<h2 id="developer-role">Developer Role</h2>
+<p>Developers often work with components that have been collaboratively designed with architects, breaking them down into classes, functions, or subcomponents. The responsibility for designing classes and functions is usually shared among architects, tech leads, and developers, with a significant portion falling on the developer's shoulders.</p>
+<p><code>It's important to note that developers shouldn't consider the architect's design as final</code>. Software design is an iterative process, and the initial design should be seen as a starting point. During implementation, more details and refinements may emerge, leading to improvements in the design.</p>
+<h2 id="component-identification-flow">Component Identification Flow</h2>
+<p>Identifying components is <code>best achieved through an iterative process that generates candidates and refines them based on feedback</code>. The following stages outline a typical component identification workflow. In certain specialized domains, additional steps may be introduced, such as security or auditing procedures, to adapt to specific requirements.</p>
+<details class="info">
+<summary>Identifying Initial Components</summary>
+<p>In the early stages of a software project, <code>architects face the task of determining the initial top-level components</code>. This choice is <code>influenced by the type of</code> <a href="#architecture-partitioning">top-level partitioning</a> they select. Beyond this, architects have the creative freedom to define components as they see fit, and then align domain functionality with these components to <code>determine where specific behaviors should reside</code>.</p>
+<p>It's important to note that <code>achieving an optimal design with this initial set of components is quite challenging</code>. This is why architects must engage in an iterative process of component design refinement to enhance the overall system design.</p>
+</details>
+<details class="info">
+<summary>Assign Requirements to Components</summary>
+<p>Once an architect has identified the initial components, the <code>next step is to see how the project's requirements or user stories fit with these components</code>. It might involve creating new components, consolidating existing ones, or even splitting components if they carry too much responsibility.</p>
+<p>Remember, <code>this doesn't have to be super precise right away. The main goal is to create a basic structure that can be adjusted and improved</code> as the project progresses, with input from architects, tech leads, and developers.</p>
+</details>
+<details class="info">
+<summary>Analyze Roles and Responsibilities</summary>
+<p>The architect also <code>checks if the roles and responsibilities mentioned in the requirements match the component granularity</code>. This means making sure that the way people and tasks are organized aligns with how the components are structured. <code>Finding the right level of granularity for components can be challenging, which is why this iterative process is crucial</code>.</p>
+</details>
+<details class="info">
+<summary>Analyze Architecture Characteristics</summary>
+<p><code>When assigning requirements to components, architects should consider the previously identified architecture characteristics</code>. For example, if one part of the system deals with many users simultaneously, and another part with only a few, their architectural needs will vary. While a simple approach might suggest one component for user interaction, analyzing the architecture characteristics may lead to splitting it into multiple components. <code>This helps tailor the design to the system's specific requirements</code>.</p>
+</details>
+<details class="info">
+<summary>Restructure Components</summary>
+<p><code>Feedback plays a crucial role in software design</code>. Architects must continuously refine their component design in collaboration with developers. <code>Designing software often presents unexpected challenges, and it's impossible to anticipate every issue that may arise</code>. Therefore, an iterative approach to component design is essential.</p>
+<p>Firstly, it's challenging to foresee all the unique scenarios and edge cases that might require redesign. Secondly, <code>as the architecture and development progress, a more nuanced understanding of where specific functions and responsibilities should reside emerges</code>. This iterative process allows for a more robust and adaptable software design.</p>
+</details>
+<h2 id="component-design">Component Design</h2>
+<p>Creating a component design involves <code>many techniques, each with its own pros and cons</code>. <code>The architect's job is to analyze requirements and decide on the fundamental building blocks for the application</code>. These techniques vary depending on the team's development process and organizational preferences.</p>
+<p>Architects, often <code>working with others, establish an initial component design based on their understanding of the system and their chosen approach for breaking it down</code>, whether by technical or domain considerations. The aim is to create an <code>initial design that divides the problem into manageable chunks while considering various architecture aspects</code>.</p>
+<details class="danger">
+<summary>Entity Trap</summary>
+<p>The entity trap is a common anti-pattern illustrated in the image below.</p>
+<p><img alt="Building an architecture as an object-relational mapping from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/components/entity_trap.png" /></p>
+<blockquote>
+<p><em>Building an architecture as an object-relational mapping from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></em></p>
+</blockquote>
+<p>It occurs when an architect <code>creates components for each entity identified in the requirements, resembling an object-relational mapping (ORM) framework for a database</code>. This approach is not true architecture but rather a way to handle simple database CRUD operations. ORM frameworks are available for this purpose.</p>
+<p>The problem with the entity trap is that it <code>inaccurately maps database relationships to application workflows, which is rarely the case in practice</code>. This anti-pattern typically reflects a <code>lack of consideration for the actual application workflows</code>.</p>
+</details>
+<h3 id="actoractions-approach">Actor/Actions Approach</h3>
+<p>The actor/actions approach is a common method that architects use to align requirements with components. In this approach, inspired by the Rational Unified Process, <code>architects identify actors who interact with the application and define the actions these actors can perform</code>. This approach helps discover the typical users of the system and the actions they might take.</p>
+<p>The actor/actions approach remains popular and is <code>effective when requirements involve distinct roles and their associated actions</code>. <code>This method of component design is suitable for various types of systems, whether they are monolithic or distributed</code>.</p>
+<h3 id="event-storming-approach">Event Storming Approach</h3>
+<p>The event storming approach to component discovery originates from domain-driven design (DDD) and is closely associated with microservices. In event storming, <code>the architect anticipates that the project will rely on messages and events for communication between components</code>. To implement this, <code>the team identifies the events that take place in the system based on requirements and identified roles</code>. Components are then built around these event and message handlers. <code>This approach is particularly effective in distributed architectures like microservices that heavily rely on events and messages, as it assists architects in defining the messages used in the system</code>.</p>
+<h3 id="workflow-approach">Workflow Approach</h3>
+<p>An alternative to event storming, <code>which provides a more generic option for architects who are not utilizing domain-driven design (DDD) or messaging</code>. In the workflow approach, c<code>omponents are designed around workflows, similar to event storming, but without the specific requirement of constructing a message-based system</code>. <code>This approach involves identifying key roles, determining the types of workflows these roles are involved in, and then creating components based on these identified activities</code>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture</a></li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.tabs.instant", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.b425cdc4.min.js"></script>
+      
+    
+  </body>
+</html>
