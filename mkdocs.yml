@@ -18,6 +18,7 @@ nav:
     - Scope: arch_characteristics/scope.md
   - Architecture Styles:
     - Introduction: arch_styles/index.md
+    - Foundations: arch_styles/foundations.md
 
 theme:
   name: material
