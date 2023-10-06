@@ -33,7 +33,26 @@ Distributed architectures `can be more` powerful in terms of performance, scalab
 
 ### Bandwidth Is Infinite
 
+In monolithic architectures, `bandwidth is typically not a concern because processing within a monolith often requires little to no additional bandwidth`. However, in distributed systems, `communication between services can consumes significant bandwidth, which can lead to network slowdowns`.
+
+When a service needs to connect to other services to process requests, it consumes bandwidth. This can become problematic, especially if these requests occur frequently. This situation, known as `stamp coupling`, can have a significant impact on bandwidth usage. `To address stamp coupling in distributed architectures, there are several approaches you can consider`:
+
+1. Create private RESTful API endpoints.
+1. Use field selectors in the contract.
+1. Adopt GraphQL to decouple contracts.
+1. Combine value-driven contracts with consumer-driven contracts (CDCs).
+1. Leverage internal messaging endpoints.
+
+!!! tip
+    No matter which approach you choose, `the key is to minimize the amount of data transferred between services or systems in a distributed architecture`. This is essential for addressing the fallacy of infinite bandwidth.
+
 ### The Network Is Secure
+
+In the world of distributed computing, it's common for architects and developers to rely on tools like virtual private networks (VPNs), trusted networks, and firewalls, which can create a false sense of security. However, `it's crucial to remember that the network itself is not inherently secure`.
+
+`Security becomes a much more complex challenge in distributed architectures`. In such systems, `every endpoint, associated with each distributed deployment unit, must be diligently secured to prevent unauthorized or malicious requests from reaching those services`. As you transition from a monolithic to a distributed architecture, the potential surface area for security threats and attacks increases significantly.
+
+`Ensuring the security of every endpoint, even during interservice communication, is a demanding task`. This is one of the reasons why `synchronous`, highly-distributed architectures like microservices or service-based architecture often exhibit slower performance. The need to address security at every level introduces additional overhead and complexity.
 
 ### The Topology Never Changes
 
