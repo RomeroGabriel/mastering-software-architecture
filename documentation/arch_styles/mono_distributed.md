@@ -68,7 +68,17 @@ Architects often make the `mistake of assuming they only need to collaborate and
 
 ### Transport Cost Is Zero
 
+The term `transport cost` in this context doesn't refer to how quickly data travels, but to the `actual expenses incurred when making what seems like a simple RESTful call.` Architects often mistakenly assume that the existing infrastructure is enough for such calls or for breaking down a monolithic application. However, this isn't usually the case.
+
+`Distributed architectures typically come with significantly higher expenses compared to monolithic ones`. This increase in cost is primarily due to the need for extra hardware, servers, gateways, firewalls, the creation of new subnets, proxies, and other resources.
+
+When architects dive into `designing a distributed architecture, it's essential to thoroughly assess the current server and network infrastructure`. This assessment should consider factors like capacity, bandwidth, latency, and security zones. By doing this, architects can avoid being caught off guard by unexpected costs and plan more effectively.
+
 ### The Network Is Homogeneous
+
+Many architects and developers often assume that networks are homogeneous, consisting of hardware from a single vendor. In reality, `most companies have a mix of network hardware vendors in their infrastructure, and sometimes, even more than that`. The importance of this fallacy lies in the fact that `not all of these diverse hardware vendors seamlessly cooperate with one another`. While most components work together, questions arise about the seamless integration of Juniper hardware with Cisco hardware, for instance.
+
+`While networking standards have progressed over the years, reducing this problem, the fact remains that not all scenarios, loads, and circumstances have been thoroughly tested`. Consequently, network packets can occasionally get lost, causing issues.
 
 ## References
 
