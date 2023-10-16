@@ -20,6 +20,7 @@ nav:
     - Introduction: arch_styles/index.md
     - Foundations: arch_styles/foundations.md
     - Monolithic vs Distributed Architectures: arch_styles/mono_distributed.md
+    - Layered Architecture Style: arch_styles/layered_arch.md
 
 theme:
   name: material
