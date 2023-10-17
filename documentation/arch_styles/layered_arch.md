@@ -41,3 +41,29 @@ The `deployment of the layered architecture style can take several physical laye
     The third variant amalgamates `all four standard layers, including the database layer, into a single deployment unit`. This approach proves beneficial for smaller applications, especially those utilizing either an internally embedded database or an in-memory database.
 
 `The choice of a deployment variant should align with the specific requirements of the application`, including considerations related to application size, performance demands, and the necessity for scalability and flexibility.
+
+## Layers
+
+### Layers of Isolation
+
+In the `context of the layered architecture style, layers can be classified as either closed or open`.
+
+!!! info "Closed Layers"
+    A closed layer mandates that a request `must pass through each layer in a sequential top-down manner`, without the ability to skip any intermediary layers.
+
+!!! info "Open Layers"
+    In contrast with Closed Layers, an `open layer allows a request to bypass other layers`, potentially leading to a more flexible but complex system.
+
+Determining whether open or closed layers are preferable depends on the concept of `layers of isolation`. This concept `emphasizes that modifications in one layer typically do not affect components in other layers`, provided that the contracts between the layers remain unchanged. This independence among layers minimizes the interdependencies between them, facilitating maintainability and adaptability.
+
+However, `to ensure effective layers of isolation, layers involved in the primary flow of requests should be closed`. Allowing direct access from the presentation layer to the persistence layer, for instance, can tightly couple the application's components, making the architecture rigid and difficult to modify.
+
+The layers of isolation concept also `enable seamless layer replacements without impacting other layers, assuming well-defined contracts` and the utilization of appropriate design patterns. Leveraging this concept in the layered architecture style enables the replacement of outdated components, such as migrating from JavaServer Faces (JSF) to React.js for the presentation layer, without necessitating changes in other parts of the application.
+
+### Adding Layers
+
+While closed layers promote effective isolation and encapsulation of change within the architecture, `there are instances where incorporating open layers can be advantageous`. For instance, a layer with `common functionalities` like date and string utility classes, logging classes, and similar utilities might benefit from being an `open layer`. `This approach facilitates convenient accessibility across various parts of the architecture`.
+
+`The concept of open and closed layers plays a critical role in defining the relationship between architecture layers and the flow of requests`. It offers developers essential insights into the access restrictions of different layers within the architecture. `Properly documenting and communicating the status of open and closed layers`, along with the rationale behind these decisions, `is crucial`. Neglecting to provide clear documentation or communication about the openness or closedness of layers can result in tightly coupled and fragile architectures that are challenging to test, maintain, and deploy.
+
+`By strategically incorporating open layers to accommodate common functionalities and by clearly delineating the access restrictions within the architecture`, developers can create a more `flexible and adaptable system while maintaining the benefits of layered isolation`.
