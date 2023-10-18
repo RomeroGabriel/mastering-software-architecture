@@ -67,3 +67,16 @@ While closed layers promote effective isolation and encapsulation of change with
 `The concept of open and closed layers plays a critical role in defining the relationship between architecture layers and the flow of requests`. It offers developers essential insights into the access restrictions of different layers within the architecture. `Properly documenting and communicating the status of open and closed layers`, along with the rationale behind these decisions, `is crucial`. Neglecting to provide clear documentation or communication about the openness or closedness of layers can result in tightly coupled and fragile architectures that are challenging to test, maintain, and deploy.
 
 `By strategically incorporating open layers to accommodate common functionalities and by clearly delineating the access restrictions within the architecture`, developers can create a more `flexible and adaptable system while maintaining the benefits of layered isolation`.
+
+## Other Considerations
+
+`The layered architecture serves as a solid foundational structure for many applications, especially in cases where the definitive architecture style remains undetermined during the initial development phase`. However, an important consideration when implementing the layered architecture is the `potential risk of encountering the architecture sinkhole anti-pattern`.
+
+### Sinkhole Anti-Pattern
+
+This anti-pattern occurs when `requests are transferred across different layers in a simplistic pass-through manner, devoid of any meaningful business logic within each layer`. This practice results in `unnecessary object instantiation and processing`, adversely impacting memory consumption and overall system performance.
+
+??? example
+    Presentation layer responds to a user request to fetch basic customer data, the request is successively passed through the business layer, the rules layer, the persistence layer, and eventually to the database layer `without any data manipulation, aggregation, or rule application taking place`.
+
+While it's common for certain scenarios in a layered architecture to exhibit elements of the architecture sinkhole anti-pattern, `it is crucial to evaluate the proportion of requests that fall into this category`. Adhering to the 80-20 rule is often advisable. For instance, if `only 20 percent of the requests` demonstrate sinkhole characteristics, it might be deemed `acceptable`. However, if the majority, or `80 percent`, of the requests conform to this pattern, `it serves as a strong indicator that the layered architecture may not be the most appropriate choice for the specific problem domain at hand`.
