@@ -80,3 +80,9 @@ This anti-pattern occurs when `requests are transferred across different layers 
     Presentation layer responds to a user request to fetch basic customer data, the request is successively passed through the business layer, the rules layer, the persistence layer, and eventually to the database layer `without any data manipulation, aggregation, or rule application taking place`.
 
 While it's common for certain scenarios in a layered architecture to exhibit elements of the architecture sinkhole anti-pattern, `it is crucial to evaluate the proportion of requests that fall into this category`. Adhering to the 80-20 rule is often advisable. For instance, if `only 20 percent of the requests` demonstrate sinkhole characteristics, it might be deemed `acceptable`. However, if the majority, or `80 percent`, of the requests conform to this pattern, `it serves as a strong indicator that the layered architecture may not be the most appropriate choice for the specific problem domain at hand`.
+
+## Why Use This Architecture Style
+
+The layered architecture style serves as an good choice for small, straightforward applications or websites. `Its simplicity and developer familiarity make it a preferred option, especially in scenarios with tight budgetary and time constraints`. Due to its minimalistic approach, the `layered architecture style represents one of the most cost-effective options, facilitating smoother and quicker development processes for smaller-scale applications`. Moreover, it is p`articularly beneficial in situations where architects are still in the process of analyzing business requirements and are uncertain` about the most suitable architecture style.
+
+However, `as applications built using the layered architecture style begin to scale, certain attributes such as maintainability, agility, testability, and deployability may gradually decline`.
