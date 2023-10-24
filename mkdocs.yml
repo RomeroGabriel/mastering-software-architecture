@@ -22,6 +22,7 @@ nav:
     - Monolithic vs Distributed Architectures: arch_styles/mono_distributed.md
     - Layered Architecture Style: arch_styles/layered_arch.md
     - Pipeline Architecture Style: arch_styles/pipeline_arch.md
+    - Microkernel Architecture Style: arch_styles/microkernel_arch.md
 
 theme:
   name: material
