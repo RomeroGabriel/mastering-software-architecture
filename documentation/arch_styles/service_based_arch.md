@@ -16,3 +16,23 @@ While a service-based architecture `usually maintains only a single instance of 
 `Services are accessed remotely from a user interface through different ways like REST, messaging, or  remote procedure call (RPC)`. While an API layer with a proxy or gateway can be employed to access services, in most cases, the user interface interacts directly with the services.
 
 `One important thing here is that all these services use the same database`. This means they can utilize SQL queries and joins akin to traditional monolithic layered architectures. Given the limited number of services, `database connections typically pose no issues in service-based architecture. However, database alterations can present challenges`.
+
+### Topology Variants
+
+Within the service-based architecture style, various topology variants exist, making it one of the most adaptable styles.
+
+??? example "Broken User Interface"
+    ![User interface variants from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/service-base-arch-example2.png)
+    > User interface variants from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
+
+??? example "Multiple Databases"
+    Dividing a single monolithic database into `separate databases, sometimes even establishing domain-specific databases that match each domain service`, similar to how it's done in microservices. `The key here is to ensure that each separate database doesn't contain data needed by another domain service. This approach prevents the need for communication between domain services (something to avoid in service-based architecture) and avoids duplicating data across databases`.
+
+    ![Database variants from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/service-base-arch-example3.png)
+    > Database variants from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
+
+??? example "API Layer"
+    Another possibility is to introduce an `API layer, comprising a reverse proxy or gateway between the user interface and services`. This practice is `beneficial when exposing domain service functions to external systems or consolidating shared cross-cutting concerns`, moving them outside the user interface. Such concerns might include managing metrics, security, auditing requirements, and service discovery.
+
+    ![Adding an API layer between the user interface and domain services from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/service-base-arch-example4.png)
+    > Adding an API layer between the user interface and domain services from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
