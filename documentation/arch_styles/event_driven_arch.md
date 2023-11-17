@@ -112,3 +112,13 @@ A fundamental disparity surfaces between the processing events in broker and med
 | `Better data consistency` | Modeling complex workflows |
 
 ## Asynchronous Capabilities
+
+The event-driven architecture style presents a distinctive feature compared to other architectural approaches by `relying entirely on asynchronous communication`. This encompasses both `fire-and-forget processing`, where no response is required, and `request/reply` processing, where a response is expected from the event consumer. Leveraging asynchronous communication proves to be a `potent technique for enhancing overall system responsiveness`.
+
+### Responsiveness vs Performance
+
+In scenarios where the `user doesn't necessitate immediate feedback` beyond an acknowledgment or a simple thank-you message, why subject them to unnecessary waiting? `Responsiveness focuses on promptly notifying the user that their action has been acknowledged and will undergo processing shortly`. Conversely, `performance revolves around expediting the end-to-end process`.
+
+`The challenge in asynchronous behavior arises when the user's action encounters rejection`, as there's no direct route to communicate this back to the end user. While a message signaling an issue could be dispatched, in more intricate scenarios, this might not constitute a comprehensive solution. The primary hurdle in asynchronous communications lies in error handling. `Although responsiveness sees a significant boost, effectively addressing error conditions adds complexity to the event-driven system`.
+
+## Error Handling
