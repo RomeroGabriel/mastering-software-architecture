@@ -71,10 +71,44 @@ While the broker topology offers benefits in terms of performance, responsivenes
 
 `Recovering from a business transaction (recoverability) is not supported in the broker topology`. As other actions are asynchronously taken during the initial processing of the initiating event, resubmitting the initiating event becomes impractical. `No component in the broker topology is aware of or owns the state of the original business request, leaving no one responsible for restarting the business transaction and knowing its progress`.
 
-| Advantages      | Disadvantages                          |
+| Advantages  | Disadvantages |
 | ----------- | ------------------------------------ |
 | `Highly decoupled event processors`       | Workflow control  |
 | `High scalability`       | Error handling |
 | `High responsiveness`    | Recoverability |
 | `High performance`    | Restart capabilities |
 | `High fault tolerance`    | Data inconsistency |
+
+### Mediator Topology
+
+In the mediator topology, a central figure is the `event mediator, overseeing and orchestrating the workflow for initiating events that necessitate the coordination of multiple event processors`. The key components of the mediator topology include an initiating event, an event queue, an event mediator, event channels, and event processors.
+
+!!! note "Initiating Event"
+    1. This is the event that initiates the entire eventing process.
+    1. `The initiating event is directed to an initiating event queue, which is then received by the event mediator`.
+
+!!! note "Event Mediator"
+    1. Manages the workflow, generating corresponding processing events dispatched to dedicated event channels (usually queues) in a point-to-point messaging style.
+
+!!! note "Event Processors"
+    1. Attend to their tasks by `monitoring dedicated event channels, executing event-specific processes, and typically communicating back to the mediator upon task completion`.
+    1. Unlike the broadcast approach of the broker topology, `event processors in the mediator setup operate discreetly without announcing their actions to the entire system`.
+
+Practical implementations often `deploy multiple mediators, each linked to a specific domain or category of events`. This strategic approach `mitigates the risk of a single point of failure`, enhancing overall system resilience and performance.
+
+The mediator component, distinctive from the broker topology, `boasts both knowledge and command over the workflow`. This capability empowers the mediator to uphold event states and proficiently manage aspects like error handling, recoverability, and restart functionalities.
+
+A fundamental disparity surfaces between the processing events in broker and mediator topologies concerning their meaning and utilization. In the `broker paradigm, processing events serve as published occurrences in the system` (e.g., order-created, payment-applied, email-sent), `triggering subsequent actions and reactions among event processors`. Using the `mediator topology, processing events` (e.g., place-order, send-email, fulfill-order) `are akin to commands, dictating necessary actions rather than merely reporting past events`. Notably, in the `mediator domain, a command necessitates processing, while an event in the broker setup can be disregarded`.
+
+!!! warning "Challenges within the Mediator Domain"
+    Although event processors can scale comparably to the broker setup, the `mediator's scaling introduces occasional bottlenecks` in the overarching event processing flow. Additionally, `event processors in the mediator setup lack the high level of independence` seen in the broker model, impacting overall performance due to the mediator's active role in controlling event processing.
+
+| Advantages  | Disadvantages |
+| ----------- | --------------|
+| `Workflow control` | More coupling of event processors |
+| `Error handling` | Lower scalability |
+| `Recoverability` | Lower performance |
+| `Restart capabilities` | Lower fault tolerance |
+| `Better data consistency` | Modeling complex workflows |
+
+## Asynchronous Capabilities
