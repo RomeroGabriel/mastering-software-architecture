@@ -121,4 +121,35 @@ In scenarios where the `user doesn't necessitate immediate feedback` beyond an a
 
 `The challenge in asynchronous behavior arises when the user's action encounters rejection`, as there's no direct route to communicate this back to the end user. While a message signaling an issue could be dispatched, in more intricate scenarios, this might not constitute a comprehensive solution. The primary hurdle in asynchronous communications lies in error handling. `Although responsiveness sees a significant boost, effectively addressing error conditions adds complexity to the event-driven system`.
 
-## Error Handling
+## Error Handling - Workflow Event Pattern
+
+The workflow event pattern within reactive architecture provides a solution to the challenges associated with error handling in an asynchronous workflow. `This pattern, inherent to reactive architecture, effectively addresses both resiliency and responsiveness, ensuring that the system remains robust in handling errors without compromising responsiveness`.
+
+In this approach, `the event producer asynchronously transmits data through a message channel to the event consumer`. When the event consumer encounters an error in processing, `it promptly delegates the error to the workflow processor and proceeds to process the next message in the event queue`. This ensures that overall `responsiveness is maintained`, as errors don't become impediments to processing subsequent messages.  `If the event consumer were to spend time resolving the error, it would impede not only the responsiveness of the next message but also impact all other messages waiting in the queue for processing`.
+
+Upon encountering an error, `the workflow processor engages in a diagnostic process to identify issues within the message`. This diagnostic phase may involve recognizing static, deterministic errors or deploying machine learning algorithms to detect anomalies in the data. `The workflow processor then programmatically applies changes to the original data in an attempt  to repair it`. The corrected data is subsequently re-entered into the originating queue. From the perspective of the event consumer, this `corrected message is treated as new, prompting another processing attempt`. In scenarios where the `workflow processor cannot definitively pinpoint the issue, the message is redirected to an alternative queue, commonly known as a dashboard`.
+
+`This dashboard, resembling familiar email applications, usually resides on the desktop of a key individual`. Here, the individual reviews the message, introduces manual fixes if needed, and then reissues it to the original queue, often utilizing a "reply-to" message header variable.
+
+A noteworthy consequence  of the workflow event pattern is `messages encountering errors undergo processing out of their original sequence upon resubmission`. Preserving the exact order of messages within a specific context proves to be a complex task. `A potential solution to this challenge involves storing the errored messages temporarily in a dedicated queue`. Any data processing with the same identification (like ID) would be stored in a temporary queue for later processing (in FIFO order). `Once the error is fixed and processed, the service then de-queues the remaining trades for that same identification and processes them in order`.
+
+??? example
+    Consider a scenario where a `trading advisor`, situated in one part of the country, `manages trade orders for a prominent trading firm` located elsewhere. The `advisor efficiently compiles trade orders into a basket and dispatches them asynchronously to the large trading firm for execution through a broker`. The contractual format for trade instructions encompasses fields such as: `ACCOUNT (String), SIDE (String), SYMBOL (String), and SHARES (Long)`.
+
+    Imagine the large trading firm receives a basket of Apple (AAPL) trade orders from the advisor:
+    `12654A87FR4,BUY,AAPL,1254`
+
+    `87R54E3068U,BUY,AAPL,3122`
+
+    `2WE35HF6DHF,BUY,AAPL,8756 SHARES`
+
+    `6R4NB7609JJ,BUY,AAPL,5433`
+
+    In a scenario `without of error-handling capabilities, an error would surface on the line with SHARES`. In this asynchronous context, when an exception occurs, the trade placement service lacks the means for synchronous user intervention. `The only recourse might be logging the error condition`.
+
+    Integrating the workflow event pattern provides a programmatic resolution to such errors. `As the large trading firm lacks control over the trading advisor's data, it must autonomously fix the error itself`. When the error occurs (2WE35HF6DHF,BUY,AAPL,8756 SHARES), `the Trade Placement service promptly delegates the error via asynchronous messaging to the Trade Placement Error service`. This delegation includes the error information.
+
+    The `Trade Placement Error` service, `operating as the workflow delegate`, receives and inspects the exception, identifying it as a "SHARES" issue in the shares field. Subsequently, the `Trade Placement Error service removes the term "SHARES" and resubmits the trade for reprocessing`, effectively addressing the error within the workflow event pattern.
+
+    ![Error handling with the workflow event pattern from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/event-driven-model-workflowevent-example.png)
+    > Error handling with the workflow event pattern from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
