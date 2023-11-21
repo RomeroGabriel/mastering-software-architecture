@@ -153,3 +153,33 @@ A noteworthy consequence  of the workflow event pattern is `messages encounterin
 
     ![Error handling with the workflow event pattern from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/event-driven-model-workflowevent-example.png)
     > Error handling with the workflow event pattern from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
+
+## Preventing Data Loss
+
+`Mitigating data loss is a critical consideration in the realm of asynchronous communications`, particularly within an event-driven architecture. `Several points in this system can lead to data loss, meaning messages might accidentally be dropped or fail to reach their intended destination`. The good news is that `there are basic methods available to prevent data loss` in asynchronous messaging situations.
+
+### Example
+
+Consider a scenario where `Event Processor A` sends a message to a `queue`, subsequently processed by `Event Processor B`, which inserts the message data into a database. Three potential areas of data loss emerge:
+
+!!! failure "1. Message Fails to Reach the Queue"
+    The `message fails to reach the queue from Event Processor A`, or if it does, the `broker goes down before the next event processor retrieves the message`.
+
+!!! tip "Guaranteed Delivery with `Persistent Message Queues` and `Synchronous Send`"
+    1. `Leveraging persistent message queues ensures guaranteed delivery`. Messages are stored in both memory and a physical data store, facilitating retrieval even if the broker experiences downtime.
+    1. `Synchronous send involves a blocking wait in the message producer until the broker confirms the message's persistence`. This combination prevents message loss between the producer and the queue.
+
+!!! failure "2. Event Processor Crashes Before Processing"
+    Event Processor B dequeues the next message but crashes before processing it.
+
+!!! tip "`Client Acknowledge Mode` for Crash Resilience"
+    1. By default, when a message is de-queued, it is immediately removed from the queue (`auto acknowledge mode`).
+    1. Client acknowledge mode `retains the message in the queue and associates the client ID with it`, preventing other consumers from reading the message.
+    1. In the `event of a crash, the message remains preserved in the queue`, averting message loss in this part of the message flow.
+
+!!! failure "3. Data Error When Saving to the Database"
+    Event Processor B encounters difficulty persisting the message to the database due to a data error.
+
+!!! tip "`ACID Transactions` and `Last Participant Support (LPS)` for Database Persistence"
+    1. ACID transactions, specifically atomicity, consistency, isolation, and durability, are employed via a `database commit`, ensuring the data's persistence in the database.
+    1. Last participant support (LPS) `acknowledges the completion of processing and message persistence`, removing the message from the persisted queue. This guarantees the entire workflow, from the Event Processor A to the database.
