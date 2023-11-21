@@ -183,3 +183,9 @@ Consider a scenario where `Event Processor A` sends a message to a `queue`, subs
 !!! tip "`ACID Transactions` and `Last Participant Support (LPS)` for Database Persistence"
     1. ACID transactions, specifically atomicity, consistency, isolation, and durability, are employed via a `database commit`, ensuring the data's persistence in the database.
     1. Last participant support (LPS) `acknowledges the completion of processing and message persistence`, removing the message from the persisted queue. This guarantees the entire workflow, from the Event Processor A to the database.
+
+## Broadcast Capabilities
+
+In event-driven architecture, another distinctive feature is the ability to `broadcast events without knowing who will receive the message or what they will do with it, if anything`.
+
+Broadcasting represents a `significant level of decoupling between event processors`. The producer of the broadcast message typically lacks knowledge about which event processors will receive the message and, more crucially, what actions they will take in response. `Broadcast capabilities play a vital role in patterns for eventual consistency, complex event processing (CEP), and various other scenarios`.
