@@ -189,3 +189,49 @@ Consider a scenario where `Event Processor A` sends a message to a `queue`, subs
 In event-driven architecture, another distinctive feature is the ability to `broadcast events without knowing who will receive the message or what they will do with it, if anything`.
 
 Broadcasting represents a `significant level of decoupling between event processors`. The producer of the broadcast message typically lacks knowledge about which event processors will receive the message and, more crucially, what actions they will take in response. `Broadcast capabilities play a vital role in patterns for eventual consistency, complex event processing (CEP), and various other scenarios`.
+
+## Request-Reply
+
+In scenarios where it's `essential to receive information`, such as an order ID when ordering a book or a confirmation number when booking a flight, `synchronous communication` between services or event processors becomes necessary.
+
+`Within event-driven architecture, synchronous communication is facilitated through request-reply messaging`. In request-reply messaging, each event channel comprises two queues:
+
+1. a request queue
+1. a reply queue
+
+!!! info "Workflow"
+    1. The `initial request` for information is asynchronously `sent to the request queue`.
+    1. Control is then returned to the `message producer` after sending the request.
+    1. The `message producer` waits for the response by blocking on the `reply queue`.
+    1. The `message consumer` receives and processes the message, `sending the response to the reply queue`.
+    1. Finally, the event producer receives the message containing the response data.
+
+    ![Request-reply message processing from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/event-driven-model-requestreply-example.png)
+    > Request-reply message processing from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
+
+`Two primary techniques are commonly used to implement request-reply messaging`. The first and `most common technique involves utilizing a correlation ID` contained in the message header. This correlation ID is a field in the reply message typically set to the message ID of the original request message.
+
+The second technique for implementing request-reply messaging is to `use a temporary and exclusive queue for the reply queue`. A temporary queue is dedicated to the specific request, `created when the request is made, and deleted when the request concludes`.
+
+!!! warning
+    `While the temporary queue technique is simpler, it comes with the drawback of the message broker having to create and immediately delete a temporary queue for each request`.  In scenarios with high messaging volumes, this can significantly slow down the message broker, impacting overall performance and responsiveness.
+
+??? example "Using Correlation ID"
+    1. The `event producer sends a message to the request queue and notes the unique message ID` (124). Notably, the correlation ID (CID) is null in this case.
+    1. The `event producer then waits for a reply on the reply queue, using a message filter`.
+        - The `filter looks for messages where the correlation ID in the header matches the original message ID` (124).
+    1. The `event consumer` receives and processes the message (ID 124).
+    1. The `event consumer generates a reply message`, including the response and `setting the correlation ID (CID) in the header to the original message ID` (124).
+    1. The `event consumer sends the new message (ID 857) to the reply queue`.
+    1. The `event producer`, waiting for a reply, `receives the message (ID 857) because the correlation ID (124) matches the message selector from step 2`.
+
+    ![Request-reply message processing using a correlation ID from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/event-driven-model-requestreply-ID.png.png)
+    > Request-reply message processing using a correlation ID from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
+
+??? example "Using Temporary and Exclusive Queue"
+    1. The `event producer creates a temporary queue (or one is automatically created, depending on the message broker) and sends a message to the request queue`, including the name of the temporary queue in the reply-to header (or another identifier).
+    1. The `event producer waits for a reply on the temporary queue`. This queue is `exclusive to the event producer that initiated the request`.
+    1. The `event consumer` receives the message, processes the request, and sends a response message to the `reply queue named in the reply-to header`.
+    1. The e`vent producer`, waiting on the temporary queue, `receives the response message and deletes the temporary queue`.
+    ![Request-reply message processing using a temporary queue from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/event-driven-model-requestreply-queue.png)
+    > Request-reply message processing using a temporary queue from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
