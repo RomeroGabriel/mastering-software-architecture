@@ -251,3 +251,9 @@ It is advisable to `opt for the request-based model when dealing with well-struc
 | Better responsiveness and performance |  |
 | Better real-time decision making |  |
 | Better reaction to situational awareness |  |
+
+## Hybrid Event-Driven Architectures
+
+While many applications use the event-driven architecture as their primary structure, `it's quite common to blend it with other styles, forming what's called a hybrid architecture`. Examples include combining `event-driven architecture with microservices and space-based architecture`. You can also create hybrids like an `event-driven microkernel` or an `event-driven pipeline architecture`.
+
+`Integrating event-driven architecture into any style has advantages`—it eliminates bottlenecks, establishes a backpressure point for potential backups in event requests, and `enhances user responsiveness` beyond what other styles offer. In both `microservices and space-based architecture`, messaging plays a crucial role as data pumps, `facilitating asynchronous data transmission to another processor`, which then updates the database. These architectures leverage event-driven principles to scale services in a microservices architecture and processing units in a space-based architecture, especially when using messaging for interservice communication.
