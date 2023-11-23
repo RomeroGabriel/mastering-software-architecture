@@ -235,3 +235,19 @@ The second technique for implementing request-reply messaging is to `use a tempo
     1. The e`vent producer`, waiting on the temporary queue, `receives the response message and deletes the temporary queue`.
     ![Request-reply message processing using a temporary queue from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/event-driven-model-requestreply-queue.png)
     > Request-reply message processing using a temporary queue from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
+
+## Choosing Between Request-Based and Event-Based
+
+It is advisable to `opt for the request-based model when dealing with well-structured, data-driven requests`, such as retrieving customer profile data, `where certainty and control over the workflow are crucial`. On the other hand, the `event-based model is recommended for handling flexible, action-based events` that demand high levels of responsiveness and scalability, `especially in scenarios involving complex and dynamic user processing`.
+
+### Trade-offs Table
+
+| `Advantages over request-based`  | Trade-offs |
+| ----------- | --------------|
+| Better response to dynamic user content | Only supports eventual consistency |
+| Better scalability and elasticity | Less control over processing flow |
+| Better agility and change management | Less certainty over outcome of event flow |
+| Better adaptability and extensibility | Difficult to test and debug |
+| Better responsiveness and performance |  |
+| Better real-time decision making |  |
+| Better reaction to situational awareness |  |
