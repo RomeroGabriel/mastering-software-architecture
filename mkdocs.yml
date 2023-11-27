@@ -25,6 +25,7 @@ nav:
     - Microkernel Architecture Style: arch_styles/microkernel_arch.md
     - Service-Base Architecture Style: arch_styles/service_based_arch.md
     - Event-Driven Architecture Style: arch_styles/event_driven_arch.md
+    - Space-Based Architecture Style: arch_styles/space_based_arch.md
 
 theme:
   name: material

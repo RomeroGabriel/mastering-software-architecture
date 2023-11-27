@@ -1,0 +1,10 @@
+# Space-Based Architecture Style
+
+The space-based architecture style is crafted to tackle `challenges related to high scalability, elasticity, and concurrent user demands`. `It proves beneficial for applications dealing with variable and unpredictable concurrent user volumes`. Architecturally addressing extreme scalability issues is often more effective than attempting to scale out a database or retrofit caching technologies into a non-scalable architecture.
+
+In high-volume applications with significant concurrent user loads, the `database typically becomes the ultimate bottleneck, limiting the number of transactions processed concurrently`. Despite the assistance of various caching technologies and database scaling products, scaling out a conventional application for extreme loads remains a challenging task.
+
+!!! example "Web-Based Bussiness"
+    In web-based businesses, the usual flow involves a `request from a browser hitting the web server, then an application server, and finally, the database server`. This works well for a small user group, but as `users increase, bottlenecks emerge at each layer`—first at the web server, then the application server, and finally, the database server. `Scaling out web servers is a common response, but it often shifts the bottleneck to the application server, which is more complex and costly to scale`. Even if the database is scaled (and even more costly to scale), the result is a `triangle-shaped topology`, with web servers being the easiest to scale and the database the hardest.
+    ![Scalability limits within a traditional web-based topology from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/space-based-web-based-example.png)
+    > Scalability limits within a traditional web-based topology from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
