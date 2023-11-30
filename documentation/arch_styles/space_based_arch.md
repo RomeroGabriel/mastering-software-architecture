@@ -94,3 +94,7 @@ When instances of a class of processing unit start coming up, `they attempt to g
 Similar to data writers, `data readers can be domain-based or dedicated to a specific class of processing unit`. Their implementation can take the form of services, applications, or data hubs.
 
 `Together, data writers and data readers form a data abstraction layer`, ensuring processing units are decoupled from the underlying database table structures. In space-based architecture, a data abstraction layer allows incremental changes to the database without directly impacting the processing units.
+
+??? example
+    ![Data reader with reverse data pump from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/space-based-data-reader.png)
+    > Data reader with reverse data pump from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
