@@ -41,7 +41,7 @@ The virtualized middleware `manages architecture infrastructure, overseeing data
     ![Data grid from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/space-based-data-grid.png)
     > Data grid from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
-    `Data synchronization occurs among processing units that share the same named data grid`. For instance, consider an internal replicated data grid in processing units containing customer profile information, using Hazelcast. C`hanges made to the CustomerProfile named cache in any processing unit replicate to all others with the same named cache`. `Each processing unit can hold multiple replicated caches as needed or request data from another unit (choreography) or leverage the processing grid for orchestration`.
+    `Data synchronization occurs among processing units that share the same named data grid`. For instance, consider an internal replicated data grid in processing units containing customer profile information, using Hazelcast. `Changes made to the CustomerProfile named cache in any processing unit replicate to all others with the same named cache`. `Each processing unit can hold multiple replicated caches as needed or request data from another unit (choreography) or leverage the processing grid for orchestration`.
 
     Data replication within processing units enables service instances to `start and stop without requiring data retrieval from the database, as long as one instance holds the named replicated cache`. When a processing unit instance starts, it connects to the cache provider (like Hazelcast), requests the named cache, and loads it from another instance.
 
@@ -52,3 +52,45 @@ The virtualized middleware `manages architecture infrastructure, overseeing data
 
 !!! info "Deployment Manager"
     The deployment manager component oversees the `dynamic startup and shutdown of processing unit instances based on load conditions`. Continually monitoring response times and user loads, it starts up new processing units with increased load and shuts down units during decreased load. `This critical component ensures variable scalability (elasticity) within an application`.
+
+### Data Pumps
+
+A data pump is a `vital component` in space-based architecture, `facilitating the transfer of data to another processor for database updates`. Within this architecture, `processing units don't directly interact with databases`, making data pumps crucial. Asynchronous by nature, `data pumps ensure eventual consistency between the in-memory cache and the database`. When a processing unit updates its cache, it takes ownership of the update and uses the data pump to transmit the update to the database eventually.
+
+Implemented through messaging, data pumps offer `guaranteed delivery and preservation of message order through FIFO queueing`. This decoupling between the processing unit and the data writer `ensures uninterrupted processing`, even if the data writer is temporarily unavailable.
+
+Typically, `there are multiple data pumps, each dedicated to a specific domain or subdomain` (e.g., customer or inventory). They can be associated with specific caches (e.g., CustomerProfile, CustomerWishlist) or broader processing unit domains (e.g., Customer) with more extensive and general caches.
+
+`Data pumps adhere to contracts`, defining actions (add, delete, update) associated with contract data. These contracts may take the form of `JSON` or `XML` schemas, objects, or value-driven messages. `For updates, the data pump message usually contains only the new data values`, such as the updated phone number and customer ID, along with an action to perform the update.
+
+??? example
+    ![Data pump used to send data to a database from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/space-based-data-pumps.png)
+    > Data pump used to send data to a database from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
+
+### Data Writers
+
+The data writer component plays a `crucial role` by `receiving messages from a data pump and utilizing the information within these messages to update the database`. Data writers can take the `form of services, applications, or data hubs` like Ab Initio. The scope of data writers varies based on the extent of the associated data pumps and processing units.
+
+A domain-based data writer `encapsulates the required database logic to manage updates within a specific domain`, such as customer information, irrespective of the number of data pumps it handles.
+
+??? example
+    ![Domain-based data writer from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/space-based-data-writer1.png)
+    > Domain-based data writer from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
+    ![Dedicated data writers for each data pump from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/space-based-data-writer2.png)
+    > Dedicated data writers for each data pump from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
+
+### Data Readers
+
+Data readers take on the responsibility for `reading data from the database and transmitting it to processing units through a reverse data pump`. Their `activation` is limited to specific scenarios:
+
+1. Crash of all processing unit instances of the same named cache.
+1. Redeployment of all processing units within the same named cache.
+1. Retrieving archive data not contained in the replicated cache.
+
+When `all instances go down`, indicating a system-wide crash or redeployment, `data must be read from the database, a practice typically avoided` in space-based architecture.
+
+When instances of a class of processing unit start coming up, `they attempt to gain a lock on the cache`, the first successful instance becomes the `temporary cache owner, initiating a message to a queue requesting data`, while the others go into a wait state until the lock is released. The data reader, upon receiving the read request, `executes the necessary database query logic to retrieve the required data`. As the data reader queries data, `it sends the results to a different queue known as a reverse data pump`. `The temporary cache owner processing unit loads the cache with the received data`. After loading all the data, the `temporary owner releases the lock, synchronizing all other instances`, allowing processing to commence.
+
+Similar to data writers, `data readers can be domain-based or dedicated to a specific class of processing unit`. Their implementation can take the form of services, applications, or data hubs.
+
+`Together, data writers and data readers form a data abstraction layer`, ensuring processing units are decoupled from the underlying database table structures. In space-based architecture, a data abstraction layer allows incremental changes to the database without directly impacting the processing units.
