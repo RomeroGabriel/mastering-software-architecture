@@ -98,3 +98,169 @@ Similar to data writers, `data readers can be domain-based or dedicated to a spe
 ??? example
     ![Data reader with reverse data pump from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/space-based-data-reader.png)
     > Data reader with reverse data pump from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
+
+## Data Collisions
+
+Data collisions in space-based architecture with replicated caching can `arise when updates occur concurrently in service instances containing the same named cache`,due to replication latency. `Data updates made locally in one cache instance may be overridden by simultaneous updates from another cache instance during replication`.
+
+!!! example
+    To illustrate this issue, consider two service instances (`Service A` and `Service B`) with a `replicated cache of product inventory`:
+
+    1. Initial inventory count for `product Z is 500 units`.
+    1. `Service A updates` the inventory cache for product Z to 490 units (`10 sold`).
+    1. `Simultaneously`, during replication, `Service B updates` the inventory cache for product Z to 495 units (`5 sold`).
+    1. `Due to replication, the Service B cache is updated to 490 units, reflecting the Service A update`.
+    1. Similarly, the `Service A cache is updated to 495 units, reflecting the Service B update`.
+    1. `Both caches in Service A and B are now incorrect and out of sync` (inventory should be 485 units).
+
+### Calculating Probability to Data Collisions
+
+`Calculating the probability of data collisions involves considering factors`. The formula used to estimate the likelihood of potential data collisions incorporates these factors:
+
+!!! note "Formula"
+    `Collision Rate = N*(UR²/S)*RL`
+
+    Where:
+
+    1. N    = number of service instances using the same named cache.
+    1. UR   = update rate in milliseconds (squared).
+    1. S    = cache size (in terms of number of rows)
+    1. RL   = replication latency
+
+!!! example "Base Example"
+    `Collision Rate = N*(UR²/S)*RL`
+
+    1. N    = 5
+    1. UR   = 20 updates/second
+    1. S    = 50.000 rows
+    1. RL   = 100 milliseconds = 0.1 seconds
+
+    Collision Rate = 5 * (20²/50.000) * 0.1
+
+    Collision Rate = 5 * (400/50.000) * 0.1
+
+    Collision Rate = 5 * 0.008 * 0.1
+
+    `Collision Rate = 0.004 per second`
+
+    ---
+    Updates per minute = 20 * 60 = 1200
+
+    `Updates per hour = 1200 * 60 = 72000`
+
+    ---
+    Collision Rate per hour = 0.004 * 3600
+
+    `Collision Rate per hour = 14.4`
+
+    ---
+    Percentage = 14.4 / 72000 * 100
+
+    `Percentage = 0.02%`
+
+The formula provided is a valuable tool for assessing the likelihood of data collisions and `determining the feasibility of using replicated caching in a space-based architecture`. `Replication latency`, influenced by network type and physical distance between processing units, `plays a crucial role in data consistency`. While actual replication latency values are often not readily available and need to be measured in a production environment, `a planning value of 100 milliseconds is commonly used when precise figures are unavailable`.
+
+??? example "Reducing Replication Latency"
+    Changing the replication latency from 100 milliseconds to 1 millisecond yields the same number of updates (72,000 per hour) but `produces only the probability of 0.1 collisions per hour`.
+
+    `Collision Rate = N*(UR²/S)*RL`
+
+    1. N    = 5
+    1. UR   = 20 updates/second
+    1. S    = 50.000 rows
+    1. RL   = 1 milliseconds = 0.001 second
+
+    Collision Rate = 5 * (20²/50.000) * 0.001
+
+    Collision Rate = 5 * (400/50.000) * 0.001
+
+    Collision Rate = 5 * 0.008 * 0.001
+
+    `Collision Rate = 0.00004 per second`
+
+    ---
+    Updates per minute = 20 * 60 = 1200
+
+    `Updates per hour = 1200 * 60 = 72000`
+
+    ---
+    Collision Rate per hour = 0.00004 * 3600
+
+    `Collision Rate per hour = 0.144`
+
+    ---
+    Percentage = 0.144 / 72000 * 100
+
+    `Percentage = 0.0002%`
+
+`The number of processing units sharing the same named cache (represented by the number of instances) has a direct proportional relationship with the potential number of data collisions`.
+
+??? example "Decreasing Processing Units"
+    Reducing the number of processing units from 5 instances to 2 instances yields a `data collision rate of only 6 per hour out of 72,000 updates per hour`:
+
+    `Collision Rate = N*(UR²/S)*RL`
+
+    1. N    = 2
+    1. UR   = 20 updates/second
+    1. S    = 50.000 rows
+    1. RL   = 100 milliseconds = 0.1 seconds
+
+    Collision Rate = 2 * (20²/50.000) * 0.1
+
+    Collision Rate = 2 * (400/50.000) * 0.1
+
+    Collision Rate = 2 * 0.008 * 0.1
+
+    `Collision Rate = 0.0016 per second`
+
+    ---
+    Updates per minute = 20 * 60 = 1200
+
+    `Updates per hour = 1200 * 60 = 72000`
+
+    ---
+    Collision Rate per hour = 0.0016 * 3600
+
+    `Collision Rate per hour = 5.76`
+
+    ---
+    Percentage = 5.76 / 72000 * 100
+
+    `Percentage = 0.008%`
+
+`Cache size is inversely proportional to collision rates, meaning that as the cache size decreases, collision rates increase`.
+
+??? example "Smaller Cache Size"
+    Reducing the cache size from 50,000 to 10,000 rows, while keeping other factors constant, `increases the collision rate to 72 per hour, emphasizing the impact of cache size on collision probability`.
+
+    Collision Rate = N*(UR²/S)*RL`
+
+    1. N    = 5
+    1. UR   = 20 updates/second
+    1. S    = 10.000 rows
+    1. RL   = 100 milliseconds = 0.1 seconds
+
+    Collision Rate = 5 * (20²/10.000) * 0.1
+
+    Collision Rate = 5 * (400/10.000) * 0.1
+
+    Collision Rate = 5 * 0.04 * 0.1
+
+    `Collision Rate = 0.02 per second`
+
+    ---
+    Updates per minute = 20 * 60 = 1200
+
+    `Updates per hour = 1200 * 60 = 72000`
+
+    ---
+    Collision Rate per hour = 0.02 * 3600
+
+    `Collision Rate per hour = 72`
+
+    ---
+    Percentage = 72 / 72000 * 100
+
+    `Percentage = 0.1%`
+
+In a typical scenario, `systems don't maintain consistent update rates over extended periods`. Therefore, when using this calculation, `understanding the maximum update rate during peak usage and calculating minimum, normal, and peak collision rates can provide a more nuanced perspective`.
