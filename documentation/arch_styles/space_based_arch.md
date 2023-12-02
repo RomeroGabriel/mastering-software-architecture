@@ -264,3 +264,13 @@ The formula provided is a valuable tool for assessing the likelihood of data col
     `Percentage = 0.1%`
 
 In a typical scenario, `systems don't maintain consistent update rates over extended periods`. Therefore, when using this calculation, `understanding the maximum update rate during peak usage and calculating minimum, normal, and peak collision rates can provide a more nuanced perspective`.
+
+## Cloud vs On-Premises Implementations
+
+`Space-based architecture provides versatile deployment options, allowing the entire system`, including processing units, virtualized middleware, data pumps, data readers and writers, and the database, `to be implemented either in on-premises environments or within cloud-based environments`. Additionally, this architecture style offers a unique capability to `deploy applications using processing units and virtualized middleware in managed cloud environments while retaining physical databases and associated data on-premises`.
+
+A key strength of this architecture lies in the possibility of deploying applications through `processing units and virtualized middleware in managed cloud-based environments while maintaining physical databases and associated data on-premises`. This configuration `facilitates highly efficient cloud-based data synchronization`, leveraging asynchronous data pumps and the eventual consistency model inherent in this architecture. `The setup allows for transactional processing in dynamic and elastic cloud-based environments while upholding the management of physical data, reporting, and data analytics securely within the local and on-premises environments`.
+
+??? example
+    ![Hybrid cloud-based and on-prem topology from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/space-based-hybrid-cloud.png)
+    > Hybrid cloud-based and on-prem topology from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
