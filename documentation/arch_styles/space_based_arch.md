@@ -274,3 +274,30 @@ A key strength of this architecture lies in the possibility of deploying applica
 ??? example
     ![Hybrid cloud-based and on-prem topology from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/space-based-hybrid-cloud.png)
     > Hybrid cloud-based and on-prem topology from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
+
+## Replicated vs Distributed Caching
+
+`Space-based architecture heavily relies on caching to facilitate the transactional processing of an application`. While the `predominant caching model is replicated caching`, space-based architecture can also leverage `distributed caching`.
+
+`In replicated caching, each processing unit possesses its in-memory data grid synchronized among all units using the same named cache`. This method is not only `exceptionally fast but also offers robust fault tolerance`, as there's no central server acting as a single point of failure.
+
+??? warning "About Replicate Cache and Single Point of Failure"
+    Some exceptions may exist based on the caching product's implementation, but the trend is moving away from relying on external controllers for replication.
+
+Replicated caching is the standard for space-based architecture, but certain scenarios, `such as high data volumes or update rates, may necessitate the use of distributed caching`. `Internal memory caches exceeding 100 MB can pose challenges for elasticity and scalability, and in situations with high update rates, distributed caching becomes a viable alternative`. Furthermore, as shown in [Data Collisions](#data-collisions), in situations where the `update rate of cache data becomes too high, and the data grid struggles to maintain consistency across all processing unit instances`, distributed caching can be a viable solution.
+
+`Distributed caching involves an external server or service dedicated to maintaining a centralized cache`. Processing units access data from this central cache server through a `proprietary protocol`. `While distributed caching ensures high data consistency due to the centralized nature of the data, it comes with performance trade-offs, as accessing cache data remotely adds latency to the system`. `Fault tolerance can be a concern, and mirroring the distributed cache is one approach to mitigate it, though it may introduce consistency issues`.
+
+!!! example
+    ![Distributed caching between processing units from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/space-based-distributed-caching.png)
+    > Distributed caching between processing units from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
+
+Choosing between replicated and distributed caching depends on factors such as `data consistency needs, performance considerations, and fault tolerance requirements`. `Distributed caching excels in maintaining highly consistent data, while replicated caching offers better performance and fault tolerance`. Often, `both models can be applicable within a single application context`, allowing each to be leveraged based on its specific strengths. For instance, a `distributed caching model may be suitable for maintaining consistently critical data` like inventory counts, while a `replicated cache may be chosen for performance and fault tolerance in managing less dynamic data` like customer profiles.
+
+| Decision criteria   | Replicated cache     | Distributed cache      |
+|---------------------|----------------------|------------------------|
+| Optimization        | Performance          | Consistency            |
+| Cache size          | Small(<100MB)        | Large(>500MB)          |
+| Type of data        | Relatively static    | Highly dynamic         |
+| Update frequency    | Relatively low       | High update rate       |
+| Fault tolerance     | High                 | Low                    |
