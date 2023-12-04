@@ -9,17 +9,17 @@
       
       
       
-        <link rel="prev" href="../..">
+        <link rel="prev" href="../microkernel_arch/">
       
       
-        <link rel="next" href="../expectations_of_architect/">
+        <link rel="next" href="../event_driven_arch/">
       
       <link rel="icon" href="../../images/arch.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.17">
     
     
       
-        <title>What's Software Architecture? - Mastering Software Architecture</title>
+        <title>Service-Base Architecture Style - Mastering Software Architecture</title>
       
     
     
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#what-is-software-architecture" class="md-skip">
+        <a href="#service-base-architecture-style" class="md-skip">
           Skip to content
         </a>
       
@@ -103,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              What's Software Architecture?
+              Service-Base Architecture Style
             
           </span>
         </div>
@@ -171,15 +171,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="./" class="md-tabs__link md-tabs__link--active">
+      <a href="../../basic/whats_software_arc/" class="md-tabs__link">
         Basic
       </a>
     </li>
@@ -233,13 +231,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../arch_styles/" class="md-tabs__link">
+      <a href="../" class="md-tabs__link md-tabs__link--active">
         Architecture Styles
       </a>
     </li>
@@ -304,16 +304,14 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
       
       
       
@@ -322,7 +320,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_2">
           <span class="md-nav__icon md-icon"></span>
           Basic
@@ -333,93 +331,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          What's Software Architecture?
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../basic/whats_software_arc/" class="md-nav__link">
         What's Software Architecture?
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#defining-software-architecture" class="md-nav__link">
-    Defining Software Architecture
-  </a>
-  
-    <nav class="md-nav" aria-label="Defining Software Architecture">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#structure" class="md-nav__link">
-    Structure
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#architecture-characteristics" class="md-nav__link">
-    Architecture characteristics
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#architecture-decisions" class="md-nav__link">
-    Architecture decisions
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#design-principles" class="md-nav__link">
-    Design principles
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    References
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -431,7 +347,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../expectations_of_architect/" class="md-nav__link">
+      <a href="../../basic/expectations_of_architect/" class="md-nav__link">
         Expectations of an Architect
       </a>
     </li>
@@ -445,7 +361,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../architectural_thinking/" class="md-nav__link">
+      <a href="../../basic/architectural_thinking/" class="md-nav__link">
         Architectural Thinking
       </a>
     </li>
@@ -634,14 +550,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
       
       
       
@@ -650,7 +568,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_6">
           <span class="md-nav__icon md-icon"></span>
           Architecture Styles
@@ -663,7 +581,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../arch_styles/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -677,7 +595,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../arch_styles/foundations/" class="md-nav__link">
+      <a href="../foundations/" class="md-nav__link">
         Foundations
       </a>
     </li>
@@ -691,7 +609,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../arch_styles/mono_distributed/" class="md-nav__link">
+      <a href="../mono_distributed/" class="md-nav__link">
         Monolithic vs Distributed Architectures
       </a>
     </li>
@@ -705,7 +623,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../arch_styles/layered_arch/" class="md-nav__link">
+      <a href="../layered_arch/" class="md-nav__link">
         Layered Architecture Style
       </a>
     </li>
@@ -719,7 +637,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../arch_styles/pipeline_arch/" class="md-nav__link">
+      <a href="../pipeline_arch/" class="md-nav__link">
         Pipeline Architecture Style
       </a>
     </li>
@@ -733,7 +651,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../arch_styles/microkernel_arch/" class="md-nav__link">
+      <a href="../microkernel_arch/" class="md-nav__link">
         Microkernel Architecture Style
       </a>
     </li>
@@ -745,11 +663,79 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../arch_styles/service_based_arch/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Service-Base Architecture Style
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Service-Base Architecture Style
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#topology" class="md-nav__link">
+    Topology
+  </a>
+  
+    <nav class="md-nav" aria-label="Topology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#topology-variants" class="md-nav__link">
+    Topology Variants
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#service-and-granularity" class="md-nav__link">
+    Service and Granularity
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-partitioning" class="md-nav__link">
+    Database Partitioning
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -761,7 +747,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../arch_styles/event_driven_arch/" class="md-nav__link">
+      <a href="../event_driven_arch/" class="md-nav__link">
         Event-Driven Architecture Style
       </a>
     </li>
@@ -775,7 +761,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../arch_styles/space_based_arch/" class="md-nav__link">
+      <a href="../space_based_arch/" class="md-nav__link">
         Space-Based Architecture Style
       </a>
     </li>
@@ -816,37 +802,16 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#defining-software-architecture" class="md-nav__link">
-    Defining Software Architecture
+  <a href="#topology" class="md-nav__link">
+    Topology
   </a>
   
-    <nav class="md-nav" aria-label="Defining Software Architecture">
+    <nav class="md-nav" aria-label="Topology">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#structure" class="md-nav__link">
-    Structure
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#architecture-characteristics" class="md-nav__link">
-    Architecture characteristics
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#architecture-decisions" class="md-nav__link">
-    Architecture decisions
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#design-principles" class="md-nav__link">
-    Design principles
+  <a href="#topology-variants" class="md-nav__link">
+    Topology Variants
   </a>
   
 </li>
@@ -857,8 +822,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    References
+  <a href="#service-and-granularity" class="md-nav__link">
+    Service and Granularity
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-partitioning" class="md-nav__link">
+    Database Partitioning
   </a>
   
 </li>
@@ -878,46 +850,78 @@
                   
 
 
-<h1 id="what-is-software-architecture">What is Software Architecture?</h1>
-<p>Software Architecture is a <strong>dynamic and complex</strong> field that <strong>continues to evolve rapidly</strong>. Recent years have witnessed advancements such as CI/CD, microservices, containerization, and cloud-based resources. These innovations bring new capabilities and trade-offs to consider.</p>
-<p>In software development, understanding <strong>trade-off analysis is crucial</strong> for making informed decisions. This repository emphasizes analyzing trade-offs rather than passing judgments on technologies.</p>
-<p>It is crucial to recognize that <strong>architectures are shaped by their context</strong>. Architectural decisions are often <strong>influenced by the realities of the environment</strong> they operate in. For instance, attempting to implement a microservices architecture in 2002 would have been impractical.</p>
-<h2 id="defining-software-architecture">Defining Software Architecture</h2>
-<p>Defining Software Architecture is challenging due to various interpretations. It may be seen as the blueprint or roadmap for a system. However, what aspects does an architect analyze when examining an architecture?</p>
-<p>One definition in <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture</a> is illustrated on the image bellow. In this definition, software architecture consists of the <strong>structure</strong> of the system, combined with <strong>architecture characteristics</strong> the system must support, <strong>architecture decisions</strong>, and <strong>design principles</strong>.</p>
-<p><img alt="Architecture consists of the structure combined with architecture characteristics (“-ilities”), architecture decisions, and design principles" src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/basic/arch_definition.png" /></p>
+<h1 id="service-base-architecture-style">Service-Base Architecture Style</h1>
+<p>Service-based architecture represents a <code>hybrid approach that combines elements of the microservices architecture style</code>. This pragmatic architectural style is known for its flexibility, making it a popular choice for various business applications. <code>Despite being a distributed architecture, it offers a balance between complexity and cost</code> when compared to more intricate distributed styles like microservices or event-driven architecture, making it a very popular choice for many business-related applications.</p>
+<h2 id="topology">Topology</h2>
+<p><code>The structure of service-based architecture is like a distributed system with different layers</code>. It includes a user interface that's deployed separately, bigger independent services, and a central database that holds everything together.</p>
+<p>In this style, the <code>services, which are like big chunks of the application, are called domain services. These services operate autonomously and are separately deployed. They share one big database</code>. There are usually 4 to 12 of these services in one application.</p>
+<p><img alt="Basic topology of the service-based architecture style Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/service-base-arch.png" /></p>
 <blockquote>
-<p><em>Architecture consists of the structure combined with architecture characteristics (“-ilities”), architecture decisions, and design principles</em></p>
+<p>Basic topology of the service-based architecture style <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
 </blockquote>
-<h3 id="structure">Structure</h3>
-<p><img alt="Structure refers to the type of architecture styles used in the system" src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/basic/arch_structure.png" /></p>
+<p>While a service-based architecture <code>usually maintains only a single instance of each domain service, multiple instances can exist</code> based on scalability, fault tolerance, and throughput requirements. <code>Multiple instances of a service necessitate load-balancing capabilities between the user interface and the domain service</code> to ensure the interface connects to a healthy and available service instance.</p>
+<p><code>Services are accessed remotely from a user interface through different ways like REST, messaging, or  remote procedure call (RPC)</code>. While an API layer with a proxy or gateway can be employed to access services, in most cases, the user interface interacts directly with the services.</p>
+<p><code>One important thing here is that all these services use the same database</code>. This means they can utilize SQL queries and joins akin to traditional monolithic layered architectures. Given the limited number of services, <code>database connections typically pose no issues in service-based architecture. However, database alterations can present challenges</code>.</p>
+<h3 id="topology-variants">Topology Variants</h3>
+<p>Within the service-based architecture style, various topology variants exist, making it one of the most adaptable styles.</p>
+<details class="example">
+<summary>Broken User Interface</summary>
+<p><img alt="User interface variants from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/service-base-arch-example2.png" /></p>
 <blockquote>
-<p><em>Structure refers to the type of architecture styles used in the system</em></p>
+<p>User interface variants from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
 </blockquote>
-<p>The system <strong>structure</strong> refers to the <strong>architecture style</strong>(s) implemented in the system, like microservices, layered, or microkernel. However, it's important to note that the system structure alone does not fully describe a system architecture.</p>
-<h3 id="architecture-characteristics">Architecture characteristics</h3>
-<p><img alt="Architecture characteristics refers to the “-ilities” that the system must support" src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/basic/arch_charac.png" /></p>
+</details>
+<details class="example">
+<summary>Multiple Databases</summary>
+<p>Dividing a single monolithic database into <code>separate databases, sometimes even establishing domain-specific databases that match each domain service</code>, similar to how it's done in microservices. <code>The key here is to ensure that each separate database doesn't contain data needed by another domain service. This approach prevents the need for communication between domain services (something to avoid in service-based architecture) and avoids duplicating data across databases</code>.</p>
+<p><img alt="Database variants from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/service-base-arch-example3.png" /></p>
 <blockquote>
-<p><em>Architecture characteristics refers to the “-ilities” that the system must support</em></p>
+<p>Database variants from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
 </blockquote>
-<p>Architecture characteristics <strong>define the success criteria</strong> for a system, independent of its functionality. They are essential for the system to function correctly and <strong>do not necessarily rely on knowing the specifics of its functionality</strong>.</p>
-<h3 id="architecture-decisions">Architecture decisions</h3>
-<p><img alt="Architecture decisions are rules for constructing systems" src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/basic/arch_decision.png" /></p>
+</details>
+<details class="example">
+<summary>API Layer</summary>
+<p>Another possibility is to introduce an <code>API layer, comprising a reverse proxy or gateway between the user interface and services</code>. This practice is <code>beneficial when exposing domain service functions to external systems or consolidating shared cross-cutting concerns</code>, moving them outside the user interface. Such concerns might include managing metrics, security, auditing requirements, and service discovery.</p>
+<p><img alt="Adding an API layer between the user interface and domain services from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/service-base-arch-example4.png" /></p>
 <blockquote>
-<p><em>Architecture decisions are rules for constructing systems</em></p>
+<p>Adding an API layer between the user interface and domain services from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
 </blockquote>
-<p>Architecture decisions establish the <strong>guidelines for system construction</strong>. They impose constraints and provide direction to development teams, outlining <strong>what is permissible and what is not within the system</strong>.</p>
-<h3 id="design-principles">Design principles</h3>
-<p><img alt="Design principles are guidelines for constructing systems" src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/basic/arch_principle.png" /></p>
+</details>
+<h2 id="service-and-granularity">Service and Granularity</h2>
+<p><code>In a service-based architecture, domain services are generally designed with a coarse-grained approach</code>. Typically, each domain service includes an API facade layer, a business layer, and a persistence layer. An alternative design approach involves dividing each domain service into sub-domains, similar to the modular monolith architecture style.</p>
+<details class="note">
+<summary>Coarse-grained approach vs Fine-grained approach</summary>
+<p>In software architecture, a coarse-grained approach refers to the use of larger, more encompassing components or services that handle multiple tasks or operations as a single unit. On the other hand, a fine-grained approach involves the use of smaller, more specialized components or services, each responsible for specific and often singular tasks or operations.</p>
+</details>
+<p><code>Irrespective of the design, every domain service must incorporate an API access facade that interacts with the user interface, managing the execution of various business functionalities</code>.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>For example, within the OrderService domain service, the API access facade orchestrates a business request, such as placing an order, processing payments, and updating product inventory for each item ordered. <code>This orchestration, which involves several tasks within a single service, differs from the orchestration of numerous distinct remote services in the microservices architecture style</code>.</p>
+</div>
+<p><code>Due to their coarse-grained nature, domain services in a service-based architecture rely on regular ACID within a single service</code>. In contrast, highly distributed architectures like microservices, with their <code>fine-grained services, utilize a distributed transaction technique known as BASE transactions</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">BASE transactions x ACID transactions</p>
+<p>These <code>BASE transactions (basic availability, soft state, eventual consistency) prioritize eventual consistency over strict database integrity</code>, distinguishing them from <code>ACID transactions (atomicity, consistency, isolation, durability) database transactions to maintain database integrity</code> in a service-based architecture.</p>
+</div>
+<p>This disparity highlights a <code>key difference between internal class-level orchestration and external service orchestration, emphasizing the divergence in granularity between service-based architecture and microservices</code>.</p>
+<p>Although <code>coarse-grained domain services ensure robust data integrity and consistency</code>, they involve trade-offs. <code>Implementing changes to a functionality in service-based architecture necessitates testing the entire service, while in microservices, it only affects a small service without impacting others</code>.</p>
+<h2 id="database-partitioning">Database Partitioning</h2>
+<p>In a service-based architecture, <code>services often share a single/monolithic database</code>, primarily due to the small number of services within an application. <code>This database coupling, can bring challenges, especially concerning database table schema modifications</code>. Improper schema changes can potentially impact every service, rendering <code>database alterations costly in terms of effort and coordination</code>.</p>
+<p><code>The shared class files representing database table schemas (referred to as entity objects) typically reside in a custom shared library used by all domain services</code>. However, <code>employing a single shared library of entity objects can be less effective in this context</code>.</p>
+<div class="admonition danger">
+<p class="admonition-title">The problem with single shared library</p>
+<p>Any alterations to the database table structures necessitate changes to the shared library, demanding <strong><code>redeployment across all services, regardless of their direct use of the modified table</code></strong>. While shared library versioning can aid in managing this issue, comprehending the actual impact on services without detailed analysis remains challenging.</p>
+</div>
+<p><code>A practical solution to mitigate the effects of database changes involves logically partitioning the database and reflecting this partitioning through federated shared libraries</code>.</p>
+<div class="admonition example">
+<p class="admonition-title">Using partitioning database and libraries</p>
+<p>For instance, logical partitioning can be executed by <code>segmenting the database into distinct domains (such as common, customer, invoicing, order, and tracking), with corresponding shared libraries matching these partitions</code>. Employing this technique <code>ensures that changes made to a specific table within a particular domain only affect services associated with that partition</code>.
+<code>It's also possible to have a common domain with a common shared library used by all services</code>. <code>These tables are shared across all services</code>, and any changes to these tables require coordination among all services accessing the shared database.</p>
+<p><img alt="Using multiple shared libraries for database entity objects from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/service-base-arch-example-db.png" /></p>
 <blockquote>
-<p><em>Design principles are guidelines for constructing systems</em></p>
+<p>Using multiple shared libraries for database entity objects from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
 </blockquote>
-<p>The design principles is a <strong>guideline</strong> rather than a hard-and-fast rule like architecture decisions.
-As an example, the design principle depicted in the image above <strong>guides development team</strong> to utilize asynchronous messaging for improved performance in a microservice architecture. <strong>Architecture decisions cannot account for every communication scenario between services</strong>. Hence, design principles offer guidance, such as employing async messaging, enabling developers to choose suitable communication protocols like REST or gRPC.</p>
-<h2 id="references">References</h2>
-<ul>
-<li><a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture</a></li>
-</ul>
+</div>
 
 
 

@@ -1,0 +1,1392 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../service_based_arch/">
+      
+      
+        <link rel="next" href="../space_based_arch/">
+      
+      <link rel="icon" href="../../images/arch.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.17">
+    
+    
+      
+        <title>Event-Driven Architecture Style - Mastering Software Architecture</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.26e3688c.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_markdown_exec_ansi.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="blue">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#event-driven-architecture-style" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Mastering Software Architecture" class="md-header__button md-logo" aria-label="Mastering Software Architecture" data-md-component="logo">
+      
+  <img src="../../images/arch.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Mastering Software Architecture
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Event-Driven Architecture Style
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../basic/whats_software_arc/" class="md-tabs__link">
+        Basic
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../modularity/" class="md-tabs__link">
+        Modularity
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../components/" class="md-tabs__link">
+      Components
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../arch_characteristics/arch_characteristics/" class="md-tabs__link">
+        Architecture Characteristics
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link md-tabs__link--active">
+        Architecture Styles
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Mastering Software Architecture" class="md-nav__button md-logo" aria-label="Mastering Software Architecture" data-md-component="logo">
+      
+  <img src="../../images/arch.png" alt="logo">
+
+    </a>
+    Mastering Software Architecture
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Basic
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Basic
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/whats_software_arc/" class="md-nav__link">
+        What's Software Architecture?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/expectations_of_architect/" class="md-nav__link">
+        Expectations of an Architect
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/architectural_thinking/" class="md-nav__link">
+        Architectural Thinking
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Modularity
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Modularity
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modularity/" class="md-nav__link">
+        Definition
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modularity/measuring/" class="md-nav__link">
+        Measuring Modularity
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/" class="md-nav__link">
+        Components
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          Architecture Characteristics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Architecture Characteristics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arch_characteristics/arch_characteristics/" class="md-nav__link">
+        Definition
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arch_characteristics/identifying_characteristics/" class="md-nav__link">
+        Identifying
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arch_characteristics/measuring_governing/" class="md-nav__link">
+        Measuring and Governing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arch_characteristics/scope/" class="md-nav__link">
+        Scope
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          Architecture Styles
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Architecture Styles
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../foundations/" class="md-nav__link">
+        Foundations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mono_distributed/" class="md-nav__link">
+        Monolithic vs Distributed Architectures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../layered_arch/" class="md-nav__link">
+        Layered Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pipeline_arch/" class="md-nav__link">
+        Pipeline Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../microkernel_arch/" class="md-nav__link">
+        Microkernel Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../service_based_arch/" class="md-nav__link">
+        Service-Base Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Event-Driven Architecture Style
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Event-Driven Architecture Style
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#topology" class="md-nav__link">
+    Topology
+  </a>
+  
+    <nav class="md-nav" aria-label="Topology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#broker-topology" class="md-nav__link">
+    Broker Topology
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mediator-topology" class="md-nav__link">
+    Mediator Topology
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asynchronous-capabilities" class="md-nav__link">
+    Asynchronous Capabilities
+  </a>
+  
+    <nav class="md-nav" aria-label="Asynchronous Capabilities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#responsiveness-vs-performance" class="md-nav__link">
+    Responsiveness vs Performance
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling-workflow-event-pattern" class="md-nav__link">
+    Error Handling - Workflow Event Pattern
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preventing-data-loss" class="md-nav__link">
+    Preventing Data Loss
+  </a>
+  
+    <nav class="md-nav" aria-label="Preventing Data Loss">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#broadcast-capabilities" class="md-nav__link">
+    Broadcast Capabilities
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#request-reply" class="md-nav__link">
+    Request-Reply
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#choosing-between-request-based-and-event-based" class="md-nav__link">
+    Choosing Between Request-Based and Event-Based
+  </a>
+  
+    <nav class="md-nav" aria-label="Choosing Between Request-Based and Event-Based">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#trade-offs-table" class="md-nav__link">
+    Trade-offs Table
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hybrid-event-driven-architectures" class="md-nav__link">
+    Hybrid Event-Driven Architectures
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../space_based_arch/" class="md-nav__link">
+        Space-Based Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#topology" class="md-nav__link">
+    Topology
+  </a>
+  
+    <nav class="md-nav" aria-label="Topology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#broker-topology" class="md-nav__link">
+    Broker Topology
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mediator-topology" class="md-nav__link">
+    Mediator Topology
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asynchronous-capabilities" class="md-nav__link">
+    Asynchronous Capabilities
+  </a>
+  
+    <nav class="md-nav" aria-label="Asynchronous Capabilities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#responsiveness-vs-performance" class="md-nav__link">
+    Responsiveness vs Performance
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling-workflow-event-pattern" class="md-nav__link">
+    Error Handling - Workflow Event Pattern
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preventing-data-loss" class="md-nav__link">
+    Preventing Data Loss
+  </a>
+  
+    <nav class="md-nav" aria-label="Preventing Data Loss">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#broadcast-capabilities" class="md-nav__link">
+    Broadcast Capabilities
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#request-reply" class="md-nav__link">
+    Request-Reply
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#choosing-between-request-based-and-event-based" class="md-nav__link">
+    Choosing Between Request-Based and Event-Based
+  </a>
+  
+    <nav class="md-nav" aria-label="Choosing Between Request-Based and Event-Based">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#trade-offs-table" class="md-nav__link">
+    Trade-offs Table
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hybrid-event-driven-architectures" class="md-nav__link">
+    Hybrid Event-Driven Architectures
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="event-driven-architecture-style">Event-Driven Architecture Style</h1>
+<p>The event-driven architecture style is a well-liked method for <code>building applications that need to be both highly scalable and high-performing</code>. It's quite flexible and can be <code>used for both small and large applications</code>, making it a popular choice across the board. This style involves <code>components that process events independently, without being tightly connected</code>. <code>It can be its own architecture style or be part of other styles</code>, like event-driven microservices architecture.</p>
+<p>In many applications, there's a <code>request-based approach, where a central system manages and directs various requests to the right places</code>. This can be a user interface, an API layer, or an enterprise service bus. <code>These places handle the requests, dealing with tasks like retrieving or updating data in a database</code>.</p>
+<p><img alt="Request-based model from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/event-driven-model.png" /></p>
+<blockquote>
+<p>Request-based model from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+</blockquote>
+<details class="example">
+<summary>Request-Based Example</summary>
+<p>For instance, when a customer requests their order history for the past six months, <code>it involves retrieving data within a specific context, making it a data-driven, deterministic request</code>. This aligns with the request-based model.</p>
+</details>
+<p><code>An event-based model responds to specific situations, triggering actions based on those events</code>.</p>
+<details class="example">
+<summary>Event-Based Model Example</summary>
+<p>For example, in an online auction, submitting a bid isn't a direct request to the system but <code>an event that occurs after the current asking price is announced</code>. <code>The system must react to this event by comparing the bid to others received simultaneously, determining the current highest bidder</code>.</p>
+</details>
+<h2 id="topology">Topology</h2>
+<p><code>Two main topologies are prevalent in event-driven architecture: the mediator topology and the broker topology</code>. Understanding the distinct characteristics and implementation strategies of these topologies is crucial to determining the most suitable choice for a given situation.</p>
+<div class="admonition info">
+<p class="admonition-title">The Mediator Topology</p>
+<p>The mediator topology is commonly applied when you need to manage the workflow of an event process.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">The Broker Topology</p>
+<p>The broker topology is favored when you need swift responsiveness and dynamic control over event processing.</p>
+</div>
+<h3 id="broker-topology">Broker Topology</h3>
+<p>The broker topology in event-driven architecture <code>differs from the mediator topology by not having a central event mediator</code>. Instead, the <code>message flow is spread across the event processor components in a chain-like broadcasting style through a lightweight message broker</code>. This topology is <code>beneficial for relatively straightforward event processing flows</code> where central event orchestration and coordination are unnecessary.</p>
+<p>There are four main parts in the broker topology: <code>an initiating event, the event broker, an event processor, and a processing event</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Initiating Event</p>
+<p>This is the starting point of the entire event flow.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Event Broker</p>
+<p>The initiating event is sent to an event channel in the event broker for processing.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Event Processor</p>
+<p>Since there is no mediator component, a single event processor receives the initiating event from the event broker and begins the processing of that event. The event processor executes a specific task related to the event and asynchronously broadcasts its actions to the entire system, creating a processing event.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Processing Event</p>
+<p>This processing event is then sent to the event broker for further processing, if necessary. Other event processors, upon listening to the processing event, react to it by performing actions and then advertise, through a new processing event, what they did. This process continues until no one is interested in the actions of a final event processor.</p>
+</div>
+<p>In the broker topology, it is considered <code>good practice for each event processor to advertise its actions to the entire system</code>, even if other event processors may not be concerned. This practice <code>ensures architectural extensibility in case additional functionality is required for processing that event</code>.</p>
+<div class="admonition example">
+<p class="admonition-title">Email Notifying</p>
+<p>Suppose an email needs to be generated and sent to a customer to inform them about a specific action.
+1. The <code>Notification event processor</code> generates and dispatches the email.
+1. It then <code>advertises this action to the entire system by creating a new processing event</code>, sending it to a topic.
+1. However, since no other event processors are tuned in to events on that topic, the message <code>simply fades away without any further impact</code>.</p>
+</div>
+<p>Here's a notable illustration of <code>architectural extensibility</code>. <code>Although it might appear inefficient to send messages that go unnoticed, it holds significant value</code>. Consider a scenario where a new requirement emerges to analyze emails sent to customers. With the current system:</p>
+<ol>
+<li>A new <code>event processor for analyzing emails can seamlessly be introduced</code> with minimal effort.</li>
+<li>The email information is readily accessible via the email topic, allowing the new analyzer to function without the need for additional infrastructure or changes to other event processors.</li>
+</ol>
+<div class="admonition example">
+<p class="admonition-title">More Deep Example</p>
+<p><img alt="Example of the broker topology Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/event-driven-model-example.png" /></p>
+<blockquote>
+<p>Example of the broker topology <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+</blockquote>
+<ol>
+<li>The <code>initial event</code> is "Purchasing Book."</li>
+<li>The <code>event broker</code> is represented by the <code>[PlaceOrder]</code> pipe.</li>
+<li><code>Event processors</code> are depicted as boxes, like <code>OrderPlacement</code>, <code>Payment</code>, <code>Notification</code>, etc.</li>
+<li><code>Processing events</code>  are illustrated by pipes with arrows and names in lowercase, like <code>[order-created]</code>, <code>[inventory-updates]</code>, <code>[payment-denied]</code>, etc.</li>
+</ol>
+</div>
+<p>It's evident that <code>all event processors are highly decoupled and operate independently</code>. <code>Once an event processor hands off the event, it ends involvement in the processing of that specific event, remaining available to react to other initiating or processing events</code>. Moreover, <code>each event processor can scale independently</code> to handle varying load conditions or backups in the event processing.</p>
+<p>While the broker topology offers benefits in terms of performance, responsiveness, and scalability, there are <code>drawbacks</code>. Firstly, <code>there is no control over the overall workflow associated with the initiating event</code>. The system lacks awareness of when the business transaction of placing an order is truly complete. <code>Error handling poses a significant challenge in the broker topology</code>. Without a mediator monitoring or controlling the business transaction, a failure goes unnoticed, leading to a stuck business process that requires automated or manual intervention to resolve.</p>
+<p><code>Recovering from a business transaction (recoverability) is not supported in the broker topology</code>. As other actions are asynchronously taken during the initial processing of the initiating event, resubmitting the initiating event becomes impractical. <code>No component in the broker topology is aware of or owns the state of the original business request, leaving no one responsible for restarting the business transaction and knowing its progress</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Advantages</th>
+<th>Disadvantages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Highly decoupled event processors</code></td>
+<td>Workflow control</td>
+</tr>
+<tr>
+<td><code>High scalability</code></td>
+<td>Error handling</td>
+</tr>
+<tr>
+<td><code>High responsiveness</code></td>
+<td>Recoverability</td>
+</tr>
+<tr>
+<td><code>High performance</code></td>
+<td>Restart capabilities</td>
+</tr>
+<tr>
+<td><code>High fault tolerance</code></td>
+<td>Data inconsistency</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mediator-topology">Mediator Topology</h3>
+<p>In the mediator topology, a central figure is the <code>event mediator, overseeing and orchestrating the workflow for initiating events that necessitate the coordination of multiple event processors</code>. The key components of the mediator topology include an initiating event, an event queue, an event mediator, event channels, and event processors.</p>
+<div class="admonition note">
+<p class="admonition-title">Initiating Event</p>
+<ol>
+<li>This is the event that initiates the entire eventing process.</li>
+<li><code>The initiating event is directed to an initiating event queue, which is then received by the event mediator</code>.</li>
+</ol>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Event Mediator</p>
+<ol>
+<li>Manages the workflow, generating corresponding processing events dispatched to dedicated event channels (usually queues) in a point-to-point messaging style.</li>
+</ol>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Event Processors</p>
+<ol>
+<li>Attend to their tasks by <code>monitoring dedicated event channels, executing event-specific processes, and typically communicating back to the mediator upon task completion</code>.</li>
+<li>Unlike the broadcast approach of the broker topology, <code>event processors in the mediator setup operate discreetly without announcing their actions to the entire system</code>.</li>
+</ol>
+</div>
+<p>Practical implementations often <code>deploy multiple mediators, each linked to a specific domain or category of events</code>. This strategic approach <code>mitigates the risk of a single point of failure</code>, enhancing overall system resilience and performance.</p>
+<p>The mediator component, distinctive from the broker topology, <code>boasts both knowledge and command over the workflow</code>. This capability empowers the mediator to uphold event states and proficiently manage aspects like error handling, recoverability, and restart functionalities.</p>
+<p>A fundamental disparity surfaces between the processing events in broker and mediator topologies concerning their meaning and utilization. In the <code>broker paradigm, processing events serve as published occurrences in the system</code> (e.g., order-created, payment-applied, email-sent), <code>triggering subsequent actions and reactions among event processors</code>. Using the <code>mediator topology, processing events</code> (e.g., place-order, send-email, fulfill-order) <code>are akin to commands, dictating necessary actions rather than merely reporting past events</code>. Notably, in the <code>mediator domain, a command necessitates processing, while an event in the broker setup can be disregarded</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Challenges within the Mediator Domain</p>
+<p>Although event processors can scale comparably to the broker setup, the <code>mediator's scaling introduces occasional bottlenecks</code> in the overarching event processing flow. Additionally, <code>event processors in the mediator setup lack the high level of independence</code> seen in the broker model, impacting overall performance due to the mediator's active role in controlling event processing.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Advantages</th>
+<th>Disadvantages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Workflow control</code></td>
+<td>More coupling of event processors</td>
+</tr>
+<tr>
+<td><code>Error handling</code></td>
+<td>Lower scalability</td>
+</tr>
+<tr>
+<td><code>Recoverability</code></td>
+<td>Lower performance</td>
+</tr>
+<tr>
+<td><code>Restart capabilities</code></td>
+<td>Lower fault tolerance</td>
+</tr>
+<tr>
+<td><code>Better data consistency</code></td>
+<td>Modeling complex workflows</td>
+</tr>
+</tbody>
+</table>
+<h2 id="asynchronous-capabilities">Asynchronous Capabilities</h2>
+<p>The event-driven architecture style presents a distinctive feature compared to other architectural approaches by <code>relying entirely on asynchronous communication</code>. This encompasses both <code>fire-and-forget processing</code>, where no response is required, and <code>request/reply</code> processing, where a response is expected from the event consumer. Leveraging asynchronous communication proves to be a <code>potent technique for enhancing overall system responsiveness</code>.</p>
+<h3 id="responsiveness-vs-performance">Responsiveness vs Performance</h3>
+<p>In scenarios where the <code>user doesn't necessitate immediate feedback</code> beyond an acknowledgment or a simple thank-you message, why subject them to unnecessary waiting? <code>Responsiveness focuses on promptly notifying the user that their action has been acknowledged and will undergo processing shortly</code>. Conversely, <code>performance revolves around expediting the end-to-end process</code>.</p>
+<p><code>The challenge in asynchronous behavior arises when the user's action encounters rejection</code>, as there's no direct route to communicate this back to the end user. While a message signaling an issue could be dispatched, in more intricate scenarios, this might not constitute a comprehensive solution. The primary hurdle in asynchronous communications lies in error handling. <code>Although responsiveness sees a significant boost, effectively addressing error conditions adds complexity to the event-driven system</code>.</p>
+<h2 id="error-handling-workflow-event-pattern">Error Handling - Workflow Event Pattern</h2>
+<p>The workflow event pattern within reactive architecture provides a solution to the challenges associated with error handling in an asynchronous workflow. <code>This pattern, inherent to reactive architecture, effectively addresses both resiliency and responsiveness, ensuring that the system remains robust in handling errors without compromising responsiveness</code>.</p>
+<p>In this approach, <code>the event producer asynchronously transmits data through a message channel to the event consumer</code>. When the event consumer encounters an error in processing, <code>it promptly delegates the error to the workflow processor and proceeds to process the next message in the event queue</code>. This ensures that overall <code>responsiveness is maintained</code>, as errors don't become impediments to processing subsequent messages.  <code>If the event consumer were to spend time resolving the error, it would impede not only the responsiveness of the next message but also impact all other messages waiting in the queue for processing</code>.</p>
+<p>Upon encountering an error, <code>the workflow processor engages in a diagnostic process to identify issues within the message</code>. This diagnostic phase may involve recognizing static, deterministic errors or deploying machine learning algorithms to detect anomalies in the data. <code>The workflow processor then programmatically applies changes to the original data in an attempt  to repair it</code>. The corrected data is subsequently re-entered into the originating queue. From the perspective of the event consumer, this <code>corrected message is treated as new, prompting another processing attempt</code>. In scenarios where the <code>workflow processor cannot definitively pinpoint the issue, the message is redirected to an alternative queue, commonly known as a dashboard</code>.</p>
+<p><code>This dashboard, resembling familiar email applications, usually resides on the desktop of a key individual</code>. Here, the individual reviews the message, introduces manual fixes if needed, and then reissues it to the original queue, often utilizing a "reply-to" message header variable.</p>
+<p>A noteworthy consequence  of the workflow event pattern is <code>messages encountering errors undergo processing out of their original sequence upon resubmission</code>. Preserving the exact order of messages within a specific context proves to be a complex task. <code>A potential solution to this challenge involves storing the errored messages temporarily in a dedicated queue</code>. Any data processing with the same identification (like ID) would be stored in a temporary queue for later processing (in FIFO order). <code>Once the error is fixed and processed, the service then de-queues the remaining trades for that same identification and processes them in order</code>.</p>
+<details class="example">
+<summary>Example</summary>
+<p>Consider a scenario where a <code>trading advisor</code>, situated in one part of the country, <code>manages trade orders for a prominent trading firm</code> located elsewhere. The <code>advisor efficiently compiles trade orders into a basket and dispatches them asynchronously to the large trading firm for execution through a broker</code>. The contractual format for trade instructions encompasses fields such as: <code>ACCOUNT (String), SIDE (String), SYMBOL (String), and SHARES (Long)</code>.</p>
+<p>Imagine the large trading firm receives a basket of Apple (AAPL) trade orders from the advisor:
+<code>12654A87FR4,BUY,AAPL,1254</code></p>
+<p><code>87R54E3068U,BUY,AAPL,3122</code></p>
+<p><code>2WE35HF6DHF,BUY,AAPL,8756 SHARES</code></p>
+<p><code>6R4NB7609JJ,BUY,AAPL,5433</code></p>
+<p>In a scenario <code>without of error-handling capabilities, an error would surface on the line with SHARES</code>. In this asynchronous context, when an exception occurs, the trade placement service lacks the means for synchronous user intervention. <code>The only recourse might be logging the error condition</code>.</p>
+<p>Integrating the workflow event pattern provides a programmatic resolution to such errors. <code>As the large trading firm lacks control over the trading advisor's data, it must autonomously fix the error itself</code>. When the error occurs (2WE35HF6DHF,BUY,AAPL,8756 SHARES), <code>the Trade Placement service promptly delegates the error via asynchronous messaging to the Trade Placement Error service</code>. This delegation includes the error information.</p>
+<p>The <code>Trade Placement Error</code> service, <code>operating as the workflow delegate</code>, receives and inspects the exception, identifying it as a "SHARES" issue in the shares field. Subsequently, the <code>Trade Placement Error service removes the term "SHARES" and resubmits the trade for reprocessing</code>, effectively addressing the error within the workflow event pattern.</p>
+<p><img alt="Error handling with the workflow event pattern from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/event-driven-model-workflowevent-example.png" /></p>
+<blockquote>
+<p>Error handling with the workflow event pattern from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+</blockquote>
+</details>
+<h2 id="preventing-data-loss">Preventing Data Loss</h2>
+<p><code>Mitigating data loss is a critical consideration in the realm of asynchronous communications</code>, particularly within an event-driven architecture. <code>Several points in this system can lead to data loss, meaning messages might accidentally be dropped or fail to reach their intended destination</code>. The good news is that <code>there are basic methods available to prevent data loss</code> in asynchronous messaging situations.</p>
+<h3 id="example">Example</h3>
+<p>Consider a scenario where <code>Event Processor A</code> sends a message to a <code>queue</code>, subsequently processed by <code>Event Processor B</code>, which inserts the message data into a database. Three potential areas of data loss emerge:</p>
+<div class="admonition failure">
+<p class="admonition-title">1. Message Fails to Reach the Queue</p>
+<p>The <code>message fails to reach the queue from Event Processor A</code>, or if it does, the <code>broker goes down before the next event processor retrieves the message</code>.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Guaranteed Delivery with <code>Persistent Message Queues</code> and <code>Synchronous Send</code></p>
+<ol>
+<li><code>Leveraging persistent message queues ensures guaranteed delivery</code>. Messages are stored in both memory and a physical data store, facilitating retrieval even if the broker experiences downtime.</li>
+<li><code>Synchronous send involves a blocking wait in the message producer until the broker confirms the message's persistence</code>. This combination prevents message loss between the producer and the queue.</li>
+</ol>
+</div>
+<div class="admonition failure">
+<p class="admonition-title">2. Event Processor Crashes Before Processing</p>
+<p>Event Processor B dequeues the next message but crashes before processing it.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title"><code>Client Acknowledge Mode</code> for Crash Resilience</p>
+<ol>
+<li>By default, when a message is de-queued, it is immediately removed from the queue (<code>auto acknowledge mode</code>).</li>
+<li>Client acknowledge mode <code>retains the message in the queue and associates the client ID with it</code>, preventing other consumers from reading the message.</li>
+<li>In the <code>event of a crash, the message remains preserved in the queue</code>, averting message loss in this part of the message flow.</li>
+</ol>
+</div>
+<div class="admonition failure">
+<p class="admonition-title">3. Data Error When Saving to the Database</p>
+<p>Event Processor B encounters difficulty persisting the message to the database due to a data error.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title"><code>ACID Transactions</code> and <code>Last Participant Support (LPS)</code> for Database Persistence</p>
+<ol>
+<li>ACID transactions, specifically atomicity, consistency, isolation, and durability, are employed via a <code>database commit</code>, ensuring the data's persistence in the database.</li>
+<li>Last participant support (LPS) <code>acknowledges the completion of processing and message persistence</code>, removing the message from the persisted queue. This guarantees the entire workflow, from the Event Processor A to the database.</li>
+</ol>
+</div>
+<h2 id="broadcast-capabilities">Broadcast Capabilities</h2>
+<p>In event-driven architecture, another distinctive feature is the ability to <code>broadcast events without knowing who will receive the message or what they will do with it, if anything</code>.</p>
+<p>Broadcasting represents a <code>significant level of decoupling between event processors</code>. The producer of the broadcast message typically lacks knowledge about which event processors will receive the message and, more crucially, what actions they will take in response. <code>Broadcast capabilities play a vital role in patterns for eventual consistency, complex event processing (CEP), and various other scenarios</code>.</p>
+<h2 id="request-reply">Request-Reply</h2>
+<p>In scenarios where it's <code>essential to receive information</code>, such as an order ID when ordering a book or a confirmation number when booking a flight, <code>synchronous communication</code> between services or event processors becomes necessary.</p>
+<p><code>Within event-driven architecture, synchronous communication is facilitated through request-reply messaging</code>. In request-reply messaging, each event channel comprises two queues:</p>
+<ol>
+<li>a request queue</li>
+<li>a reply queue</li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">Workflow</p>
+<ol>
+<li>The <code>initial request</code> for information is asynchronously <code>sent to the request queue</code>.</li>
+<li>Control is then returned to the <code>message producer</code> after sending the request.</li>
+<li>The <code>message producer</code> waits for the response by blocking on the <code>reply queue</code>.</li>
+<li>The <code>message consumer</code> receives and processes the message, <code>sending the response to the reply queue</code>.</li>
+<li>Finally, the event producer receives the message containing the response data.</li>
+</ol>
+<p><img alt="Request-reply message processing from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/event-driven-model-requestreply-example.png" /></p>
+<blockquote>
+<p>Request-reply message processing from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+</blockquote>
+</div>
+<p><code>Two primary techniques are commonly used to implement request-reply messaging</code>. The first and <code>most common technique involves utilizing a correlation ID</code> contained in the message header. This correlation ID is a field in the reply message typically set to the message ID of the original request message.</p>
+<p>The second technique for implementing request-reply messaging is to <code>use a temporary and exclusive queue for the reply queue</code>. A temporary queue is dedicated to the specific request, <code>created when the request is made, and deleted when the request concludes</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code>While the temporary queue technique is simpler, it comes with the drawback of the message broker having to create and immediately delete a temporary queue for each request</code>.  In scenarios with high messaging volumes, this can significantly slow down the message broker, impacting overall performance and responsiveness.</p>
+</div>
+<details class="example">
+<summary>Using Correlation ID</summary>
+<ol>
+<li>The <code>event producer sends a message to the request queue and notes the unique message ID</code> (124). Notably, the correlation ID (CID) is null in this case.</li>
+<li>The <code>event producer then waits for a reply on the reply queue, using a message filter</code>.<ul>
+<li>The <code>filter looks for messages where the correlation ID in the header matches the original message ID</code> (124).</li>
+</ul>
+</li>
+<li>The <code>event consumer</code> receives and processes the message (ID 124).</li>
+<li>The <code>event consumer generates a reply message</code>, including the response and <code>setting the correlation ID (CID) in the header to the original message ID</code> (124).</li>
+<li>The <code>event consumer sends the new message (ID 857) to the reply queue</code>.</li>
+<li>The <code>event producer</code>, waiting for a reply, <code>receives the message (ID 857) because the correlation ID (124) matches the message selector from step 2</code>.</li>
+</ol>
+<p><img alt="Request-reply message processing using a correlation ID from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/event-driven-model-requestreply-ID.png.png" /></p>
+<blockquote>
+<p>Request-reply message processing using a correlation ID from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+</blockquote>
+</details>
+<details class="example">
+<summary>Using Temporary and Exclusive Queue</summary>
+<ol>
+<li>The <code>event producer creates a temporary queue (or one is automatically created, depending on the message broker) and sends a message to the request queue</code>, including the name of the temporary queue in the reply-to header (or another identifier).</li>
+<li>The <code>event producer waits for a reply on the temporary queue</code>. This queue is <code>exclusive to the event producer that initiated the request</code>.</li>
+<li>The <code>event consumer</code> receives the message, processes the request, and sends a response message to the <code>reply queue named in the reply-to header</code>.</li>
+<li>The e<code>vent producer</code>, waiting on the temporary queue, <code>receives the response message and deletes the temporary queue</code>.
+<img alt="Request-reply message processing using a temporary queue from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/event-driven-model-requestreply-queue.png" /><blockquote>
+<p>Request-reply message processing using a temporary queue from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+</blockquote>
+</li>
+</ol>
+</details>
+<h2 id="choosing-between-request-based-and-event-based">Choosing Between Request-Based and Event-Based</h2>
+<p>It is advisable to <code>opt for the request-based model when dealing with well-structured, data-driven requests</code>, such as retrieving customer profile data, <code>where certainty and control over the workflow are crucial</code>. On the other hand, the <code>event-based model is recommended for handling flexible, action-based events</code> that demand high levels of responsiveness and scalability, <code>especially in scenarios involving complex and dynamic user processing</code>.</p>
+<h3 id="trade-offs-table">Trade-offs Table</h3>
+<table>
+<thead>
+<tr>
+<th><code>Advantages over request-based</code></th>
+<th>Trade-offs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Better response to dynamic user content</td>
+<td>Only supports eventual consistency</td>
+</tr>
+<tr>
+<td>Better scalability and elasticity</td>
+<td>Less control over processing flow</td>
+</tr>
+<tr>
+<td>Better agility and change management</td>
+<td>Less certainty over outcome of event flow</td>
+</tr>
+<tr>
+<td>Better adaptability and extensibility</td>
+<td>Difficult to test and debug</td>
+</tr>
+<tr>
+<td>Better responsiveness and performance</td>
+<td></td>
+</tr>
+<tr>
+<td>Better real-time decision making</td>
+<td></td>
+</tr>
+<tr>
+<td>Better reaction to situational awareness</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="hybrid-event-driven-architectures">Hybrid Event-Driven Architectures</h2>
+<p>While many applications use the event-driven architecture as their primary structure, <code>it's quite common to blend it with other styles, forming what's called a hybrid architecture</code>. Examples include combining <code>event-driven architecture with microservices and space-based architecture</code>. You can also create hybrids like an <code>event-driven microkernel</code> or an <code>event-driven pipeline architecture</code>.</p>
+<p><code>Integrating event-driven architecture into any style has advantages</code>—it eliminates bottlenecks, establishes a backpressure point for potential backups in event requests, and <code>enhances user responsiveness</code> beyond what other styles offer. In both <code>microservices and space-based architecture</code>, messaging plays a crucial role as data pumps, <code>facilitating asynchronous data transmission to another processor</code>, which then updates the database. These architectures leverage event-driven principles to scale services in a microservices architecture and processing units in a space-based architecture, especially when using messaging for interservice communication.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.tabs.instant", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b425cdc4.min.js"></script>
+      
+    
+  </body>
+</html>

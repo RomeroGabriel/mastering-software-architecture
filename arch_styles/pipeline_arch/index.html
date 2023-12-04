@@ -9,13 +9,17 @@
       
       
       
+        <link rel="prev" href="../layered_arch/">
+      
+      
+        <link rel="next" href="../microkernel_arch/">
       
       <link rel="icon" href="../../images/arch.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.17">
     
     
       
-        <title>Modularity - Mastering Software Architecture</title>
+        <title>Pipeline Architecture Style - Mastering Software Architecture</title>
       
     
     
@@ -64,6 +68,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#pipeline-architecture-style" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -94,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Modularity
+              Pipeline Architecture Style
             
           </span>
         </div>
@@ -168,7 +177,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../whats_software_arc/" class="md-tabs__link">
+      <a href="../../basic/whats_software_arc/" class="md-tabs__link">
         Basic
       </a>
     </li>
@@ -222,13 +231,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../arch_styles/" class="md-tabs__link">
+      <a href="../" class="md-tabs__link md-tabs__link--active">
         Architecture Styles
       </a>
     </li>
@@ -322,7 +333,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../whats_software_arc/" class="md-nav__link">
+      <a href="../../basic/whats_software_arc/" class="md-nav__link">
         What's Software Architecture?
       </a>
     </li>
@@ -336,7 +347,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../expectations_of_architect/" class="md-nav__link">
+      <a href="../../basic/expectations_of_architect/" class="md-nav__link">
         Expectations of an Architect
       </a>
     </li>
@@ -350,7 +361,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../architectural_thinking/" class="md-nav__link">
+      <a href="../../basic/architectural_thinking/" class="md-nav__link">
         Architectural Thinking
       </a>
     </li>
@@ -491,7 +502,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../arch_characteristics/identifying_characteristics.md" class="md-nav__link">
+      <a href="../../arch_characteristics/identifying_characteristics/" class="md-nav__link">
         Identifying
       </a>
     </li>
@@ -539,14 +550,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
       
       
       
@@ -555,7 +568,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_6">
           <span class="md-nav__icon md-icon"></span>
           Architecture Styles
@@ -568,7 +581,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../arch_styles/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -582,7 +595,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../arch_styles/foundations/" class="md-nav__link">
+      <a href="../foundations/" class="md-nav__link">
         Foundations
       </a>
     </li>
@@ -596,7 +609,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../arch_styles/mono_distributed/" class="md-nav__link">
+      <a href="../mono_distributed/" class="md-nav__link">
         Monolithic vs Distributed Architectures
       </a>
     </li>
@@ -610,8 +623,146 @@
   
   
     <li class="md-nav__item">
-      <a href="../../arch_styles/layered_arch/" class="md-nav__link">
+      <a href="../layered_arch/" class="md-nav__link">
         Layered Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Pipeline Architecture Style
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Pipeline Architecture Style
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#topology" class="md-nav__link">
+    Topology
+  </a>
+  
+    <nav class="md-nav" aria-label="Topology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pipes" class="md-nav__link">
+    Pipes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filters" class="md-nav__link">
+    Filters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../microkernel_arch/" class="md-nav__link">
+        Microkernel Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../service_based_arch/" class="md-nav__link">
+        Service-Base Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../event_driven_arch/" class="md-nav__link">
+        Event-Driven Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../space_based_arch/" class="md-nav__link">
+        Space-Based Architecture Style
       </a>
     </li>
   
@@ -641,6 +792,50 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#topology" class="md-nav__link">
+    Topology
+  </a>
+  
+    <nav class="md-nav" aria-label="Topology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pipes" class="md-nav__link">
+    Pipes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filters" class="md-nav__link">
+    Filters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -655,9 +850,63 @@
                   
 
 
-  <h1>Modularity</h1>
-
-
+<h1 id="pipeline-architecture-style">Pipeline Architecture Style</h1>
+<p>Also known as the pipes and filters architecture. As soon as developers and architects decided to split functionality into discrete parts, this pattern followed. Most developers know this architecture as this underlying principle behind Unix terminal shell languages, such as Bash and Zsh.</p>
+<p>Developers in many functional programming languages will see parallels between language constructs and elements of this architecture. In fact, many tools that utilize the MapReduce programming model follow this basic topology.</p>
+<h2 id="topology">Topology</h2>
+<p>The pipeline architecture style comprises two fundamental components: <code>pipes and filters, each playing a specific role in the communication flow</code>. The unidirectional nature of pipes and filters within the p<code>ipeline architecture promotes a design that fosters compositional reuse</code>. Many developers have discovered this ability using shells.</p>
+<p><img alt="Basic topology for pipeline architecture from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/pipe_arch.png" /></p>
+<blockquote>
+<p>Basic topology for pipeline architecture from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+</blockquote>
+<h3 id="pipes">Pipes</h3>
+<p><code>Pipes works as communication channels connecting the filters</code>. Typically, each pipe is unidirectional and establishes a point-to-point communication rather than broadcast, <code>prioritizing performance</code>. <code>It accepts input from a singular source and always directs the output to another</code>. While the data format can vary, architects often favor smaller data packets to ensure high performance within the pipeline.</p>
+<h3 id="filters">Filters</h3>
+<p><code>Filters operate as self-contained entities, independent of other filters, and generally remain stateless</code>. It is crucial for <code>each filter to be dedicated to a specific task</code>. Complex tasks should be managed through a sequence of filters rather than a single one.</p>
+<p>The pipeline architecture style involves four types of filters:</p>
+<div class="admonition note">
+<p class="admonition-title">Producer</p>
+<p>Serves as the <code>initial stage of the process</code>, focusing on outbound operations only, and is sometimes referred to as the source.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Transformer</p>
+<p><code>Accepts input, possibly conducts transformations on some or all of the data, and then directs it to the outbound pipe</code>. This function is comparable to the <code>map</code> feature in functional programming.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Tester</p>
+<p><code>Accepts input, verifies one or more criteria, and optionally generates output based on the test</code>. This bears similarity to the <code>reduce</code> operation in functional programming.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Consumer</p>
+<p><code>Represents the end point for the pipeline flow</code>. Consumers <code>often persist the final results of the pipeline process</code> to a database or display the outcomes on a user interface screen.</p>
+</div>
+<h2 id="example">Example</h2>
+<p>The pipeline architecture pattern is <code>prevalent</code> in various applications, <code>particularly those involved in straightforward, one-way processing</code>. ETL tools (extract, transform, and load) also leverage this architecture for efficient data flow and modification between databases or data sources.</p>
+<p>To exemplify the practical application of the pipeline architecture, consider the following scenario: <code>service telemetry information is streamed from multiple services to Apache Kafka</code>.  Observe the <code>utilization of the pipeline architecture style to handle diverse data types streamed</code> to Kafka.</p>
+<p><img alt="Pipeline architecture example from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/pipe_arch_example.png" /></p>
+<blockquote>
+<p>Pipeline architecture example from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+</blockquote>
+<div class="admonition info">
+<p class="admonition-title">Service Info Capture Filter (Producer)</p>
+<p>The Service Info Capture filter <code>subscribes to the Kafka topic and receives service information</code>. It then <code>forwards this data to the Duration Filter</code>. This filter <code>focuses solely on establishing a connection with a Kafka topic and receiving streaming data</code>.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Duration Filter (Tester)</p>
+<p>The Duration Filter <code>checks if the data is about the service request duration</code>. <code>If it is, the data goes to the Duration Calculator</code>, and if not, it's sent to the Uptime Filter.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Uptime Filter (Tester)</p>
+<p>The Uptime Filter <code>verifies if the data is about uptime metrics</code>. If it's not, the pipeline ends. <code>If it is, the data goes to the Uptime Calculator</code>.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Duration and Uptime Calculator (Transformer)</p>
+<p>The Duration Calculator and Uptime Calculator <code>transmit the modified data by them to the Database Output consumer</code></p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Database Output (Consumer)</p>
+<p>Stores the data in a MongoDB database.</p>
+</div>
 
 
 

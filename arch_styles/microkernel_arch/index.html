@@ -9,17 +9,17 @@
       
       
       
-        <link rel="prev" href="../mono_distributed/">
+        <link rel="prev" href="../pipeline_arch/">
       
       
-        <link rel="next" href="../pipeline_arch/">
+        <link rel="next" href="../service_based_arch/">
       
       <link rel="icon" href="../../images/arch.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.17">
     
     
       
-        <title>Layered Architecture Style - Mastering Software Architecture</title>
+        <title>Microkernel Architecture Style - Mastering Software Architecture</title>
       
     
     
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#layered-architecture-style" class="md-skip">
+        <a href="#microkernel-architecture-style" class="md-skip">
           Skip to content
         </a>
       
@@ -103,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Layered Architecture Style
+              Microkernel Architecture Style
             
           </span>
         </div>
@@ -621,6 +621,34 @@
               
   
   
+  
+    <li class="md-nav__item">
+      <a href="../layered_arch/" class="md-nav__link">
+        Layered Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pipeline_arch/" class="md-nav__link">
+        Pipeline Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
     
   
   
@@ -633,12 +661,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Layered Architecture Style
+          Microkernel Architecture Style
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Layered Architecture Style
+        Microkernel Architecture Style
       </a>
       
         
@@ -665,8 +693,22 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#deployment" class="md-nav__link">
-    Deployment
+  <a href="#core-system" class="md-nav__link">
+    Core System
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plug-in-components" class="md-nav__link">
+    Plug-In Components
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trade-offs" class="md-nav__link">
+    Trade-Offs
   </a>
   
 </li>
@@ -677,55 +719,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#layers" class="md-nav__link">
-    Layers
+  <a href="#registry-plug-in-components" class="md-nav__link">
+    Registry Plug-In Components
   </a>
-  
-    <nav class="md-nav" aria-label="Layers">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#layers-of-isolation" class="md-nav__link">
-    Layers of Isolation
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#adding-layers" class="md-nav__link">
-    Adding Layers
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#other-considerations" class="md-nav__link">
-    Other Considerations
+  <a href="#contracts" class="md-nav__link">
+    Contracts
   </a>
-  
-    <nav class="md-nav" aria-label="Other Considerations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#sinkhole-anti-pattern" class="md-nav__link">
-    Sinkhole Anti-Pattern
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-use-this-architecture-style" class="md-nav__link">
-    Why Use This Architecture Style
+  <a href="#examples-and-use-cases" class="md-nav__link">
+    Examples and Use Cases
   </a>
   
 </li>
@@ -734,34 +743,6 @@
   
 </nav>
       
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../pipeline_arch/" class="md-nav__link">
-        Pipeline Architecture Style
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../microkernel_arch/" class="md-nav__link">
-        Microkernel Architecture Style
-      </a>
     </li>
   
 
@@ -850,8 +831,22 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#deployment" class="md-nav__link">
-    Deployment
+  <a href="#core-system" class="md-nav__link">
+    Core System
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plug-in-components" class="md-nav__link">
+    Plug-In Components
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trade-offs" class="md-nav__link">
+    Trade-Offs
   </a>
   
 </li>
@@ -862,55 +857,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#layers" class="md-nav__link">
-    Layers
+  <a href="#registry-plug-in-components" class="md-nav__link">
+    Registry Plug-In Components
   </a>
-  
-    <nav class="md-nav" aria-label="Layers">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#layers-of-isolation" class="md-nav__link">
-    Layers of Isolation
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#adding-layers" class="md-nav__link">
-    Adding Layers
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#other-considerations" class="md-nav__link">
-    Other Considerations
+  <a href="#contracts" class="md-nav__link">
+    Contracts
   </a>
-  
-    <nav class="md-nav" aria-label="Other Considerations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#sinkhole-anti-pattern" class="md-nav__link">
-    Sinkhole Anti-Pattern
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-use-this-architecture-style" class="md-nav__link">
-    Why Use This Architecture Style
+  <a href="#examples-and-use-cases" class="md-nav__link">
+    Examples and Use Cases
   </a>
   
 </li>
@@ -930,78 +892,88 @@
                   
 
 
-<h1 id="layered-architecture-style">Layered Architecture Style</h1>
-<p>Layered architecture, or the <code>n-tiered architecture style</code>, is a widely used and popular architecture style in software development. Its popularity stems from its <code>simplicity, familiarity, and cost-effectiveness</code>. In most organizations, there are user interface (UI) developers, backend developers, rules developers, and database experts (DBAs). <code>This style seamlessly accommodates various roles in an organization</code>, making it a natural choice for many business applications. This architecture style is particularly <code>well-suited for applications that require a clear separation of concerns and modularity</code>. It allows for the division of an application into distinct layers, with each layer responsible for specific functions. Typically, these layers include:</p>
-<div class="admonition info">
-<p class="admonition-title">Presentation Layer (UI)</p>
-<p>This is the user interface layer responsible for handling user interactions. It often includes web pages or user interfaces in desktop applications.</p>
-</div>
-<div class="admonition info">
-<p class="admonition-title">Business Logic Layer</p>
-<p>Also known as the application layer, this layer contains the core logic and business rules of the application. It processes requests from the presentation layer and communicates with the data access layer.</p>
-</div>
-<div class="admonition info">
-<p class="admonition-title">Data Access Layer</p>
-<p>This layer is responsible for interacting with the database or data storage. It performs tasks such as data retrieval, storage, and manipulation.</p>
-</div>
-<div class="admonition info">
-<p class="admonition-title">Database Layer</p>
-<p>This layer involves the actual database system where data is stored and managed.</p>
-</div>
-<p>However, it is important to note that the layered architecture style is associated with certain <code>architectural anti-patterns</code>, such as the <code>architecture by implication anti-pattern</code> and the <code>accidental architecture anti-pattern</code>. These issues can arise when the development process <code>lacks proper planning or when the architecture is not explicitly defined</code>.</p>
-<p>In practical terms, <code>if developers or architects are uncertain about the architecture style</code> being employed, or if an Agile development team initiates coding without a clear architectural plan, <code>it is highly probable that they are adopting the layered architecture style</code>.</p>
+<h1 id="microkernel-architecture-style">Microkernel Architecture Style</h1>
+<p>The concept of the microkernel architecture, often termed the <code>plug-in architecture</code>, originated many years ago and <code>continues to be a prominent feature in modern software design</code>. This style particularly <code>suits product-based applications</code>, which are typically distributed as a single, comprehensive deployment, <code>installed at the customer's location as a third-party product</code>. Its utility isn't limited to products, as it also finds extensive use in custom-built business applications.</p>
 <h2 id="topology">Topology</h2>
-<p>The layered architecture style <code>organizes components into distinct horizontal layers, each with a specific function within the application</code>. While the <code>number and types of layers can vary</code>, the typical layered architecture comprises four fundamental layers: presentation, business, persistence, and database. <code>Each layer assumes a defined role and responsibility, abstracting the necessary tasks to fulfill specific business requests</code>.</p>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<p>For instance, the <code>presentation layer focuses on displaying information in a specific format, without requiring knowledge about data retrieval processes</code>. This segregation of concerns allows for the <code>establishment of clear role and responsibility models within the architecture</code>. Components within a particular layer are confined to tasks pertinent to that layer, ensuring a focused and modular approach to development.</p>
-</div>
-<p>However, this structured separation in the layered architecture <code>can potentially lead to a decrease in overall agility, hampering the ability to swiftly adapt to changes</code>. As a technically partitioned architecture, i<code>t groups components by their technical roles rather than by business domains</code>. Consequently, a <code>specific business domain</code>, like "customer," <code>spans various layers within the architecture, making it challenging to implement changes within that domain</code>. This characteristic makes it less suitable for the effective implementation of a domain-driven design approach.</p>
-<h3 id="deployment">Deployment</h3>
-<p>The <code>deployment of the layered architecture style can take several physical layering forms, resulting in distinct topology variants.</code></p>
-<div class="admonition note">
-<p class="admonition-title">The First Variant</p>
-<p>The <code>presentation, business, and persistence layers into a singular deployment unit</code>. Simultaneously, the database layer remains external, often as a distinct physical database or filesystem.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">The Second Variant</p>
-<p>The <code>presentation layer is physically separated into its deployment unit</code>, while the <code>business and persistence layers are combined into a second deployment unit</code>. As in the first variant, the <code>database layer is typically segregated into an external database or filesystem</code>.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">The Third Variant</p>
-<p>The third variant amalgamates <code>all four standard layers, including the database layer, into a single deployment unit</code>. This approach proves beneficial for smaller applications, especially those utilizing either an internally embedded database or an in-memory database.</p>
-</div>
-<p><code>The choice of a deployment variant should align with the specific requirements of the application</code>, including considerations related to application size, performance demands, and the necessity for scalability and flexibility.</p>
-<h2 id="layers">Layers</h2>
-<h3 id="layers-of-isolation">Layers of Isolation</h3>
-<p>In the <code>context of the layered architecture style, layers can be classified as either closed or open</code>.</p>
-<div class="admonition info">
-<p class="admonition-title">Closed Layers</p>
-<p>A closed layer mandates that a request <code>must pass through each layer in a sequential top-down manner</code>, without the ability to skip any intermediary layers.</p>
-</div>
-<div class="admonition info">
-<p class="admonition-title">Open Layers</p>
-<p>In contrast with Closed Layers, an <code>open layer allows a request to bypass other layers</code>, potentially leading to a more flexible but complex system.</p>
-</div>
-<p>Determining whether open or closed layers are preferable depends on the concept of <code>layers of isolation</code>. This concept <code>emphasizes that modifications in one layer typically do not affect components in other layers</code>, provided that the contracts between the layers remain unchanged. This independence among layers minimizes the interdependencies between them, facilitating maintainability and adaptability.</p>
-<p>However, <code>to ensure effective layers of isolation, layers involved in the primary flow of requests should be closed</code>. Allowing direct access from the presentation layer to the persistence layer, for instance, can tightly couple the application's components, making the architecture rigid and difficult to modify.</p>
-<p>The layers of isolation concept also <code>enable seamless layer replacements without impacting other layers, assuming well-defined contracts</code> and the utilization of appropriate design patterns. Leveraging this concept in the layered architecture style enables the replacement of outdated components, such as migrating from JavaServer Faces (JSF) to React.js for the presentation layer, without necessitating changes in other parts of the application.</p>
-<h3 id="adding-layers">Adding Layers</h3>
-<p>While closed layers promote effective isolation and encapsulation of change within the architecture, <code>there are instances where incorporating open layers can be advantageous</code>. For instance, a layer with <code>common functionalities</code> like date and string utility classes, logging classes, and similar utilities might benefit from being an <code>open layer</code>. <code>This approach facilitates convenient accessibility across various parts of the architecture</code>.</p>
-<p><code>The concept of open and closed layers plays a critical role in defining the relationship between architecture layers and the flow of requests</code>. It offers developers essential insights into the access restrictions of different layers within the architecture. <code>Properly documenting and communicating the status of open and closed layers</code>, along with the rationale behind these decisions, <code>is crucial</code>. Neglecting to provide clear documentation or communication about the openness or closedness of layers can result in tightly coupled and fragile architectures that are challenging to test, maintain, and deploy.</p>
-<p><code>By strategically incorporating open layers to accommodate common functionalities and by clearly delineating the access restrictions within the architecture</code>, developers can create a more <code>flexible and adaptable system while maintaining the benefits of layered isolation</code>.</p>
-<h2 id="other-considerations">Other Considerations</h2>
-<p><code>The layered architecture serves as a solid foundational structure for many applications, especially in cases where the definitive architecture style remains undetermined during the initial development phase</code>. However, an important consideration when implementing the layered architecture is the <code>potential risk of encountering the architecture sinkhole anti-pattern</code>.</p>
-<h3 id="sinkhole-anti-pattern">Sinkhole Anti-Pattern</h3>
-<p>This anti-pattern occurs when <code>requests are transferred across different layers in a simplistic pass-through manner, devoid of any meaningful business logic within each layer</code>. This practice results in <code>unnecessary object instantiation and processing</code>, adversely impacting memory consumption and overall system performance.</p>
+<p>Microkernel architecture is a <code>basic two-components monolithic structure</code>. It consists of a <code>core system and plug-in components</code>. This setup divides the <code>application logic between the autonomous plug-ins</code> and the <code>fundamental core system</code>, allowing for flexibility, customization, and segregation of application features and specific processing logic.</p>
+<p><img alt="Basic components of the microkernel architecture style from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/microkernel_arch_example.png" /></p>
+<blockquote>
+<p>Basic components of the microkernel architecture style from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+</blockquote>
+<p>The <code>core system assumes the responsibility of supplying necessary data to each plug-in</code>. Decoupling is the main rationale behind this strategy. <code>Any modifications to the database should only affect the core system</code>, not the plug-in components. However, <code>plug-ins can maintain their own distinct data stores accessible solely to their respective plug-ins</code>.</p>
+<p><img alt="Plug-in components can own their own data store from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/microkernel_dbs.png" /></p>
+<blockquote>
+<p>Plug-in components can own their own data store from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+</blockquote>
+<h3 id="core-system">Core System</h3>
+<p><code>The core system is the essential functionality needed to operate the system</code>. For instance, <code>an IDE it's the basic text editor</code> enabling actions like opening, editing, and saving files. It's <code>only when plug-ins are added that it becomes a fully functional product</code>.</p>
+<p>Another definition of the core system is the <code>straightforward path through the application</code>, without custom processing. <code>Transferring complex functions to plug-ins simplifies the core system, making it more extensible, maintainable, and testable</code>.</p>
+<p>Depending on the application's scale, the <code>core system can be structured as a layered architecture or a modular monolith</code>. Additionally, it can be split into separately deployed domain services, each containing domain-specific plug-in components.</p>
 <details class="example">
 <summary>Example</summary>
-<p>Presentation layer responds to a user request to fetch basic customer data, the request is successively passed through the business layer, the rules layer, the persistence layer, and eventually to the database layer <code>without any data manipulation, aggregation, or rule application taking place</code>.</p>
+<p><img alt="Variations of the microkernel architecture core system from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/core-example-1.png" /></p>
+<blockquote>
+<p>Variations of the microkernel architecture core system from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of  Software Architecture.</a></p>
+</blockquote>
+<p><img alt="User interface variants from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/core-example-1.png" /></p>
+<blockquote>
+<p>User interface variants from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+</blockquote>
 </details>
-<p>While it's common for certain scenarios in a layered architecture to exhibit elements of the architecture sinkhole anti-pattern, <code>it is crucial to evaluate the proportion of requests that fall into this category</code>. Adhering to the 80-20 rule is often advisable. For instance, if <code>only 20 percent of the requests</code> demonstrate sinkhole characteristics, it might be deemed <code>acceptable</code>. However, if the majority, or <code>80 percent</code>, of the requests conform to this pattern, <code>it serves as a strong indicator that the layered architecture may not be the most appropriate choice for the specific problem domain at hand</code>.</p>
-<h2 id="why-use-this-architecture-style">Why Use This Architecture Style</h2>
-<p>The layered architecture style serves as an good choice for small, straightforward applications or websites. <code>Its simplicity and developer familiarity make it a preferred option, especially in scenarios with tight budgetary and time constraints</code>. Due to its minimalistic approach, the <code>layered architecture style represents one of the most cost-effective options, facilitating smoother and quicker development processes for smaller-scale applications</code>. Moreover, it is p<code>articularly beneficial in situations where architects are still in the process of analyzing business requirements and are uncertain</code> about the most suitable architecture style.</p>
-<p>However, <code>as applications built using the layered architecture style begin to scale, certain attributes such as maintainability, agility, testability, and deployability may gradually decline</code>.</p>
+<h3 id="plug-in-components">Plug-In Components</h3>
+<p><code>Plug-in components are self-contained units housing specific functionalities, additional features, and customized code designed to amplify or extend the core system</code>. They also serve to <code>isolate volatile code</code>, enhancing the application's maintainability and testability. <code>The goal is to ensure plug-in components remain independent without interdependencies</code>.</p>
+<p>These plug-in components can be either <code>compile-based or runtime-based</code>. <code>Runtime plug-ins can be added or removed without redeploying the core system or other plug-ins</code>. In contrast, <code>compile-based</code> plug-ins are more straightforward to manage but necessitate <code>redeployment of the entire monolithic application when modified, added, or removed</code>.</p>
+<p><code>Communication between the plug-in components and the core system typically occurs through point-to-point connections</code>. This connection, often represented as a <code>pipe</code>, is generally a method invocation or function call to the entry-point class of the plug-in component. While plug-in components <code>primarily engage in point-to-point communication</code> with the core system, <code>there are alternatives such as using REST or messaging to invoke plug-in functionality</code>.</p>
+<p>In this scenario, <code>each plug-in functions as a standalone service</code>, or even a microservice implemented within a container. Although this approach may seem conducive to scalability, it's important to note that this setup <code>remains a single architecture quantum due to the monolithic core system. Consequently, every request must first pass through the core system to access the plug-in service</code>.</p>
+<details class="example">
+<summary>Example</summary>
+<p><img alt="Remote plug-in access using REST from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/microkernel-rest.png" /></p>
+<blockquote>
+<p>Remote plug-in access using REST from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of  Software Architecture.</a></p>
+</blockquote>
+</details>
+<h3 id="trade-offs">Trade-Offs</h3>
+<p><code>Enabling remote plug-in access transforms the microkernel architecture into a distributed one</code>, which can pose challenges for implementing and deploying most third-party on-prem products. Additionally, it introduces increased complexity, higher costs, and complicates the overall deployment structure.</p>
+<p><code>Deciding whether to establish communication to plug-in components from the core system as point-to-point or remote should be based on specific requirements</code>, necessitating a thorough analysis of the trade-offs between the benefits and drawbacks of each approach.</p>
+<h2 id="registry-plug-in-components">Registry Plug-In Components</h2>
+<p><code>For effective communication with plug-in modules, the core system requires knowledge of their availability and access methods</code>. One common approach is the utilization of a <code>plug-in registry</code>. This registry <code>holds comprehensive information about each plug-in module, including its name, data contract, and details about the remote access protocol if applicable</code>.</p>
+<div class="admonition example">
+<p>For instance, a tax software plug-in designed to identify high-risk audit items may feature registry entries containing the service name (AuditChecker), data contract specifications (input and output data), and the contract format (XML).</p>
+</div>
+<p>The registry can be as simple as an internal map structure owned by the core system, containing a key and a reference to the plug-in component. Alternatively, it can manifest as a sophisticated registry and discovery tool, integrated within the core system or externally deployed.</p>
+<h2 id="contracts">Contracts</h2>
+<p><code>Contracts between plug-in components and the core system generally follow standard conventions within a domain of plug-in components</code>. These contracts <code>encompass behavior, input data, and output data returned from the plug-in component</code>. Situations involving <code>third-party plug-in development often involve custom contracts</code>, where the plug-in's <code>contract is beyond your control</code>. In such cases, it is customary to <code>establish an adapter between the plug-in contract and your standard contract</code>. This setup ensures that the core system does not require specialized code for each plug-in.</p>
+<p>Plug-in contracts can be implemented using various formats, such as XML, JSON, or object transmission between the plug-in and the core system.</p>
+<details class="example">
+<summary>Example</summary>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">class</span> <span class="nc">AssessmentOutput</span><span class="p">:</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">assessmentReport</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">resell</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mf">0.0</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">resellPrice</span> <span class="o">=</span> <span class="mf">0.0</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="k">class</span> <span class="nc">AssessmentPlugin</span><span class="p">:</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="k">def</span> <span class="nf">assess</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AssessmentOutput</span><span class="p">:</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>        <span class="k">pass</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="k">def</span> <span class="nf">register</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>        <span class="k">pass</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="k">def</span> <span class="nf">deregister</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        <span class="k">pass</span>
+</span></code></pre></div>
+</details>
+<h2 id="examples-and-use-cases">Examples and Use Cases</h2>
+<p>Numerous software development and release tools are built using the microkernel architecture, including:</p>
+<ol>
+<li>Integrated Development Environments (IDEs) like Eclipse and Visual Code.</li>
+<li>Jira;</li>
+<li>Web browsers like Chrome and Firefox.</li>
+</ol>
+<p>This architecture also finds application in <code>extensive business systems</code>. For instance, consider the case of an insurance company handling insurance claims processing.</p>
+<p>Managing insurance claims involves intricate processes, with <code>varying regulations across different jurisdictions</code>. Many insurance claim applications rely on <code>complex rules engines to manage this complexity</code>. However, these rules engines can become intricate and challenging to maintain, often requiring extensive resources for even simple rule changes. <code>Implementing the microkernel architecture can effectively address these challenges</code>.</p>
+<p>In this setup, <code>the rules for each jurisdiction are stored in separate, standalone plug-in components</code>. These components can either be implemented as source code or specific instances of a rules engine accessible to the plug-in. <code>This allows for the seamless addition, removal, or modification of rules specific to a jurisdiction without affecting other parts of the system</code>. Moreover, it enables the system to add or remove new jurisdictions without causing disruptions elsewhere. In this context, the <code>core system primarily manages the standard processes for filing and processing claims, a component that undergoes infrequent changes</code>.</p>
 
 
 

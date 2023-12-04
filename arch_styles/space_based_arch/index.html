@@ -1,0 +1,1208 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../event_driven_arch/">
+      
+      
+      <link rel="icon" href="../../images/arch.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.17">
+    
+    
+      
+        <title>Space-Based Architecture Style - Mastering Software Architecture</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.26e3688c.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_markdown_exec_ansi.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="blue">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#space-based-architecture-style" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Mastering Software Architecture" class="md-header__button md-logo" aria-label="Mastering Software Architecture" data-md-component="logo">
+      
+  <img src="../../images/arch.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Mastering Software Architecture
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Space-Based Architecture Style
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../basic/whats_software_arc/" class="md-tabs__link">
+        Basic
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../modularity/" class="md-tabs__link">
+        Modularity
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../components/" class="md-tabs__link">
+      Components
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../arch_characteristics/arch_characteristics/" class="md-tabs__link">
+        Architecture Characteristics
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link md-tabs__link--active">
+        Architecture Styles
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Mastering Software Architecture" class="md-nav__button md-logo" aria-label="Mastering Software Architecture" data-md-component="logo">
+      
+  <img src="../../images/arch.png" alt="logo">
+
+    </a>
+    Mastering Software Architecture
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Basic
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Basic
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/whats_software_arc/" class="md-nav__link">
+        What's Software Architecture?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/expectations_of_architect/" class="md-nav__link">
+        Expectations of an Architect
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/architectural_thinking/" class="md-nav__link">
+        Architectural Thinking
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Modularity
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Modularity
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modularity/" class="md-nav__link">
+        Definition
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modularity/measuring/" class="md-nav__link">
+        Measuring Modularity
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/" class="md-nav__link">
+        Components
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          Architecture Characteristics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Architecture Characteristics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arch_characteristics/arch_characteristics/" class="md-nav__link">
+        Definition
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arch_characteristics/identifying_characteristics/" class="md-nav__link">
+        Identifying
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arch_characteristics/measuring_governing/" class="md-nav__link">
+        Measuring and Governing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arch_characteristics/scope/" class="md-nav__link">
+        Scope
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          Architecture Styles
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Architecture Styles
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../foundations/" class="md-nav__link">
+        Foundations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mono_distributed/" class="md-nav__link">
+        Monolithic vs Distributed Architectures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../layered_arch/" class="md-nav__link">
+        Layered Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pipeline_arch/" class="md-nav__link">
+        Pipeline Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../microkernel_arch/" class="md-nav__link">
+        Microkernel Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../service_based_arch/" class="md-nav__link">
+        Service-Base Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../event_driven_arch/" class="md-nav__link">
+        Event-Driven Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Space-Based Architecture Style
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Space-Based Architecture Style
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#general-topology" class="md-nav__link">
+    General Topology
+  </a>
+  
+    <nav class="md-nav" aria-label="General Topology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#processing-unit" class="md-nav__link">
+    Processing Unit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#virtualized-middleware" class="md-nav__link">
+    Virtualized Middleware
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-pumps" class="md-nav__link">
+    Data Pumps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-writers" class="md-nav__link">
+    Data Writers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-readers" class="md-nav__link">
+    Data Readers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-collisions" class="md-nav__link">
+    Data Collisions
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Collisions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#calculating-probability-to-data-collisions" class="md-nav__link">
+    Calculating Probability to Data Collisions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloud-vs-on-premises-implementations" class="md-nav__link">
+    Cloud vs On-Premises Implementations
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#general-topology" class="md-nav__link">
+    General Topology
+  </a>
+  
+    <nav class="md-nav" aria-label="General Topology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#processing-unit" class="md-nav__link">
+    Processing Unit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#virtualized-middleware" class="md-nav__link">
+    Virtualized Middleware
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-pumps" class="md-nav__link">
+    Data Pumps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-writers" class="md-nav__link">
+    Data Writers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-readers" class="md-nav__link">
+    Data Readers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-collisions" class="md-nav__link">
+    Data Collisions
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Collisions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#calculating-probability-to-data-collisions" class="md-nav__link">
+    Calculating Probability to Data Collisions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloud-vs-on-premises-implementations" class="md-nav__link">
+    Cloud vs On-Premises Implementations
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="space-based-architecture-style">Space-Based Architecture Style</h1>
+<p>The space-based architecture style is crafted to tackle <code>challenges related to high scalability, elasticity, and concurrent user demands</code>. <code>It proves beneficial for applications dealing with variable and unpredictable concurrent user volumes</code>. Architecturally addressing extreme scalability issues is often more effective than attempting to scale out a database or retrofit caching technologies into a non-scalable architecture.</p>
+<p>In high-volume applications with significant concurrent user loads, the <code>database typically becomes the ultimate bottleneck, limiting the number of transactions processed concurrently</code>. Despite the assistance of various caching technologies and database scaling products, scaling out a conventional application for extreme loads remains a challenging task.</p>
+<details class="example">
+<summary>Web-Based Bussiness</summary>
+<p>In web-based businesses, the usual flow involves a <code>request from a browser hitting the web server, then an application server, and finally, the database server</code>. This works well for a small user group, but as <code>users increase, bottlenecks emerge at each layer</code>—first at the web server, then the application server, and finally, the database server. <code>Scaling out web servers is a common response, but it often shifts the bottleneck to the application server, which is more complex and costly to scale</code>. Even if the database is scaled (and even more costly to scale), the result is a <code>triangle-shaped topology</code>, with web servers being the easiest to scale and the database the hardest.
+<img alt="Scalability limits within a traditional web-based topology from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/space-based-web-based-example.png" /></p>
+<blockquote>
+<p>Scalability limits within a traditional web-based topology from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+</blockquote>
+</details>
+<h2 id="general-topology">General Topology</h2>
+<p>Space-based architecture is rooted in the concept of <code>tuple space</code>, utilizing multiple parallel processors communicating through shared memory. <code>It achieves high scalability, elasticity, and performance by eliminating the central database as a synchronous constraint</code>. Instead, it relies on replicated in-memory data grids.</p>
+<details class="quote">
+<summary>Tuple Space</summary>
+<p>A tuple space is an implementation of the associative memory paradigm for parallel/distributed computing. It provides a repository of tuples that can be accessed concurrently. As an illustrative example, consider that there are a group of processors that produce pieces of data and a group of processors that use the data. Producers post their data as tuples in the space, and the consumers then retrieve data from the space that match a certain pattern. This is also known as the blackboard metaphor. Tuple space may be thought as a form of distributed shared memory. <a href="https://en.wikipedia.org/wiki/Tuple_space">Wikipedia link</a></p>
+</details>
+<p><code>Application data is stored in-memory and replicated across all active processing units</code>. <code>When a unit updates data, it asynchronously sends it to the database via messaging with persistent queues</code>. Processing units dynamically start and shut down based on <code>user load</code>, addressing <code>variable scalability</code>. <code>With no central database bottleneck, near-infinite scalability is achieved</code>.</p>
+<p>Key components include processing units with application code, virtualized middleware for unit management, data pumps for asynchronous data updates to the database, data writers for database updates, and data readers delivering database data to processing units on startup.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><img alt="Space-based architecture basic topology from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/space-based-basic-topology.png" /></p>
+<blockquote>
+<p>Space-based architecture basic topology from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+</blockquote>
+</div>
+<h3 id="processing-unit">Processing Unit</h3>
+<p>The processing unit (as shown in the example image), <code>encompasses the application logic, both web-based components and backend business logic</code>. Its content varies depending on the application type. Smaller web-based apps might reside in a single processing unit, while larger ones may distribute functionality across multiple units based on application areas. The processing unit may also host small, single-purpose services (akin to microservices). <code>Alongside the application logic, it integrates an in-memory data grid and replication engine</code>, often implemented using products like Hazelcast, Apache Ignite, or Oracle Coherence.</p>
+<h3 id="virtualized-middleware">Virtualized Middleware</h3>
+<p>The virtualized middleware <code>manages architecture infrastructure, overseeing data synchronization and request handling</code>. It comprises components like a <code>messaging grid</code>, <code>data grid</code>, <code>processing grid</code>, and <code>deployment manager</code>.</p>
+<div class="admonition info">
+<p class="admonition-title">Messaging Grid</p>
+<p>The messaging grid <code>oversees input requests and session state</code>. Upon receiving a request, <code>it identifies available processing units and directs the request to one of them</code>. The complexity can range depending on the algorithm used from simple <code>round-robin</code> to <code>next-available</code>, <code>managed by a web server with load-balancing capabilities</code> (e.g., HA Proxy, Nginx).</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Data Grid</p>
+<p>The data grid stands out as a <code>pivotal component</code> in this architecture style. In modern implementations, <code>it resides within processing units as a replicated cache</code>. However, when setups <code>requiring an external controller or using a distributed cache, this functionality extends to both processing units and the virtualized middleware's data grid component</code>. As the messaging grid can route requests to any available processing unit, <code>maintaining identical data in each unit's in-memory grid is crucial</code>. Despite the synchronous data replication illustration below, actual synchronization is asynchronous and rapid, typically finishing in under 100 milliseconds.</p>
+<p><img alt="Data grid from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/space-based-data-grid.png" /></p>
+<blockquote>
+<p>Data grid from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+</blockquote>
+<p><code>Data synchronization occurs among processing units that share the same named data grid</code>. For instance, consider an internal replicated data grid in processing units containing customer profile information, using Hazelcast. <code>Changes made to the CustomerProfile named cache in any processing unit replicate to all others with the same named cache</code>. <code>Each processing unit can hold multiple replicated caches as needed or request data from another unit (choreography) or leverage the processing grid for orchestration</code>.</p>
+<p>Data replication within processing units enables service instances to <code>start and stop without requiring data retrieval from the database, as long as one instance holds the named replicated cache</code>. When a processing unit instance starts, it connects to the cache provider (like Hazelcast), requests the named cache, and loads it from another instance.</p>
+<p><code>Each processing unit is aware of all others (including themselves) through a member list</code>, containing the IP addresses and ports of units <code>using the same named cache</code>. Suppose instance 1 receives a request to update customer profile information; <code>when it updates the cache, the data grid (e.g., Hazelcast) asynchronously updates other replicated caches, ensuring consistent synchronization</code>. <code>If processing unit instances go down, all others are automatically updated to reflect the lost member</code>.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Processing Grid</p>
+<p>The processing grid, an <code>optional element in virtualized middleware</code>, oversees <code>coordinated request processing when multiple processing units are involved in a single business request</code>. If a request necessitates coordination between different processing unit types (e.g., an order processing unit and a payment processing unit), <code>the processing grid mediates and orchestrates the request between these units</code>.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Deployment Manager</p>
+<p>The deployment manager component oversees the <code>dynamic startup and shutdown of processing unit instances based on load conditions</code>. Continually monitoring response times and user loads, it starts up new processing units with increased load and shuts down units during decreased load. <code>This critical component ensures variable scalability (elasticity) within an application</code>.</p>
+</div>
+<h3 id="data-pumps">Data Pumps</h3>
+<p>A data pump is a <code>vital component</code> in space-based architecture, <code>facilitating the transfer of data to another processor for database updates</code>. Within this architecture, <code>processing units don't directly interact with databases</code>, making data pumps crucial. Asynchronous by nature, <code>data pumps ensure eventual consistency between the in-memory cache and the database</code>. When a processing unit updates its cache, it takes ownership of the update and uses the data pump to transmit the update to the database eventually.</p>
+<p>Implemented through messaging, data pumps offer <code>guaranteed delivery and preservation of message order through FIFO queueing</code>. This decoupling between the processing unit and the data writer <code>ensures uninterrupted processing</code>, even if the data writer is temporarily unavailable.</p>
+<p>Typically, <code>there are multiple data pumps, each dedicated to a specific domain or subdomain</code> (e.g., customer or inventory). They can be associated with specific caches (e.g., CustomerProfile, CustomerWishlist) or broader processing unit domains (e.g., Customer) with more extensive and general caches.</p>
+<p><code>Data pumps adhere to contracts</code>, defining actions (add, delete, update) associated with contract data. These contracts may take the form of <code>JSON</code> or <code>XML</code> schemas, objects, or value-driven messages. <code>For updates, the data pump message usually contains only the new data values</code>, such as the updated phone number and customer ID, along with an action to perform the update.</p>
+<details class="example">
+<summary>Example</summary>
+<p><img alt="Data pump used to send data to a database from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/space-based-data-pumps.png" /></p>
+<blockquote>
+<p>Data pump used to send data to a database from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+</blockquote>
+</details>
+<h3 id="data-writers">Data Writers</h3>
+<p>The data writer component plays a <code>crucial role</code> by <code>receiving messages from a data pump and utilizing the information within these messages to update the database</code>. Data writers can take the <code>form of services, applications, or data hubs</code> like Ab Initio. The scope of data writers varies based on the extent of the associated data pumps and processing units.</p>
+<p>A domain-based data writer <code>encapsulates the required database logic to manage updates within a specific domain</code>, such as customer information, irrespective of the number of data pumps it handles.</p>
+<details class="example">
+<summary>Example</summary>
+<p><img alt="Domain-based data writer from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/space-based-data-writer1.png" /></p>
+<blockquote>
+<p>Domain-based data writer from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a>
+<img alt="Dedicated data writers for each data pump from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/space-based-data-writer2.png" />
+Dedicated data writers for each data pump from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+</blockquote>
+</details>
+<h3 id="data-readers">Data Readers</h3>
+<p>Data readers take on the responsibility for <code>reading data from the database and transmitting it to processing units through a reverse data pump</code>. Their <code>activation</code> is limited to specific scenarios:</p>
+<ol>
+<li>Crash of all processing unit instances of the same named cache.</li>
+<li>Redeployment of all processing units within the same named cache.</li>
+<li>Retrieving archive data not contained in the replicated cache.</li>
+</ol>
+<p>When <code>all instances go down</code>, indicating a system-wide crash or redeployment, <code>data must be read from the database, a practice typically avoided</code> in space-based architecture.</p>
+<p>When instances of a class of processing unit start coming up, <code>they attempt to gain a lock on the cache</code>, the first successful instance becomes the <code>temporary cache owner, initiating a message to a queue requesting data</code>, while the others go into a wait state until the lock is released. The data reader, upon receiving the read request, <code>executes the necessary database query logic to retrieve the required data</code>. As the data reader queries data, <code>it sends the results to a different queue known as a reverse data pump</code>. <code>The temporary cache owner processing unit loads the cache with the received data</code>. After loading all the data, the <code>temporary owner releases the lock, synchronizing all other instances</code>, allowing processing to commence.</p>
+<p>Similar to data writers, <code>data readers can be domain-based or dedicated to a specific class of processing unit</code>. Their implementation can take the form of services, applications, or data hubs.</p>
+<p><code>Together, data writers and data readers form a data abstraction layer</code>, ensuring processing units are decoupled from the underlying database table structures. In space-based architecture, a data abstraction layer allows incremental changes to the database without directly impacting the processing units.</p>
+<details class="example">
+<summary>Example</summary>
+<p><img alt="Data reader with reverse data pump from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/space-based-data-reader.png" /></p>
+<blockquote>
+<p>Data reader with reverse data pump from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+</blockquote>
+</details>
+<h2 id="data-collisions">Data Collisions</h2>
+<p>Data collisions in space-based architecture with replicated caching can <code>arise when updates occur concurrently in service instances containing the same named cache</code>,due to replication latency. <code>Data updates made locally in one cache instance may be overridden by simultaneous updates from another cache instance during replication</code>.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>To illustrate this issue, consider two service instances (<code>Service A</code> and <code>Service B</code>) with a <code>replicated cache of product inventory</code>:</p>
+<ol>
+<li>Initial inventory count for <code>product Z is 500 units</code>.</li>
+<li><code>Service A updates</code> the inventory cache for product Z to 490 units (<code>10 sold</code>).</li>
+<li><code>Simultaneously</code>, during replication, <code>Service B updates</code> the inventory cache for product Z to 495 units (<code>5 sold</code>).</li>
+<li><code>Due to replication, the Service B cache is updated to 490 units, reflecting the Service A update</code>.</li>
+<li>Similarly, the <code>Service A cache is updated to 495 units, reflecting the Service B update</code>.</li>
+<li><code>Both caches in Service A and B are now incorrect and out of sync</code> (inventory should be 485 units).</li>
+</ol>
+</div>
+<h3 id="calculating-probability-to-data-collisions">Calculating Probability to Data Collisions</h3>
+<p><code>Calculating the probability of data collisions involves considering factors</code>. The formula used to estimate the likelihood of potential data collisions incorporates these factors:</p>
+<div class="admonition note">
+<p class="admonition-title">Formula</p>
+<p><code>Collision Rate = N*(UR²/S)*RL</code></p>
+<p>Where:</p>
+<ol>
+<li>N    = number of service instances using the same named cache.</li>
+<li>UR   = update rate in milliseconds (squared).</li>
+<li>S    = cache size (in terms of number of rows)</li>
+<li>RL   = replication latency</li>
+</ol>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Base Example</p>
+<p><code>Collision Rate = N*(UR²/S)*RL</code></p>
+<ol>
+<li>N    = 5</li>
+<li>UR   = 20 updates/second</li>
+<li>S    = 50.000 rows</li>
+<li>RL   = 100 milliseconds = 0.1 seconds</li>
+</ol>
+<p>Collision Rate = 5 * (20²/50.000) * 0.1</p>
+<p>Collision Rate = 5 * (400/50.000) * 0.1</p>
+<p>Collision Rate = 5 * 0.008 * 0.1</p>
+<p><code>Collision Rate = 0.004 per second</code></p>
+<hr />
+<p>Updates per minute = 20 * 60 = 1200</p>
+<p><code>Updates per hour = 1200 * 60 = 72000</code></p>
+<hr />
+<p>Collision Rate per hour = 0.004 * 3600</p>
+<p><code>Collision Rate per hour = 14.4</code></p>
+<hr />
+<p>Percentage = 14.4 / 72000 * 100</p>
+<p><code>Percentage = 0.02%</code></p>
+</div>
+<p>The formula provided is a valuable tool for assessing the likelihood of data collisions and <code>determining the feasibility of using replicated caching in a space-based architecture</code>. <code>Replication latency</code>, influenced by network type and physical distance between processing units, <code>plays a crucial role in data consistency</code>. While actual replication latency values are often not readily available and need to be measured in a production environment, <code>a planning value of 100 milliseconds is commonly used when precise figures are unavailable</code>.</p>
+<details class="example">
+<summary>Reducing Replication Latency</summary>
+<p>Changing the replication latency from 100 milliseconds to 1 millisecond yields the same number of updates (72,000 per hour) but <code>produces only the probability of 0.1 collisions per hour</code>.</p>
+<p><code>Collision Rate = N*(UR²/S)*RL</code></p>
+<ol>
+<li>N    = 5</li>
+<li>UR   = 20 updates/second</li>
+<li>S    = 50.000 rows</li>
+<li>RL   = 1 milliseconds = 0.001 second</li>
+</ol>
+<p>Collision Rate = 5 * (20²/50.000) * 0.001</p>
+<p>Collision Rate = 5 * (400/50.000) * 0.001</p>
+<p>Collision Rate = 5 * 0.008 * 0.001</p>
+<p><code>Collision Rate = 0.00004 per second</code></p>
+<hr />
+<p>Updates per minute = 20 * 60 = 1200</p>
+<p><code>Updates per hour = 1200 * 60 = 72000</code></p>
+<hr />
+<p>Collision Rate per hour = 0.00004 * 3600</p>
+<p><code>Collision Rate per hour = 0.144</code></p>
+<hr />
+<p>Percentage = 0.144 / 72000 * 100</p>
+<p><code>Percentage = 0.0002%</code></p>
+</details>
+<p><code>The number of processing units sharing the same named cache (represented by the number of instances) has a direct proportional relationship with the potential number of data collisions</code>.</p>
+<details class="example">
+<summary>Decreasing Processing Units</summary>
+<p>Reducing the number of processing units from 5 instances to 2 instances yields a <code>data collision rate of only 6 per hour out of 72,000 updates per hour</code>:</p>
+<p><code>Collision Rate = N*(UR²/S)*RL</code></p>
+<ol>
+<li>N    = 2</li>
+<li>UR   = 20 updates/second</li>
+<li>S    = 50.000 rows</li>
+<li>RL   = 100 milliseconds = 0.1 seconds</li>
+</ol>
+<p>Collision Rate = 2 * (20²/50.000) * 0.1</p>
+<p>Collision Rate = 2 * (400/50.000) * 0.1</p>
+<p>Collision Rate = 2 * 0.008 * 0.1</p>
+<p><code>Collision Rate = 0.0016 per second</code></p>
+<hr />
+<p>Updates per minute = 20 * 60 = 1200</p>
+<p><code>Updates per hour = 1200 * 60 = 72000</code></p>
+<hr />
+<p>Collision Rate per hour = 0.0016 * 3600</p>
+<p><code>Collision Rate per hour = 5.76</code></p>
+<hr />
+<p>Percentage = 5.76 / 72000 * 100</p>
+<p><code>Percentage = 0.008%</code></p>
+</details>
+<p><code>Cache size is inversely proportional to collision rates, meaning that as the cache size decreases, collision rates increase</code>.</p>
+<details class="example">
+<summary>Smaller Cache Size</summary>
+<p>Reducing the cache size from 50,000 to 10,000 rows, while keeping other factors constant, <code>increases the collision rate to 72 per hour, emphasizing the impact of cache size on collision probability</code>.</p>
+<p>Collision Rate = N<em>(UR²/S)</em>RL`</p>
+<ol>
+<li>N    = 5</li>
+<li>UR   = 20 updates/second</li>
+<li>S    = 10.000 rows</li>
+<li>RL   = 100 milliseconds = 0.1 seconds</li>
+</ol>
+<p>Collision Rate = 5 * (20²/10.000) * 0.1</p>
+<p>Collision Rate = 5 * (400/10.000) * 0.1</p>
+<p>Collision Rate = 5 * 0.04 * 0.1</p>
+<p><code>Collision Rate = 0.02 per second</code></p>
+<hr />
+<p>Updates per minute = 20 * 60 = 1200</p>
+<p><code>Updates per hour = 1200 * 60 = 72000</code></p>
+<hr />
+<p>Collision Rate per hour = 0.02 * 3600</p>
+<p><code>Collision Rate per hour = 72</code></p>
+<hr />
+<p>Percentage = 72 / 72000 * 100</p>
+<p><code>Percentage = 0.1%</code></p>
+</details>
+<p>In a typical scenario, <code>systems don't maintain consistent update rates over extended periods</code>. Therefore, when using this calculation, <code>understanding the maximum update rate during peak usage and calculating minimum, normal, and peak collision rates can provide a more nuanced perspective</code>.</p>
+<h2 id="cloud-vs-on-premises-implementations">Cloud vs On-Premises Implementations</h2>
+<p><code>Space-based architecture provides versatile deployment options, allowing the entire system</code>, including processing units, virtualized middleware, data pumps, data readers and writers, and the database, <code>to be implemented either in on-premises environments or within cloud-based environments</code>. Additionally, this architecture style offers a unique capability to <code>deploy applications using processing units and virtualized middleware in managed cloud environments while retaining physical databases and associated data on-premises</code>.</p>
+<p>A key strength of this architecture lies in the possibility of deploying applications through <code>processing units and virtualized middleware in managed cloud-based environments while maintaining physical databases and associated data on-premises</code>. This configuration <code>facilitates highly efficient cloud-based data synchronization</code>, leveraging asynchronous data pumps and the eventual consistency model inherent in this architecture. <code>The setup allows for transactional processing in dynamic and elastic cloud-based environments while upholding the management of physical data, reporting, and data analytics securely within the local and on-premises environments</code>.</p>
+<details class="example">
+<summary>Example</summary>
+<p><img alt="Hybrid cloud-based and on-prem topology from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/space-based-hybrid-cloud.png" /></p>
+<blockquote>
+<p>Hybrid cloud-based and on-prem topology from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+</blockquote>
+</details>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.tabs.instant", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b425cdc4.min.js"></script>
+      
+    
+  </body>
+</html>
