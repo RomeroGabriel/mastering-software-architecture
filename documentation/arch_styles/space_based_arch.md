@@ -301,3 +301,17 @@ Choosing between replicated and distributed caching depends on factors such as `
 | Type of data        | Relatively static    | Highly dynamic         |
 | Update frequency    | Relatively low       | High update rate       |
 | Fault tolerance     | High                 | Low                    |
+
+## Implementation Examples
+
+`Space-based architecture proves effective for applications experiencing high spikes in user or request volume`, especially those surpassing 10,000 concurrent users.
+
+### Concert Ticketing System
+
+Concert ticketing systems face unique challenges, particularly during popular concert announcements `when user volumes skyrocket from hundreds to potentially tens of thousands`. `Constantly accessing a central database synchronously in such systems would likely not work`. The sheer volume of tens of thousands of concurrent requests, coupled with the rapid update frequency, makes it exceedingly difficult for a standard database to handle through conventional synchronous transactions at this scale.The architecture's `high elasticity is crucial` for handling these sudden spikes.
+
+`Space-based architecture allows instant recognition of increased user demand, prompting the deployment manager to initiate numerous processing units to efficiently manage the surge`. Configuring the deployment manager to start these instances right before ticket sales ensures optimal performance.
+
+### Online Auction System
+
+Online auction systems share similarities with concert ticketing in terms of `high performance and elasticity demands`, coupled with unpredictable user and request spikes. `Space-based architecture excels in this context by allowing the dynamic creation and destruction of processing units based on changing load conditions`. Dedicated processing units for each auction ensure data consistency, and the asynchronous nature of data pumps facilitates swift transmission of bidding data to various processing units, enhancing overall bidding process performance.
