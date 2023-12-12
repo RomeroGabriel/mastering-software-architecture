@@ -27,6 +27,7 @@ nav:
     - Event-Driven Architecture Style: arch_styles/event_driven_arch.md
     - Space-Based Architecture Style: arch_styles/space_based_arch.md
     - Orchestration-Driven Service-Oriented Architecture Style: arch_styles/orchestration_arch.md
+    - Microservices Architecture Style: arch_styles/microservices.md
 
 theme:
   name: material
