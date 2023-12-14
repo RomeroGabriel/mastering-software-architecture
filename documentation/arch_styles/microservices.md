@@ -55,3 +55,29 @@ Applications may have naturally expansive boundaries for certain segments, `ackn
     Architectures that balance domain isolation with communication requirements might benefit from `bundling services back into larger entities to mitigate communication overhead, in cases when multiple services require extensive communications`.
 
 `Iterative refinement is essential for achieving optimal service design`. Architects rarely achieve the perfect granularity, data dependencies, and communication styles on the initial attempt. `Continuous iteration and refinement increase the likelihood of developing a well-tailored and efficient microservices architecture`.
+
+### Data Isolation
+
+Microservices necessitates a focus on data isolation, an aspect that distinguishes it from other architecture styles that rely on a single database for persistence. `In the pursuit of minimal coupling, microservices avoids shared schemas and databases functioning as integration points`.
+
+When determining service granularity, architects must be cautious of falling into the [entity trap](../components/index.md#component-design) and `resist the temptation to simply model their services to resemble single entities in a database`.
+
+`Unlike conventional practices of utilizing relational databases for consolidating values within a system to establish a single source of truth`, microservices, with its distributed nature, poses a challenge in maintaining this approach. Architects are tasked with `deciding how to address this issue: designating one domain as the source of truth for specific information and coordinating with it for value retrieval, or employing database replication or caching for information distribution`.
+
+While this level of data isolation may present challenges, it also opens avenues for `flexibility`. With teams no longer compelled to converge on a single database, `each service can opt for the most suitable tool` based on factors such as cost, storage type, and other considerations. In a highly decoupled system, teams enjoy the advantage of `adapting their choices without affecting other teams, as coupling to implementation details is prohibited`.
+
+## API Layer
+
+In the microservices paradigm, diagrams often feature an `API layer positioned between the system's consumers` (user interfaces or calls from other systems), `although its inclusion is optional`. While the API layer serves various purposes, `it should not function as a mediator or orchestration tool` if architects intend to adhere to the fundamental philosophy of this architecture. According to this philosophy, `all significant logic within microservices should take place within a bounded context`, and introducing orchestration or similar logic in a mediator would violate this principle.
+
+This also illustrates the `difference between technical and domain partitioning in architecture`: architects typically use `mediators in technically partitioned architectures`, whereas `microservices is firmly domain partitioned`.
+
+## Operational Reuse
+
+In the microservices paradigm, `where duplication is favored over coupling`, architects face the challenge of `handling operational concerns that traditionally benefit from coupling`, such as monitoring, logging, and circuit breakers. Unlike the traditional service-oriented architecture philosophy, which promotes reusing both domain and operational functionality, microservices endeavors to separate these two concerns.
+
+As teams build multiple microservices, they recognize `common elements that could benefit from a shared approach`. The [sidecar](https://learn.microsoft.com/en-us/azure/architecture/patterns/sidecar) pattern emerges as a solution to this challenge. `Operational concerns are encapsulated within each service as a distinct component`, owned either by individual teams or a centralized infrastructure team. `This sidecar component efficiently manages all operational aspects that teams find advantageous to couple together`. Consequently, when updates or upgrades are needed, the shared infrastructure team can seamlessly update the sidecar, ensuring that each microservice receives the new functionality.
+
+`The sidecar pattern not only addresses the challenge of common operational concerns but also facilitates the creation of a` [service mesh](https://www.redhat.com/en/topics/microservices/what-is-a-service-mesh). This mesh allows for centralized control across the architecture for vital concerns like logging and monitoring. `The individual sidecar components connect to form a cohesive operational interface, creating a unified experience across all microservices`. Each microservice functions as a node within this mesh, offering a console for global control over operational coupling, including monitoring levels, logging, and other cross-cutting operational considerations.
+
+`Service discovery plays a crucial role in achieving elasticity in microservices architectures`. Instead of directly invoking a single service, `requests are routed through a service discovery tool, which monitors request patterns and can scale or spin up new service instances as needed`. `Architects often integrate service discovery into the service mesh, making it an integral part of every microservice`. The API layer is frequently utilized to host service discovery, providing a centralized location for user interfaces or other calling systems to discover and create services in a flexible and consistent manner.
