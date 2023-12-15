@@ -81,3 +81,96 @@ As teams build multiple microservices, they recognize `common elements that coul
 `The sidecar pattern not only addresses the challenge of common operational concerns but also facilitates the creation of a` [service mesh](https://www.redhat.com/en/topics/microservices/what-is-a-service-mesh). This mesh allows for centralized control across the architecture for vital concerns like logging and monitoring. `The individual sidecar components connect to form a cohesive operational interface, creating a unified experience across all microservices`. Each microservice functions as a node within this mesh, offering a console for global control over operational coupling, including monitoring levels, logging, and other cross-cutting operational considerations.
 
 `Service discovery plays a crucial role in achieving elasticity in microservices architectures`. Instead of directly invoking a single service, `requests are routed through a service discovery tool, which monitors request patterns and can scale or spin up new service instances as needed`. `Architects often integrate service discovery into the service mesh, making it an integral part of every microservice`. The API layer is frequently utilized to host service discovery, providing a centralized location for user interfaces or other calling systems to discover and create services in a flexible and consistent manner.
+
+## Frontends
+
+Microservices prioritize decoupling, `aiming to extend this separation to both backend and user interface concerns`. While the `original vision of microservices included the user interface as part of the bounded context` in alignment with Domain-Driven Design (DDD) principles, `practical considerations, particularly in web applications, have presented challenges to fully realizing this goal`. As a result, two predominant styles of user interfaces have emerged in microservices architectures.
+
+The first style involves a `monolithic frontend`, where a `single user interface interacts with the backend through the API layer` to fulfill user requests. This frontend can take various forms, such as a rich desktop application, mobile app, or web application. For instance, many modern web applications utilize JavaScript web frameworks to construct a unified user interface.
+
+The second option for user interfaces adopts `microfrontends, leveraging components at the user interface level to achieve a level of granularity and isolation in sync with the backend services`. In this approach, `each service emits its own user interface`, and the frontend coordinates with these emitted user interface components. This pattern allows teams to establish clear service boundaries from the user interface to the backend services, promoting unity within a single team across the entire domain.
+
+## Communication
+
+In microservices, the `challenge of determining appropriate granularity impacts both data isolation and communication, influencing how services remain decoupled while still coordinating effectively`.
+
+At its core, architects must make a `fundamental decision regarding synchronous or asynchronous communication`. Synchronous communication entails the caller waiting for a response from the callee. Microservices architectures typically employ `protocol-aware heterogeneous interoperability`.
+
+!!! Info "Protocol-Aware, Heterogeneous and Interoperability"
+    **Protocol-aware**
+
+    Because microservices lack a centralized integration hub to avoid operational coupling, `each service should understand how to call other services`. As a result, `architects often standardize on specific protocols for inter-service communication`, such as a level of REST, message queues, and so forth. This implies that services must be aware of (or discover) the protocol to use when calling other services.
+
+    **Heterogeneous**
+
+    `Each service may be developed in a different technology stack`. Embracing heterogeneity signifies that microservices fully supports polyglot environments, where various services utilize different platforms.
+
+    **Interoperability**
+
+    `Describing services calling one another`, interoperability in microservices aims to discourage transactional method calls while `promoting network-based communication`.
+
+For `asynchronous` communication, architects often leverage `events and messages`, resulting in an internal [event-driven architecture](event_driven_arch.md#event-driven-architecture-style). In microservices, the broker and mediator patterns manifest as choreography and orchestration.
+
+### Choreography and Orchestration
+
+`Choreography in microservices utilizes the communication style of a` [broker event-driven architecture](event_driven_arch.md#broker-topology). Unlike architectures with a central coordinator, `choreography adheres to the bounded context philosophy`, promoting the implementation of decoupled events between services. In this approach, `each service independently calls others as needed, without relying on a central mediator`.
+
+??? example "Choreography"
+    Suppose a user requests details about a wish list, and the `CustomerWishList` service lacks essential information. In choreography, it would make a `direct call to CustomerDemographics to retrieve the missing data`, delivering the result back to the user.
+
+    ![Using choreography in microservices to manage coordination from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/microservices_choreography_example.png)
+    > Using choreography in microservices to manage coordination from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
+
+Because microservices architectures `lacks a global mediator` like in some service-oriented architectures, `allow architects to create localized mediators when coordination across multiple services is necessary`. Developers can design a `service dedicated to coordinating specific calls, such as obtaining comprehensive customer information`. Users then interact with this mediator service, which, in turn, communicates with the required services.
+
+??? example "Orchestration"
+    ![Using orchestration in microservices from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/microservices_orchestration_example.png)
+    > Using orchestration in microservices from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
+
+The First Law of Software Architecture acknowledges that `neither choreography nor orchestration is flawless—each comes with trade-offs`. In choreography, architects uphold the highly decoupled philosophy of the architecture, maximizing the benefits it offers. However, `handling common challenges like error management and coordination becomes more intricate in choreographed environments`.
+
+In scenarios involving complex workflows, `the initial service called may need to act as a mediator, coordinating interactions across a range of other services`. This pattern, known as the `front controller pattern`, transforms a nominally choreographed service into a more complex mediator. `The drawback lies in the increased complexity within the service`.
+
+??? example "Complex Choreography"
+
+    ![Using choreography for a complex business process from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/microservices_choreography_complex_example.png)
+    > Using choreography for a complex business process from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
+
+On the other hand, `architects may opt for orchestration in handling intricate business processes`. `By constructing a mediator, architects manage the complexity and coordination required for the business workflow`. While this `introduces coupling between services`, it enables architects to concentrate coordination efforts into a single service, minimizing the impact on others. Often, `domain workflows inherently involve some level of coupling, challenging architects to represent that coupling in ways that align with both domain and architectural objectives`.
+
+??? example "Complex Orchestration"
+    ![Using orchestration in microservices from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/microservices_orchestration_complex_example.png)
+    > Using orchestration in microservices from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
+
+### Transactions and SAGAS
+
+Architects in the realm of microservices `looks for extreme decoupling`, but they often grapple with the `challenge of coordinating transactions across services`. The same level of decoupling that characterizes the architecture, especially in terms of databases, `complicates achieving the atomicity that was once straightforward in monolithic applications`.
+
+`Constructing transactions that span service boundaries contradicts the fundamental decoupling principle of microservices and introduces a form of dynamic connascence, the worst known connascence`, [the connascence of value](../modularity/measuring.md#dynamic-connascence). The foremost advice for architects contemplating transactions across services is unequivocal: avoid it! Instead, address the granularity of components. Transaction boundaries often serve as a key indicator of service granularity.
+
+!!! danger
+    The foremost advice for architects contemplating transactions across services is unequivocal: `avoid it!` Instead, `address the granularity of components.` Transaction boundaries often serve as a key indicator of service granularity.
+
+!!! tip
+    Don’t do transactions in microservices. `Fix granularity instead!`
+
+For services that still demanding transactional coordination, `there are patterns available to manage transaction orchestration, with significant trade-offs`.
+
+One prevalent distributed transactional pattern in microservices is the [saga pattern](https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/saga/saga). In this approach, `a service assumes the role of a mediator, orchestrating multiple service calls and coordinating the transaction`. The mediator initiates each part of the transaction, logs success or failure, and manages the overall outcome. `If everything proceeds as planned, all values in the services and their associated databases update synchronously`.
+
+??? example
+    ![The saga pattern in microservices architecture from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/microservices_saga_example.png)
+    > The saga pattern in microservices architecture from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
+
+`In the event of an error, the mediator ensures that no part of the transaction succeeds if another part fails`. If the initial part succeeds but the subsequent part encounters a failure, the mediator `sends a request to all successful parts, instructing them to undo their previous actions`. This style of transactional coordination is known as a `compensating transaction framework`. Typically, developers implement this pattern by `placing each mediator-initiated request in a pending state until the overall success is signaled by the mediator`. However, this design `complexity intensifies when dealing with asynchronous requests`, especially if new requests depend on pending transactional states. It also results in `increased coordination traffic at the network level`.
+
+??? example
+    ![Saga pattern compensating transactions for error conditions from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/microservices_saga_error_example.png)
+    > Saga pattern compensating transactions for error conditions from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
+
+An alternative implementation of a compensating transaction framework involves developers creating both `do` and `undo` operations `for each potentially transactional operation`. While this approach reduces coordination during transactions, `the undo operations tend to be considerably more complex` than their counterpart do operations, essentially doubling the effort required for design, implementation, and debugging.
+
+While architects can technically build transactional behavior across services, doing so `contradicts the core rationale behind choosing the microservices pattern`. While exceptions may arise, the overarching advice for architects is to use the saga pattern judiciously.
+
+!!! tip
+    A few transactions across services may be necessary, but if they dominate the architecture, it indicates potential mistakes in the design!
