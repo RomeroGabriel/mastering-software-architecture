@@ -8,14 +8,6 @@ Even though the decision is deeply contextual, there are a few `pieces of genera
 
 `Understanding the dynamic landscape of architecture trends is crucial for architects`, regardless of where an organization currently stands in terms of architectural preferences. The ever-changing nature of preferred architecture styles is influenced by various factors:
 
-1. Observations from the past
-1. Changes in the ecosystem
-1. Introduction of New Capabilities
-1. Acceleration
-1. Domain changes
-1. Technology changes
-1. External factors
-
 ??? note "Observations from the past"
     `New architecture styles often emerge from lessons learned and challenges faced in previous projects`. Architects draw from their past experiences to shape future systems, addressing deficiencies and optimizing design based on historical insights.
 ??? note "Changes in the ecosystem"
