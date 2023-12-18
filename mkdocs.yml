@@ -20,14 +20,16 @@ nav:
     - Introduction: arch_styles/index.md
     - Foundations: arch_styles/foundations.md
     - Monolithic vs Distributed Architectures: arch_styles/mono_distributed.md
-    - Layered Architecture Style: arch_styles/layered_arch.md
-    - Pipeline Architecture Style: arch_styles/pipeline_arch.md
-    - Microkernel Architecture Style: arch_styles/microkernel_arch.md
-    - Service-Base Architecture Style: arch_styles/service_based_arch.md
-    - Event-Driven Architecture Style: arch_styles/event_driven_arch.md
-    - Space-Based Architecture Style: arch_styles/space_based_arch.md
-    - Orchestration-Driven Service-Oriented Architecture Style: arch_styles/orchestration_arch.md
-    - Microservices Architecture Style: arch_styles/microservices.md
+    - Choosing the Appropriate Architecture Style: arch_styles/choosing_arch_style.md
+    - Architecture Styles Descriptions:
+      - Layered Architecture Style: arch_styles/layered_arch.md
+      - Pipeline Architecture Style: arch_styles/pipeline_arch.md
+      - Microkernel Architecture Style: arch_styles/microkernel_arch.md
+      - Service-Base Architecture Style: arch_styles/service_based_arch.md
+      - Event-Driven Architecture Style: arch_styles/event_driven_arch.md
+      - Space-Based Architecture Style: arch_styles/space_based_arch.md
+      - Orchestration-Driven Service-Oriented Architecture Style: arch_styles/orchestration_arch.md
+      - Microservices Architecture Style: arch_styles/microservices.md
 
 theme:
   name: material
