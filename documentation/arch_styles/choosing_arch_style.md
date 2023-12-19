@@ -23,6 +23,41 @@ Even though the decision is deeply contextual, there are a few `pieces of genera
 ??? note "External factors"
     External factors, such as changes in licensing costs, `may force architects and developers to reconsider their tooling choices and migrate to alternative options`.
 
-## MICROSERVICE -> Choreography and Orchestration -> PARAGRAFO 2
+## Decision Criteria
 
-Domain/architecture isomorphism is one key characteristic that architects should look for when assessing how appropriate an architecture style is for a particular problem. This term describes how the shape of an architecture maps to a particular architecture style.
+When architects embark on the journey of `selecting an architectural style`, they must carefully weigh various `factors that contribute to shaping the structure of the domain design`. At its core, an architect is tasked with designing two fundamental elements: `the specified domain and all the supporting structural elements essential for the system's success`.
+
+Architects should approach the decision-making process with a clear understanding of the following key aspects:
+
+??? note "Understanding the Domain"
+    `While architects don't need to be domain experts, they must grasp critical aspects of the domain`, particularly those influencing operational architecture characteristics.
+
+??? note "Identifying Architecture Characteristics"
+    `Discovering and articulating the architecture characteristics essential to support the domain and external factors is crucial`.
+
+??? note "Data Architecture"
+    `Collaboration between architects and database administrators is vital for addressing database, schema, and other data-related concerns`. Architects must comprehend the potential impact of data design, especially when dealing with legacy data architectures.
+
+??? note "Organizational Factors"
+    External factors, such as the cost of cloud vendors or organizational plans for mergers and acquisitions, can significantly influence design decisions. `Architects need to align their designs with practical considerations`.
+
+??? note "Knowledge of Process, Teams, and Operational Concerns"
+    Project-specific factors, including the software development process, collaboration with operations, and the QA process, `play a pivotal role in influencing architectural decisions`.
+
+??? note "Domain/Architecture Isomorphism"
+    This concept explores how the structural characteristics of an architecture correspond to a particular architecture style. `Some domains naturally match certain architectural topologies, while others may be ill-suited for specific styles`.
+
+    For instance, the `microkernel architecture style perfectly fits a system requiring customizability`, allowing architects to design plug-in customizations. Another example is genome analysis, where numerous discrete operations are essential, making space-based architecture with multiple discrete processors an ideal choice. Conversely, `some problem domains are inherently incompatible with specific architecture styles`. Highly scalable systems, for example, face challenges with large monolithic designs, as supporting numerous concurrent users becomes complex in a tightly coupled code base. 
+
+Considering these aspects, `architects must make several key determinations`:
+
+!!! info "Monolith vs Distributed Architecture"
+    `Deciding whether a single set of architecture characteristics suffices or if different parts of the system require diverse characteristics is crucial`. A monolith may be suitable for a unified set, while distributed architecture becomes necessary for diverse characteristics.
+
+!!! info "Data Storage Decisions"
+    In a monolithic architecture, a single relational database or a few may suffice, while in a distributed architecture, `architects must decide where data should reside and how it flows throughout the system`.
+
+!!! info "Communication Styles between Services—Synchronous or Asynchronous?"
+    `Determining the communication style between services is the next consideration`. While synchronous communication is more convenient, asynchronous communication offers unique benefits but comes with its set of challenges.
+
+`The output of this design process encompasses the architecture's topology`, including the chosen style and hybridizations, architecture decision records documenting critical design aspects, and architecture fitness functions safeguarding essential principles and operational characteristics.
