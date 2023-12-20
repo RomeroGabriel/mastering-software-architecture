@@ -1,5 +1,5 @@
 site_name: Mastering Software Architecture
-docs_dir: "documentation"
+docs_dir: "doc"
 
 nav:
   - Home: index.md
