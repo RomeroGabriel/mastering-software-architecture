@@ -623,6 +623,49 @@
   
   
     <li class="md-nav__item">
+      <a href="../choosing_arch_style/" class="md-nav__link">
+        Choosing the Appropriate Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+          Architecture Styles Descriptions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_6_5">
+          <span class="md-nav__icon md-icon"></span>
+          Architecture Styles Descriptions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../layered_arch/" class="md-nav__link">
         Layered Architecture Style
       </a>
@@ -769,6 +812,41 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../orchestration_arch/" class="md-nav__link">
+        Orchestration-Driven Service-Oriented Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../microservices/" class="md-nav__link">
+        Microservices Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -855,7 +933,7 @@
 <h2 id="topology">Topology</h2>
 <p><code>The structure of service-based architecture is like a distributed system with different layers</code>. It includes a user interface that's deployed separately, bigger independent services, and a central database that holds everything together.</p>
 <p>In this style, the <code>services, which are like big chunks of the application, are called domain services. These services operate autonomously and are separately deployed. They share one big database</code>. There are usually 4 to 12 of these services in one application.</p>
-<p><img alt="Basic topology of the service-based architecture style Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/service-base-arch.png" /></p>
+<p><img alt="Basic topology of the service-based architecture style Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/service-base-arch.png" /></p>
 <blockquote>
 <p>Basic topology of the service-based architecture style <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
 </blockquote>
@@ -866,7 +944,7 @@
 <p>Within the service-based architecture style, various topology variants exist, making it one of the most adaptable styles.</p>
 <details class="example">
 <summary>Broken User Interface</summary>
-<p><img alt="User interface variants from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/service-base-arch-example2.png" /></p>
+<p><img alt="User interface variants from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/service-base-arch-example2.png" /></p>
 <blockquote>
 <p>User interface variants from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
 </blockquote>
@@ -874,7 +952,7 @@
 <details class="example">
 <summary>Multiple Databases</summary>
 <p>Dividing a single monolithic database into <code>separate databases, sometimes even establishing domain-specific databases that match each domain service</code>, similar to how it's done in microservices. <code>The key here is to ensure that each separate database doesn't contain data needed by another domain service. This approach prevents the need for communication between domain services (something to avoid in service-based architecture) and avoids duplicating data across databases</code>.</p>
-<p><img alt="Database variants from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/service-base-arch-example3.png" /></p>
+<p><img alt="Database variants from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/service-base-arch-example3.png" /></p>
 <blockquote>
 <p>Database variants from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
 </blockquote>
@@ -882,7 +960,7 @@
 <details class="example">
 <summary>API Layer</summary>
 <p>Another possibility is to introduce an <code>API layer, comprising a reverse proxy or gateway between the user interface and services</code>. This practice is <code>beneficial when exposing domain service functions to external systems or consolidating shared cross-cutting concerns</code>, moving them outside the user interface. Such concerns might include managing metrics, security, auditing requirements, and service discovery.</p>
-<p><img alt="Adding an API layer between the user interface and domain services from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/service-base-arch-example4.png" /></p>
+<p><img alt="Adding an API layer between the user interface and domain services from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/service-base-arch-example4.png" /></p>
 <blockquote>
 <p>Adding an API layer between the user interface and domain services from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
 </blockquote>
@@ -917,7 +995,7 @@
 <p class="admonition-title">Using partitioning database and libraries</p>
 <p>For instance, logical partitioning can be executed by <code>segmenting the database into distinct domains (such as common, customer, invoicing, order, and tracking), with corresponding shared libraries matching these partitions</code>. Employing this technique <code>ensures that changes made to a specific table within a particular domain only affect services associated with that partition</code>.
 <code>It's also possible to have a common domain with a common shared library used by all services</code>. <code>These tables are shared across all services</code>, and any changes to these tables require coordination among all services accessing the shared database.</p>
-<p><img alt="Using multiple shared libraries for database entity objects from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/service-base-arch-example-db.png" /></p>
+<p><img alt="Using multiple shared libraries for database entity objects from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/service-base-arch-example-db.png" /></p>
 <blockquote>
 <p>Using multiple shared libraries for database entity objects from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
 </blockquote>

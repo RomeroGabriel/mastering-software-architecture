@@ -12,6 +12,8 @@
         <link rel="prev" href="../event_driven_arch/">
       
       
+        <link rel="next" href="../orchestration_arch/">
+      
       <link rel="icon" href="../../images/arch.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.17">
     
@@ -621,6 +623,49 @@
   
   
     <li class="md-nav__item">
+      <a href="../choosing_arch_style/" class="md-nav__link">
+        Choosing the Appropriate Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+          Architecture Styles Descriptions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_6_5">
+          <span class="md-nav__icon md-icon"></span>
+          Architecture Styles Descriptions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../layered_arch/" class="md-nav__link">
         Layered Architecture Style
       </a>
@@ -799,10 +844,79 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#replicated-vs-distributed-caching" class="md-nav__link">
+    Replicated vs Distributed Caching
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-examples" class="md-nav__link">
+    Implementation Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concert-ticketing-system" class="md-nav__link">
+    Concert Ticketing System
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#online-auction-system" class="md-nav__link">
+    Online Auction System
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../orchestration_arch/" class="md-nav__link">
+        Orchestration-Driven Service-Oriented Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../microservices/" class="md-nav__link">
+        Microservices Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -915,6 +1029,40 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#replicated-vs-distributed-caching" class="md-nav__link">
+    Replicated vs Distributed Caching
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-examples" class="md-nav__link">
+    Implementation Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concert-ticketing-system" class="md-nav__link">
+    Concert Ticketing System
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#online-auction-system" class="md-nav__link">
+    Online Auction System
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -936,7 +1084,7 @@
 <details class="example">
 <summary>Web-Based Bussiness</summary>
 <p>In web-based businesses, the usual flow involves a <code>request from a browser hitting the web server, then an application server, and finally, the database server</code>. This works well for a small user group, but as <code>users increase, bottlenecks emerge at each layer</code>—first at the web server, then the application server, and finally, the database server. <code>Scaling out web servers is a common response, but it often shifts the bottleneck to the application server, which is more complex and costly to scale</code>. Even if the database is scaled (and even more costly to scale), the result is a <code>triangle-shaped topology</code>, with web servers being the easiest to scale and the database the hardest.
-<img alt="Scalability limits within a traditional web-based topology from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/space-based-web-based-example.png" /></p>
+<img alt="Scalability limits within a traditional web-based topology from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/space-based-web-based-example.png" /></p>
 <blockquote>
 <p>Scalability limits within a traditional web-based topology from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
 </blockquote>
@@ -951,7 +1099,7 @@
 <p>Key components include processing units with application code, virtualized middleware for unit management, data pumps for asynchronous data updates to the database, data writers for database updates, and data readers delivering database data to processing units on startup.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<p><img alt="Space-based architecture basic topology from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/space-based-basic-topology.png" /></p>
+<p><img alt="Space-based architecture basic topology from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/space-based-basic-topology.png" /></p>
 <blockquote>
 <p>Space-based architecture basic topology from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
 </blockquote>
@@ -967,7 +1115,7 @@
 <div class="admonition info">
 <p class="admonition-title">Data Grid</p>
 <p>The data grid stands out as a <code>pivotal component</code> in this architecture style. In modern implementations, <code>it resides within processing units as a replicated cache</code>. However, when setups <code>requiring an external controller or using a distributed cache, this functionality extends to both processing units and the virtualized middleware's data grid component</code>. As the messaging grid can route requests to any available processing unit, <code>maintaining identical data in each unit's in-memory grid is crucial</code>. Despite the synchronous data replication illustration below, actual synchronization is asynchronous and rapid, typically finishing in under 100 milliseconds.</p>
-<p><img alt="Data grid from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/space-based-data-grid.png" /></p>
+<p><img alt="Data grid from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/space-based-data-grid.png" /></p>
 <blockquote>
 <p>Data grid from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
 </blockquote>
@@ -990,7 +1138,7 @@
 <p><code>Data pumps adhere to contracts</code>, defining actions (add, delete, update) associated with contract data. These contracts may take the form of <code>JSON</code> or <code>XML</code> schemas, objects, or value-driven messages. <code>For updates, the data pump message usually contains only the new data values</code>, such as the updated phone number and customer ID, along with an action to perform the update.</p>
 <details class="example">
 <summary>Example</summary>
-<p><img alt="Data pump used to send data to a database from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/space-based-data-pumps.png" /></p>
+<p><img alt="Data pump used to send data to a database from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/space-based-data-pumps.png" /></p>
 <blockquote>
 <p>Data pump used to send data to a database from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
 </blockquote>
@@ -1000,10 +1148,10 @@
 <p>A domain-based data writer <code>encapsulates the required database logic to manage updates within a specific domain</code>, such as customer information, irrespective of the number of data pumps it handles.</p>
 <details class="example">
 <summary>Example</summary>
-<p><img alt="Domain-based data writer from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/space-based-data-writer1.png" /></p>
+<p><img alt="Domain-based data writer from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/space-based-data-writer1.png" /></p>
 <blockquote>
 <p>Domain-based data writer from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a>
-<img alt="Dedicated data writers for each data pump from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/space-based-data-writer2.png" />
+<img alt="Dedicated data writers for each data pump from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/space-based-data-writer2.png" />
 Dedicated data writers for each data pump from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
 </blockquote>
 </details>
@@ -1020,7 +1168,7 @@ Dedicated data writers for each data pump from <a href="https://learning.oreilly
 <p><code>Together, data writers and data readers form a data abstraction layer</code>, ensuring processing units are decoupled from the underlying database table structures. In space-based architecture, a data abstraction layer allows incremental changes to the database without directly impacting the processing units.</p>
 <details class="example">
 <summary>Example</summary>
-<p><img alt="Data reader with reverse data pump from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/space-based-data-reader.png" /></p>
+<p><img alt="Data reader with reverse data pump from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/space-based-data-reader.png" /></p>
 <blockquote>
 <p>Data reader with reverse data pump from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
 </blockquote>
@@ -1156,11 +1304,71 @@ Dedicated data writers for each data pump from <a href="https://learning.oreilly
 <p>A key strength of this architecture lies in the possibility of deploying applications through <code>processing units and virtualized middleware in managed cloud-based environments while maintaining physical databases and associated data on-premises</code>. This configuration <code>facilitates highly efficient cloud-based data synchronization</code>, leveraging asynchronous data pumps and the eventual consistency model inherent in this architecture. <code>The setup allows for transactional processing in dynamic and elastic cloud-based environments while upholding the management of physical data, reporting, and data analytics securely within the local and on-premises environments</code>.</p>
 <details class="example">
 <summary>Example</summary>
-<p><img alt="Hybrid cloud-based and on-prem topology from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/space-based-hybrid-cloud.png" /></p>
+<p><img alt="Hybrid cloud-based and on-prem topology from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/space-based-hybrid-cloud.png" /></p>
 <blockquote>
 <p>Hybrid cloud-based and on-prem topology from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
 </blockquote>
 </details>
+<h2 id="replicated-vs-distributed-caching">Replicated vs Distributed Caching</h2>
+<p><code>Space-based architecture heavily relies on caching to facilitate the transactional processing of an application</code>. While the <code>predominant caching model is replicated caching</code>, space-based architecture can also leverage <code>distributed caching</code>.</p>
+<p><code>In replicated caching, each processing unit possesses its in-memory data grid synchronized among all units using the same named cache</code>. This method is not only <code>exceptionally fast but also offers robust fault tolerance</code>, as there's no central server acting as a single point of failure.</p>
+<details class="warning">
+<summary>About Replicate Cache and Single Point of Failure</summary>
+<p>Some exceptions may exist based on the caching product's implementation, but the trend is moving away from relying on external controllers for replication.</p>
+</details>
+<p>Replicated caching is the standard for space-based architecture, but certain scenarios, <code>such as high data volumes or update rates, may necessitate the use of distributed caching</code>. <code>Internal memory caches exceeding 100 MB can pose challenges for elasticity and scalability, and in situations with high update rates, distributed caching becomes a viable alternative</code>. Furthermore, as shown in <a href="#data-collisions">Data Collisions</a>, in situations where the <code>update rate of cache data becomes too high, and the data grid struggles to maintain consistency across all processing unit instances</code>, distributed caching can be a viable solution.</p>
+<p><code>Distributed caching involves an external server or service dedicated to maintaining a centralized cache</code>. Processing units access data from this central cache server through a <code>proprietary protocol</code>. <code>While distributed caching ensures high data consistency due to the centralized nature of the data, it comes with performance trade-offs, as accessing cache data remotely adds latency to the system</code>. <code>Fault tolerance can be a concern, and mirroring the distributed cache is one approach to mitigate it, though it may introduce consistency issues</code>.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><img alt="Distributed caching between processing units from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/space-based-distributed-caching.png" /></p>
+<blockquote>
+<p>Distributed caching between processing units from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+</blockquote>
+</div>
+<p>Choosing between replicated and distributed caching depends on factors such as <code>data consistency needs, performance considerations, and fault tolerance requirements</code>. <code>Distributed caching excels in maintaining highly consistent data, while replicated caching offers better performance and fault tolerance</code>. Often, <code>both models can be applicable within a single application context</code>, allowing each to be leveraged based on its specific strengths. For instance, a <code>distributed caching model may be suitable for maintaining consistently critical data</code> like inventory counts, while a <code>replicated cache may be chosen for performance and fault tolerance in managing less dynamic data</code> like customer profiles.</p>
+<table>
+<thead>
+<tr>
+<th>Decision criteria</th>
+<th>Replicated cache</th>
+<th>Distributed cache</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Optimization</td>
+<td>Performance</td>
+<td>Consistency</td>
+</tr>
+<tr>
+<td>Cache size</td>
+<td>Small(&lt;100MB)</td>
+<td>Large(&gt;500MB)</td>
+</tr>
+<tr>
+<td>Type of data</td>
+<td>Relatively static</td>
+<td>Highly dynamic</td>
+</tr>
+<tr>
+<td>Update frequency</td>
+<td>Relatively low</td>
+<td>High update rate</td>
+</tr>
+<tr>
+<td>Fault tolerance</td>
+<td>High</td>
+<td>Low</td>
+</tr>
+</tbody>
+</table>
+<h2 id="implementation-examples">Implementation Examples</h2>
+<p><code>Space-based architecture proves effective for applications experiencing high spikes in user or request volume</code>, especially those surpassing 10,000 concurrent users.</p>
+<h3 id="concert-ticketing-system">Concert Ticketing System</h3>
+<p>Concert ticketing systems face unique challenges, particularly during popular concert announcements <code>when user volumes skyrocket from hundreds to potentially tens of thousands</code>. <code>Constantly accessing a central database synchronously in such systems would likely not work</code>. The sheer volume of tens of thousands of concurrent requests, coupled with the rapid update frequency, makes it exceedingly difficult for a standard database to handle through conventional synchronous transactions at this scale.The architecture's <code>high elasticity is crucial</code> for handling these sudden spikes.</p>
+<p><code>Space-based architecture allows instant recognition of increased user demand, prompting the deployment manager to initiate numerous processing units to efficiently manage the surge</code>. Configuring the deployment manager to start these instances right before ticket sales ensures optimal performance.</p>
+<h3 id="online-auction-system">Online Auction System</h3>
+<p>Online auction systems share similarities with concert ticketing in terms of <code>high performance and elasticity demands</code>, coupled with unpredictable user and request spikes. <code>Space-based architecture excels in this context by allowing the dynamic creation and destruction of processing units based on changing load conditions</code>. Dedicated processing units for each auction ensure data consistency, and the asynchronous nature of data pumps facilitates swift transmission of bidding data to various processing units, enhancing overall bidding process performance.</p>
 
 
 

@@ -1,0 +1,1266 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../orchestration_arch/">
+      
+      
+      <link rel="icon" href="../../images/arch.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.17">
+    
+    
+      
+        <title>Microservices Architecture Style - Mastering Software Architecture</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.26e3688c.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_markdown_exec_ansi.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="blue">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#microservices-architecture-style" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Mastering Software Architecture" class="md-header__button md-logo" aria-label="Mastering Software Architecture" data-md-component="logo">
+      
+  <img src="../../images/arch.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Mastering Software Architecture
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Microservices Architecture Style
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../basic/whats_software_arc/" class="md-tabs__link">
+        Basic
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../modularity/" class="md-tabs__link">
+        Modularity
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../components/" class="md-tabs__link">
+      Components
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../arch_characteristics/arch_characteristics/" class="md-tabs__link">
+        Architecture Characteristics
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link md-tabs__link--active">
+        Architecture Styles
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Mastering Software Architecture" class="md-nav__button md-logo" aria-label="Mastering Software Architecture" data-md-component="logo">
+      
+  <img src="../../images/arch.png" alt="logo">
+
+    </a>
+    Mastering Software Architecture
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Basic
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Basic
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/whats_software_arc/" class="md-nav__link">
+        What's Software Architecture?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/expectations_of_architect/" class="md-nav__link">
+        Expectations of an Architect
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/architectural_thinking/" class="md-nav__link">
+        Architectural Thinking
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Modularity
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Modularity
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modularity/" class="md-nav__link">
+        Definition
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modularity/measuring/" class="md-nav__link">
+        Measuring Modularity
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/" class="md-nav__link">
+        Components
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          Architecture Characteristics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Architecture Characteristics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arch_characteristics/arch_characteristics/" class="md-nav__link">
+        Definition
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arch_characteristics/identifying_characteristics/" class="md-nav__link">
+        Identifying
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arch_characteristics/measuring_governing/" class="md-nav__link">
+        Measuring and Governing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arch_characteristics/scope/" class="md-nav__link">
+        Scope
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          Architecture Styles
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Architecture Styles
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../foundations/" class="md-nav__link">
+        Foundations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mono_distributed/" class="md-nav__link">
+        Monolithic vs Distributed Architectures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../choosing_arch_style/" class="md-nav__link">
+        Choosing the Appropriate Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+          Architecture Styles Descriptions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_6_5">
+          <span class="md-nav__icon md-icon"></span>
+          Architecture Styles Descriptions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../layered_arch/" class="md-nav__link">
+        Layered Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pipeline_arch/" class="md-nav__link">
+        Pipeline Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../microkernel_arch/" class="md-nav__link">
+        Microkernel Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../service_based_arch/" class="md-nav__link">
+        Service-Base Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../event_driven_arch/" class="md-nav__link">
+        Event-Driven Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../space_based_arch/" class="md-nav__link">
+        Space-Based Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../orchestration_arch/" class="md-nav__link">
+        Orchestration-Driven Service-Oriented Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Microservices Architecture Style
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Microservices Architecture Style
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#history" class="md-nav__link">
+    History
+  </a>
+  
+    <nav class="md-nav" aria-label="History">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reuse-trade-offs-and-first-law-of-software-architecture" class="md-nav__link">
+    Reuse, Trade-Offs and First Law of Software Architecture
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#topology" class="md-nav__link">
+    Topology
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#distributed" class="md-nav__link">
+    Distributed
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bounded-context" class="md-nav__link">
+    Bounded Context
+  </a>
+  
+    <nav class="md-nav" aria-label="Bounded Context">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#granularity" class="md-nav__link">
+    Granularity
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-isolation" class="md-nav__link">
+    Data Isolation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-layer" class="md-nav__link">
+    API Layer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operational-reuse" class="md-nav__link">
+    Operational Reuse
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frontends" class="md-nav__link">
+    Frontends
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#communication" class="md-nav__link">
+    Communication
+  </a>
+  
+    <nav class="md-nav" aria-label="Communication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#choreography-and-orchestration" class="md-nav__link">
+    Choreography and Orchestration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transactions-and-sagas" class="md-nav__link">
+    Transactions and SAGAS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#history" class="md-nav__link">
+    History
+  </a>
+  
+    <nav class="md-nav" aria-label="History">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reuse-trade-offs-and-first-law-of-software-architecture" class="md-nav__link">
+    Reuse, Trade-Offs and First Law of Software Architecture
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#topology" class="md-nav__link">
+    Topology
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#distributed" class="md-nav__link">
+    Distributed
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bounded-context" class="md-nav__link">
+    Bounded Context
+  </a>
+  
+    <nav class="md-nav" aria-label="Bounded Context">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#granularity" class="md-nav__link">
+    Granularity
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-isolation" class="md-nav__link">
+    Data Isolation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-layer" class="md-nav__link">
+    API Layer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operational-reuse" class="md-nav__link">
+    Operational Reuse
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frontends" class="md-nav__link">
+    Frontends
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#communication" class="md-nav__link">
+    Communication
+  </a>
+  
+    <nav class="md-nav" aria-label="Communication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#choreography-and-orchestration" class="md-nav__link">
+    Choreography and Orchestration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transactions-and-sagas" class="md-nav__link">
+    Transactions and SAGAS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="microservices-architecture-style">Microservices Architecture Style</h1>
+<h2 id="history">History</h2>
+<p>Microservices differs in this regard—it was namewd fairly early in its usage and popularized by a famous blog entry by Martin Fowler and James Lewis entitled <a href="https://martinfowler.com/articles/microservices.html">Microservices</a>, published in March 2014. They recognized many common characteristics in this relatively new architectural style and delineated them.</p>
+<p><code>A significant influence on microservices comes from domain-driven design (DDD)</code>, a logical design process for software projects. One key concept from DDD, known as <a href="#bounded-context">bounded context</a>, played a decisive role in inspiring microservices.</p>
+<h3 id="reuse-trade-offs-and-first-law-of-software-architecture">Reuse, Trade-Offs and First Law of Software Architecture</h3>
+<p>While reuse holds clear advantages, it's crucial to remember the First Law of Software Architecture, which emphasizes trade-offs. <code>The negative trade-off of reuse is increased coupling</code>. When architects design a <code>system to prioritize reuse, they inherently introduce coupling, whether through inheritance or composition</code>.</p>
+<p><code>In scenarios where the architect's goal emphasizes high degrees of decoupling, microservices favor duplication over reuse</code>. The central objective of microservices is to achieve a high level of decoupling, aligning with the logical notion of bounded context from domain-driven design.</p>
+<h2 id="topology">Topology</h2>
+<p>In the realm of microservices, <code>the architectural topology is characterized by the small size and single-purpose nature of each service</code>. Unlike other distributed architectures, <code>microservices envision services as standalone entities, each encapsulating all the essential components needed for independent operation, including databases and other dependencies</code>.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><img alt="The topology of the microservices architecture style from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/microservices_arch_example.png" /></p>
+<blockquote>
+<p>The topology of the microservices architecture style from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+</blockquote>
+</div>
+<h2 id="distributed">Distributed</h2>
+<p>Microservices constitute a distributed architecture, <code>where each service operates in its independent process</code>. Initially tied to physical machines, <code>this concept has evolved to embrace virtual machines and containers</code>. The extensive decoupling of services in a distributed environment addresses common challenges in architectures featuring multitenant infrastructure, <code>offering operational advantages such as efficient resource utilization and improved isolation</code>.</p>
+<p><code>While this distributed approach brings benefits, it also introduces performance considerations</code>. <code>Network calls</code> inherently take longer than local method calls, and <code>security verification at each endpoint</code> adds processing time. Consequently, architects must carefully consider granularity when designing a system to mitigate these implications.</p>
+<p>One notable aspect of microservices is the <code>reluctance to employ transactions across service boundaries</code>. Seasoned architects emphasize the <code>importance of determining the appropriate granularity for services</code> as a key factor in achieving success within this architecture.</p>
+<h2 id="bounded-context">Bounded Context</h2>
+<p><code>The bounded context concept embodies a decoupling strategy</code>. In the context of software development, when a developer defines a domain, <code>that domain includes many entities and behaviors reflected in artifacts such as code and database schemas</code>.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>An application might have a domain named <code>CatalogCheckout</code>, encompassing elements like catalog items, customers, and payment.</p>
+</div>
+<p><code>In a traditional monolithic architecture, developers commonly share these concepts, creating reusable classes and interconnected databases</code>. In a bounded context, however, <code>internal components, like code and data schemas, are tightly coupled to accomplish their work but remain decoupled from anything outside the bounded context</code>, such as a database or class definition from another bounded context. This allows each context to define only what it requires without being influenced by other constituents.</p>
+<p><code>Microservices architecture revolves around the core concept of bounded context, where each service encapsulates a specific domain or workflow</code>. This approach aims to include everything essential for a service to operate independently within the application, <code>discouraging unnecessary coupling and emphasizing duplication over shared resources</code>.</p>
+<h3 id="granularity">Granularity</h3>
+<p>Determining the <code>appropriate granularity for services</code> in microservices poses a common challenge for architects. <code>Oversimplifying by creating overly small services can lead to increased communication links between services, impacting overall system efficiency</code>. <code>Striking the right balance is crucial for achieving effective communication and collaboration among services</code>.</p>
+<p>Applications may have naturally expansive boundaries for certain segments, <code>acknowledging that certain business processes exhibit higher levels of coupling than others is essential</code>. Architects can navigate this challenge by adhering to guidelines that assist in identifying the most suitable boundaries for effective microservices implementation :</p>
+<div class="admonition info">
+<p class="admonition-title">Purpose</p>
+<p>Microservices should ideally <code>exhibit high functional cohesion, representing a distinct and significant behavior contributing to the overall application</code>.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Transactions</p>
+<p><code>Minimizing reliance on transactions enhances the robustness of distributed architectures</code>.Bounded contexts are business workflows, and often <code>entities cooperating in transactions can guide architects in defining suitable service boundaries</code>.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Choreography</p>
+<p>Architectures that balance domain isolation with communication requirements might benefit from <code>bundling services back into larger entities to mitigate communication overhead, in cases when multiple services require extensive communications</code>.</p>
+</div>
+<p><code>Iterative refinement is essential for achieving optimal service design</code>. Architects rarely achieve the perfect granularity, data dependencies, and communication styles on the initial attempt. <code>Continuous iteration and refinement increase the likelihood of developing a well-tailored and efficient microservices architecture</code>.</p>
+<h3 id="data-isolation">Data Isolation</h3>
+<p>Microservices necessitates a focus on data isolation, an aspect that distinguishes it from other architecture styles that rely on a single database for persistence. <code>In the pursuit of minimal coupling, microservices avoids shared schemas and databases functioning as integration points</code>.</p>
+<p>When determining service granularity, architects must be cautious of falling into the <a href="../../components/#component-design">entity trap</a> and <code>resist the temptation to simply model their services to resemble single entities in a database</code>.</p>
+<p><code>Unlike conventional practices of utilizing relational databases for consolidating values within a system to establish a single source of truth</code>, microservices, with its distributed nature, poses a challenge in maintaining this approach. Architects are tasked with <code>deciding how to address this issue: designating one domain as the source of truth for specific information and coordinating with it for value retrieval, or employing database replication or caching for information distribution</code>.</p>
+<p>While this level of data isolation may present challenges, it also opens avenues for <code>flexibility</code>. With teams no longer compelled to converge on a single database, <code>each service can opt for the most suitable tool</code> based on factors such as cost, storage type, and other considerations. In a highly decoupled system, teams enjoy the advantage of <code>adapting their choices without affecting other teams, as coupling to implementation details is prohibited</code>.</p>
+<h2 id="api-layer">API Layer</h2>
+<p>In the microservices paradigm, diagrams often feature an <code>API layer positioned between the system's consumers</code> (user interfaces or calls from other systems), <code>although its inclusion is optional</code>. While the API layer serves various purposes, <code>it should not function as a mediator or orchestration tool</code> if architects intend to adhere to the fundamental philosophy of this architecture. According to this philosophy, <code>all significant logic within microservices should take place within a bounded context</code>, and introducing orchestration or similar logic in a mediator would violate this principle.</p>
+<p>This also illustrates the <code>difference between technical and domain partitioning in architecture</code>: architects typically use <code>mediators in technically partitioned architectures</code>, whereas <code>microservices is firmly domain partitioned</code>.</p>
+<h2 id="operational-reuse">Operational Reuse</h2>
+<p>In the microservices paradigm, <code>where duplication is favored over coupling</code>, architects face the challenge of <code>handling operational concerns that traditionally benefit from coupling</code>, such as monitoring, logging, and circuit breakers. Unlike the traditional service-oriented architecture philosophy, which promotes reusing both domain and operational functionality, microservices endeavors to separate these two concerns.</p>
+<p>As teams build multiple microservices, they recognize <code>common elements that could benefit from a shared approach</code>. The <a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/sidecar">sidecar</a> pattern emerges as a solution to this challenge. <code>Operational concerns are encapsulated within each service as a distinct component</code>, owned either by individual teams or a centralized infrastructure team. <code>This sidecar component efficiently manages all operational aspects that teams find advantageous to couple together</code>. Consequently, when updates or upgrades are needed, the shared infrastructure team can seamlessly update the sidecar, ensuring that each microservice receives the new functionality.</p>
+<p><code>The sidecar pattern not only addresses the challenge of common operational concerns but also facilitates the creation of a</code> <a href="https://www.redhat.com/en/topics/microservices/what-is-a-service-mesh">service mesh</a>. This mesh allows for centralized control across the architecture for vital concerns like logging and monitoring. <code>The individual sidecar components connect to form a cohesive operational interface, creating a unified experience across all microservices</code>. Each microservice functions as a node within this mesh, offering a console for global control over operational coupling, including monitoring levels, logging, and other cross-cutting operational considerations.</p>
+<p><code>Service discovery plays a crucial role in achieving elasticity in microservices architectures</code>. Instead of directly invoking a single service, <code>requests are routed through a service discovery tool, which monitors request patterns and can scale or spin up new service instances as needed</code>. <code>Architects often integrate service discovery into the service mesh, making it an integral part of every microservice</code>. The API layer is frequently utilized to host service discovery, providing a centralized location for user interfaces or other calling systems to discover and create services in a flexible and consistent manner.</p>
+<h2 id="frontends">Frontends</h2>
+<p>Microservices prioritize decoupling, <code>aiming to extend this separation to both backend and user interface concerns</code>. While the <code>original vision of microservices included the user interface as part of the bounded context</code> in alignment with Domain-Driven Design (DDD) principles, <code>practical considerations, particularly in web applications, have presented challenges to fully realizing this goal</code>. As a result, two predominant styles of user interfaces have emerged in microservices architectures.</p>
+<p>The first style involves a <code>monolithic frontend</code>, where a <code>single user interface interacts with the backend through the API layer</code> to fulfill user requests. This frontend can take various forms, such as a rich desktop application, mobile app, or web application. For instance, many modern web applications utilize JavaScript web frameworks to construct a unified user interface.</p>
+<p>The second option for user interfaces adopts <code>microfrontends, leveraging components at the user interface level to achieve a level of granularity and isolation in sync with the backend services</code>. In this approach, <code>each service emits its own user interface</code>, and the frontend coordinates with these emitted user interface components. This pattern allows teams to establish clear service boundaries from the user interface to the backend services, promoting unity within a single team across the entire domain.</p>
+<h2 id="communication">Communication</h2>
+<p>In microservices, the <code>challenge of determining appropriate granularity impacts both data isolation and communication, influencing how services remain decoupled while still coordinating effectively</code>.</p>
+<p>At its core, architects must make a <code>fundamental decision regarding synchronous or asynchronous communication</code>. Synchronous communication entails the caller waiting for a response from the callee. Microservices architectures typically employ <code>protocol-aware heterogeneous interoperability</code>.</p>
+<div class="admonition info">
+<p class="admonition-title">Protocol-Aware, Heterogeneous and Interoperability</p>
+<p><strong>Protocol-aware</strong></p>
+<p>Because microservices lack a centralized integration hub to avoid operational coupling, <code>each service should understand how to call other services</code>. As a result, <code>architects often standardize on specific protocols for inter-service communication</code>, such as a level of REST, message queues, and so forth. This implies that services must be aware of (or discover) the protocol to use when calling other services.</p>
+<p><strong>Heterogeneous</strong></p>
+<p><code>Each service may be developed in a different technology stack</code>. Embracing heterogeneity signifies that microservices fully supports polyglot environments, where various services utilize different platforms.</p>
+<p><strong>Interoperability</strong></p>
+<p><code>Describing services calling one another</code>, interoperability in microservices aims to discourage transactional method calls while <code>promoting network-based communication</code>.</p>
+</div>
+<p>For <code>asynchronous</code> communication, architects often leverage <code>events and messages</code>, resulting in an internal <a href="../event_driven_arch/#event-driven-architecture-style">event-driven architecture</a>. In microservices, the broker and mediator patterns manifest as choreography and orchestration.</p>
+<h3 id="choreography-and-orchestration">Choreography and Orchestration</h3>
+<p><code>Choreography in microservices utilizes the communication style of a</code> <a href="../event_driven_arch/#broker-topology">broker event-driven architecture</a>. Unlike architectures with a central coordinator, <code>choreography adheres to the bounded context philosophy</code>, promoting the implementation of decoupled events between services. In this approach, <code>each service independently calls others as needed, without relying on a central mediator</code>.</p>
+<details class="example">
+<summary>Choreography</summary>
+<p>Suppose a user requests details about a wish list, and the <code>CustomerWishList</code> service lacks essential information. In choreography, it would make a <code>direct call to CustomerDemographics to retrieve the missing data</code>, delivering the result back to the user.</p>
+<p><img alt="Using choreography in microservices to manage coordination from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/microservices_choreography_example.png" /></p>
+<blockquote>
+<p>Using choreography in microservices to manage coordination from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+</blockquote>
+</details>
+<p>Because microservices architectures <code>lacks a global mediator</code> like in some service-oriented architectures, <code>allow architects to create localized mediators when coordination across multiple services is necessary</code>. Developers can design a <code>service dedicated to coordinating specific calls, such as obtaining comprehensive customer information</code>. Users then interact with this mediator service, which, in turn, communicates with the required services.</p>
+<details class="example">
+<summary>Orchestration</summary>
+<p><img alt="Using orchestration in microservices from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/microservices_orchestration_example.png" /></p>
+<blockquote>
+<p>Using orchestration in microservices from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+</blockquote>
+</details>
+<p>The First Law of Software Architecture acknowledges that <code>neither choreography nor orchestration is flawless—each comes with trade-offs</code>. In choreography, architects uphold the highly decoupled philosophy of the architecture, maximizing the benefits it offers. However, <code>handling common challenges like error management and coordination becomes more intricate in choreographed environments</code>.</p>
+<p>In scenarios involving complex workflows, <code>the initial service called may need to act as a mediator, coordinating interactions across a range of other services</code>. This pattern, known as the <code>front controller pattern</code>, transforms a nominally choreographed service into a more complex mediator. <code>The drawback lies in the increased complexity within the service</code>.</p>
+<details class="example">
+<summary>Complex Choreography</summary>
+<p><img alt="Using choreography for a complex business process from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/microservices_choreography_complex_example.png" /></p>
+<blockquote>
+<p>Using choreography for a complex business process from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+</blockquote>
+</details>
+<p>On the other hand, <code>architects may opt for orchestration in handling intricate business processes</code>. <code>By constructing a mediator, architects manage the complexity and coordination required for the business workflow</code>. While this <code>introduces coupling between services</code>, it enables architects to concentrate coordination efforts into a single service, minimizing the impact on others. Often, <code>domain workflows inherently involve some level of coupling, challenging architects to represent that coupling in ways that align with both domain and architectural objectives</code>.</p>
+<details class="example">
+<summary>Complex Orchestration</summary>
+<p><img alt="Using orchestration in microservices from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/microservices_orchestration_complex_example.png" /></p>
+<blockquote>
+<p>Using orchestration in microservices from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+</blockquote>
+</details>
+<h3 id="transactions-and-sagas">Transactions and SAGAS</h3>
+<p>Architects in the realm of microservices <code>looks for extreme decoupling</code>, but they often grapple with the <code>challenge of coordinating transactions across services</code>. The same level of decoupling that characterizes the architecture, especially in terms of databases, <code>complicates achieving the atomicity that was once straightforward in monolithic applications</code>.</p>
+<p><code>Constructing transactions that span service boundaries contradicts the fundamental decoupling principle of microservices and introduces a form of dynamic connascence, the worst known connascence</code>, <a href="../../modularity/measuring/#dynamic-connascence">the connascence of value</a>. The foremost advice for architects contemplating transactions across services is unequivocal: avoid it! Instead, address the granularity of components. Transaction boundaries often serve as a key indicator of service granularity.</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>The foremost advice for architects contemplating transactions across services is unequivocal: <code>avoid it!</code> Instead, <code>address the granularity of components.</code> Transaction boundaries often serve as a key indicator of service granularity.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Don’t do transactions in microservices. <code>Fix granularity instead!</code></p>
+</div>
+<p>For services that still demanding transactional coordination, <code>there are patterns available to manage transaction orchestration, with significant trade-offs</code>.</p>
+<p>One prevalent distributed transactional pattern in microservices is the <a href="https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/saga/saga">saga pattern</a>. In this approach, <code>a service assumes the role of a mediator, orchestrating multiple service calls and coordinating the transaction</code>. The mediator initiates each part of the transaction, logs success or failure, and manages the overall outcome. <code>If everything proceeds as planned, all values in the services and their associated databases update synchronously</code>.</p>
+<details class="example">
+<summary>Example</summary>
+<p><img alt="The saga pattern in microservices architecture from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/microservices_saga_example.png" /></p>
+<blockquote>
+<p>The saga pattern in microservices architecture from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+</blockquote>
+</details>
+<p><code>In the event of an error, the mediator ensures that no part of the transaction succeeds if another part fails</code>. If the initial part succeeds but the subsequent part encounters a failure, the mediator <code>sends a request to all successful parts, instructing them to undo their previous actions</code>. This style of transactional coordination is known as a <code>compensating transaction framework</code>. Typically, developers implement this pattern by <code>placing each mediator-initiated request in a pending state until the overall success is signaled by the mediator</code>. However, this design <code>complexity intensifies when dealing with asynchronous requests</code>, especially if new requests depend on pending transactional states. It also results in <code>increased coordination traffic at the network level</code>.</p>
+<details class="example">
+<summary>Example</summary>
+<p><img alt="Saga pattern compensating transactions for error conditions from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/microservices_saga_error_example.png" /></p>
+<blockquote>
+<p>Saga pattern compensating transactions for error conditions from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+</blockquote>
+</details>
+<p>An alternative implementation of a compensating transaction framework involves developers creating both <code>do</code> and <code>undo</code> operations <code>for each potentially transactional operation</code>. While this approach reduces coordination during transactions, <code>the undo operations tend to be considerably more complex</code> than their counterpart do operations, essentially doubling the effort required for design, implementation, and debugging.</p>
+<p>While architects can technically build transactional behavior across services, doing so <code>contradicts the core rationale behind choosing the microservices pattern</code>. While exceptions may arise, the overarching advice for architects is to use the saga pattern judiciously.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>A few transactions across services may be necessary, but if they dominate the architecture, it indicates potential mistakes in the design!</p>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.tabs.instant", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b425cdc4.min.js"></script>
+      
+    
+  </body>
+</html>

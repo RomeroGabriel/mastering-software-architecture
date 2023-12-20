@@ -623,6 +623,49 @@
   
   
     <li class="md-nav__item">
+      <a href="../choosing_arch_style/" class="md-nav__link">
+        Choosing the Appropriate Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+          Architecture Styles Descriptions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_6_5">
+          <span class="md-nav__icon md-icon"></span>
+          Architecture Styles Descriptions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../layered_arch/" class="md-nav__link">
         Layered Architecture Style
       </a>
@@ -790,6 +833,41 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../orchestration_arch/" class="md-nav__link">
+        Orchestration-Driven Service-Oriented Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../microservices/" class="md-nav__link">
+        Microservices Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -896,12 +974,12 @@
 <p>The concept of the microkernel architecture, often termed the <code>plug-in architecture</code>, originated many years ago and <code>continues to be a prominent feature in modern software design</code>. This style particularly <code>suits product-based applications</code>, which are typically distributed as a single, comprehensive deployment, <code>installed at the customer's location as a third-party product</code>. Its utility isn't limited to products, as it also finds extensive use in custom-built business applications.</p>
 <h2 id="topology">Topology</h2>
 <p>Microkernel architecture is a <code>basic two-components monolithic structure</code>. It consists of a <code>core system and plug-in components</code>. This setup divides the <code>application logic between the autonomous plug-ins</code> and the <code>fundamental core system</code>, allowing for flexibility, customization, and segregation of application features and specific processing logic.</p>
-<p><img alt="Basic components of the microkernel architecture style from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/microkernel_arch_example.png" /></p>
+<p><img alt="Basic components of the microkernel architecture style from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/microkernel_arch_example.png" /></p>
 <blockquote>
 <p>Basic components of the microkernel architecture style from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
 </blockquote>
 <p>The <code>core system assumes the responsibility of supplying necessary data to each plug-in</code>. Decoupling is the main rationale behind this strategy. <code>Any modifications to the database should only affect the core system</code>, not the plug-in components. However, <code>plug-ins can maintain their own distinct data stores accessible solely to their respective plug-ins</code>.</p>
-<p><img alt="Plug-in components can own their own data store from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/microkernel_dbs.png" /></p>
+<p><img alt="Plug-in components can own their own data store from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/microkernel_dbs.png" /></p>
 <blockquote>
 <p>Plug-in components can own their own data store from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
 </blockquote>
@@ -911,11 +989,11 @@
 <p>Depending on the application's scale, the <code>core system can be structured as a layered architecture or a modular monolith</code>. Additionally, it can be split into separately deployed domain services, each containing domain-specific plug-in components.</p>
 <details class="example">
 <summary>Example</summary>
-<p><img alt="Variations of the microkernel architecture core system from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/core-example-1.png" /></p>
+<p><img alt="Variations of the microkernel architecture core system from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/core-example-1.png" /></p>
 <blockquote>
 <p>Variations of the microkernel architecture core system from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of  Software Architecture.</a></p>
 </blockquote>
-<p><img alt="User interface variants from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/core-example-1.png" /></p>
+<p><img alt="User interface variants from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/core-example-1.png" /></p>
 <blockquote>
 <p>User interface variants from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
 </blockquote>
@@ -927,7 +1005,7 @@
 <p>In this scenario, <code>each plug-in functions as a standalone service</code>, or even a microservice implemented within a container. Although this approach may seem conducive to scalability, it's important to note that this setup <code>remains a single architecture quantum due to the monolithic core system. Consequently, every request must first pass through the core system to access the plug-in service</code>.</p>
 <details class="example">
 <summary>Example</summary>
-<p><img alt="Remote plug-in access using REST from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/microkernel-rest.png" /></p>
+<p><img alt="Remote plug-in access using REST from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/microkernel-rest.png" /></p>
 <blockquote>
 <p>Remote plug-in access using REST from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of  Software Architecture.</a></p>
 </blockquote>

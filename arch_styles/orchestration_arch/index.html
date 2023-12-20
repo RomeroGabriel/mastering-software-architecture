@@ -9,17 +9,17 @@
       
       
       
-        <link rel="prev" href="../foundations/">
+        <link rel="prev" href="../space_based_arch/">
       
       
-        <link rel="next" href="../choosing_arch_style/">
+        <link rel="next" href="../microservices/">
       
       <link rel="icon" href="../../images/arch.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.17">
     
     
       
-        <title>Monolithic vs Distributed Architectures - Mastering Software Architecture</title>
+        <title>Orchestration-Driven Service-Oriented Architecture Style - Mastering Software Architecture</title>
       
     
     
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#monolithic-vs-distributed-architectures" class="md-skip">
+        <a href="#orchestration-driven-service-oriented-architecture" class="md-skip">
           Skip to content
         </a>
       
@@ -103,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Monolithic vs Distributed Architectures
+              Orchestration-Driven Service-Oriented Architecture Style
             
           </span>
         </div>
@@ -607,135 +607,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Monolithic vs Distributed Architectures
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../mono_distributed/" class="md-nav__link">
         Monolithic vs Distributed Architectures
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#monolithic-list" class="md-nav__link">
-    Monolithic List
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#distributed-list" class="md-nav__link">
-    Distributed List
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#fallacies-of-distributed-computing" class="md-nav__link">
-    Fallacies of Distributed Computing
-  </a>
-  
-    <nav class="md-nav" aria-label="Fallacies of Distributed Computing">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#the-network-is-reliable" class="md-nav__link">
-    The Network Is Reliable
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#latency-is-zero" class="md-nav__link">
-    Latency Is Zero
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bandwidth-is-infinite" class="md-nav__link">
-    Bandwidth Is Infinite
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-network-is-secure" class="md-nav__link">
-    The Network Is Secure
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-topology-never-changes" class="md-nav__link">
-    The Topology Never Changes
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#there-is-only-one-administrator" class="md-nav__link">
-    There Is Only One Administrator
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#transport-cost-is-zero" class="md-nav__link">
-    Transport Cost Is Zero
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-network-is-homogeneous" class="md-nav__link">
-    The Network Is Homogeneous
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    References
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -759,14 +635,16 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" checked>
       
       
       
@@ -775,7 +653,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_6_5">
           <span class="md-nav__icon md-icon"></span>
           Architecture Styles Descriptions
@@ -870,11 +748,121 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../orchestration_arch/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Orchestration-Driven Service-Oriented Architecture Style
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Orchestration-Driven Service-Oriented Architecture Style
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#history-and-philosophy" class="md-nav__link">
+    History and Philosophy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#topology" class="md-nav__link">
+    Topology
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#taxonomy" class="md-nav__link">
+    Taxonomy
+  </a>
+  
+    <nav class="md-nav" aria-label="Taxonomy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#business-servicess" class="md-nav__link">
+    Business Servicess
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enterprise-services" class="md-nav__link">
+    Enterprise Services
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-services" class="md-nav__link">
+    Application Services
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#infrastructure-services" class="md-nav__link">
+    Infrastructure Services
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orchestration-engine" class="md-nav__link">
+    Orchestration Engine
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#message-flow" class="md-nav__link">
+    Message Flow
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reuse-and-coupling-problem" class="md-nav__link">
+    Reuse and Coupling Problem
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -934,79 +922,65 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#monolithic-list" class="md-nav__link">
-    Monolithic List
+  <a href="#history-and-philosophy" class="md-nav__link">
+    History and Philosophy
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#distributed-list" class="md-nav__link">
-    Distributed List
+  <a href="#topology" class="md-nav__link">
+    Topology
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#fallacies-of-distributed-computing" class="md-nav__link">
-    Fallacies of Distributed Computing
+  <a href="#taxonomy" class="md-nav__link">
+    Taxonomy
   </a>
   
-    <nav class="md-nav" aria-label="Fallacies of Distributed Computing">
+    <nav class="md-nav" aria-label="Taxonomy">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#the-network-is-reliable" class="md-nav__link">
-    The Network Is Reliable
+  <a href="#business-servicess" class="md-nav__link">
+    Business Servicess
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#latency-is-zero" class="md-nav__link">
-    Latency Is Zero
+  <a href="#enterprise-services" class="md-nav__link">
+    Enterprise Services
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#bandwidth-is-infinite" class="md-nav__link">
-    Bandwidth Is Infinite
+  <a href="#application-services" class="md-nav__link">
+    Application Services
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#the-network-is-secure" class="md-nav__link">
-    The Network Is Secure
+  <a href="#infrastructure-services" class="md-nav__link">
+    Infrastructure Services
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#the-topology-never-changes" class="md-nav__link">
-    The Topology Never Changes
+  <a href="#orchestration-engine" class="md-nav__link">
+    Orchestration Engine
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#there-is-only-one-administrator" class="md-nav__link">
-    There Is Only One Administrator
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#transport-cost-is-zero" class="md-nav__link">
-    Transport Cost Is Zero
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-network-is-homogeneous" class="md-nav__link">
-    The Network Is Homogeneous
+  <a href="#message-flow" class="md-nav__link">
+    Message Flow
   </a>
   
 </li>
@@ -1017,8 +991,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    References
+  <a href="#reuse-and-coupling-problem" class="md-nav__link">
+    Reuse and Coupling Problem
   </a>
   
 </li>
@@ -1038,69 +1012,67 @@
                   
 
 
-<h1 id="monolithic-vs-distributed-architectures">Monolithic vs Distributed Architectures</h1>
-<p>There are <code>two primary categories</code>: monolithic and distributed architectures. These categories serve as a foundational distinction, even though it's important to note that <code>no classification is perfect</code>. <code>Distributed architectures, in particular, introduce a unique set of challenges that set them apart from monolithic architectures</code>. This classification offers a valuable way to differentiate between various architectural styles.</p>
-<h2 id="monolithic-list">Monolithic List</h2>
-<ol>
-<li>Layered Architecture</li>
-<li>Pipeline Architecture</li>
-<li>Microkernel Architecture</li>
-</ol>
-<h2 id="distributed-list">Distributed List</h2>
-<ol>
-<li>Service-based Architecture</li>
-<li>Event-driven Architecture</li>
-<li>Space-based Architecture</li>
-<li>Service-oriented Architecture</li>
-<li>Microservices Architecture</li>
-</ol>
-<h2 id="fallacies-of-distributed-computing">Fallacies of Distributed Computing</h2>
-<p>Distributed architectures <code>can be more</code> powerful in terms of performance, scalability, and availability than monolithic architecture styles, <code>but they come with trade-offs</code>. <code>Some common misconceptions, can lead to false assumptions in distributed systems</code>. Understanding these misconceptions is crucial in designing distributed architectures.</p>
-<h3 id="the-network-is-reliable">The Network Is Reliable</h3>
-<p><code>People often assume that networks are reliable, but they're not</code>. Even though networks have improved, they can still be unreliable. <code>This is critical in distributed architectures because they heavily depend on network communication</code>. Measures like timeouts and circuit breakers are used to manage this unpredictability, especially in systems like microservices. <code>The more a system relies on the network, the less reliable it can be</code>. Latency in any distributed architecture is not zero, yet most architects ignore this fallacy, insisting that they have fast networks.</p>
-<h3 id="latency-is-zero">Latency Is Zero</h3>
-<p><code>Local calls between components are faster than remote ones using protocols like REST, messaging, or RPC</code>. <code>Knowing the average round-trip latency for remote calls is crucial in distributed architectures</code>, especially microservices.</p>
-<details class="tip">
-<summary>Calculating Latency</summary>
-<p>If the average latency is 100 milliseconds, chaining 10 service calls adds 1,000 milliseconds to a request. <code>However, it's not just the average latency that matters; the 95th to 99th percentile can significantly impact performance</code>. So, understanding these latencies is vital for architecting distributed systems.</p>
-</details>
-<h3 id="bandwidth-is-infinite">Bandwidth Is Infinite</h3>
-<p>In monolithic architectures, <code>bandwidth is typically not a concern because processing within a monolith often requires little to no additional bandwidth</code>. However, in distributed systems, <code>communication between services can consumes significant bandwidth, which can lead to network slowdowns</code>.</p>
-<p>When a service needs to connect to other services to process requests, it consumes bandwidth. This can become problematic, especially if these requests occur frequently. This situation, known as <code>stamp coupling</code>, can have a significant impact on bandwidth usage. <code>To address stamp coupling in distributed architectures, there are several approaches you can consider</code>:</p>
-<ol>
-<li>Create private RESTful API endpoints.</li>
-<li>Use field selectors in the contract.</li>
-<li>Adopt GraphQL to decouple contracts.</li>
-<li>Combine value-driven contracts with consumer-driven contracts (CDCs).</li>
-<li>Leverage internal messaging endpoints.</li>
-</ol>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>No matter which approach you choose, <code>the key is to minimize the amount of data transferred between services or systems in a distributed architecture</code>. This is essential for addressing the fallacy of infinite bandwidth.</p>
+<h1 id="orchestration-driven-service-oriented-architecture">Orchestration-Driven Service-Oriented Architecture</h1>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>This architecture style <code>represents an era-specific architectural style</code> influenced by external forces and organizational philosophies. Despite its logical foundation, <code>this architecture faced challenges that ultimately led to its downfall. It serves as a notable example of how a seemingly rational organizational idea can impede crucial aspects of the development process</code>.</p>
 </div>
-<h3 id="the-network-is-secure">The Network Is Secure</h3>
-<p>In the world of distributed computing, it's common for architects and developers to rely on tools like virtual private networks (VPNs), trusted networks, and firewalls, which can create a false sense of security. However, <code>it's crucial to remember that the network itself is not inherently secure</code>.</p>
-<p><code>Security becomes a much more complex challenge in distributed architectures</code>. In such systems, <code>every endpoint, associated with each distributed deployment unit, must be diligently secured to prevent unauthorized or malicious requests from reaching those services</code>. As you transition from a monolithic to a distributed architecture, the potential surface area for security threats and attacks increases significantly.</p>
-<p><code>Ensuring the security of every endpoint, even during interservice communication, is a demanding task</code>. This is one of the reasons why <code>synchronous</code>, highly-distributed architectures like microservices or service-based architecture often exhibit slower performance. The need to address security at every level introduces additional overhead and complexity.</p>
-<h3 id="the-topology-never-changes">The Topology Never Changes</h3>
-<p>This fallacy <code>assumes that the overall network structure</code>, including routers, hubs, switches, firewalls, and other network components, remains static and <code>never undergoes changes. However, in reality, network topologies can and do change</code>.</p>
-<p><code>Architects should recognize that network topologies are dynamic</code> and may evolve over time. <code>It's crucial for architects to maintain open communication with network administrators and operations teams to stay informed about any changes to the network infrastructure</code>. This awareness allows architects to adapt and make necessary adjustments to ensure the reliability and performance of distributed systems, minimizing unwelcome surprises.</p>
-<h3 id="there-is-only-one-administrator">There Is Only One Administrator</h3>
-<p>Architects often make the <code>mistake of assuming they only need to collaborate and communicate with a single administrator when dealing with network issues</code>. This fallacy <code>highlights the complexity of distributed architecture and the need for extensive coordination</code>.</p>
-<p><code>In distributed architectures, effective communication and collaboration with multiple administrators are essential</code>. Unlike monolithic applications, where a single deployment unit simplifies administration, distributed systems require architects to engage with various network administrators to ensure everything functions correctly.</p>
-<h3 id="transport-cost-is-zero">Transport Cost Is Zero</h3>
-<p>The term <code>transport cost</code> in this context doesn't refer to how quickly data travels, but to the <code>actual expenses incurred when making what seems like a simple RESTful call.</code> Architects often mistakenly assume that the existing infrastructure is enough for such calls or for breaking down a monolithic application. However, this isn't usually the case.</p>
-<p><code>Distributed architectures typically come with significantly higher expenses compared to monolithic ones</code>. This increase in cost is primarily due to the need for extra hardware, servers, gateways, firewalls, the creation of new subnets, proxies, and other resources.</p>
-<p>When architects dive into <code>designing a distributed architecture, it's essential to thoroughly assess the current server and network infrastructure</code>. This assessment should consider factors like capacity, bandwidth, latency, and security zones. By doing this, architects can avoid being caught off guard by unexpected costs and plan more effectively.</p>
-<h3 id="the-network-is-homogeneous">The Network Is Homogeneous</h3>
-<p>Many architects and developers often assume that networks are homogeneous, consisting of hardware from a single vendor. In reality, <code>most companies have a mix of network hardware vendors in their infrastructure, and sometimes, even more than that</code>. The importance of this fallacy lies in the fact that <code>not all of these diverse hardware vendors seamlessly cooperate with one another</code>. While most components work together, questions arise about the seamless integration of Juniper hardware with Cisco hardware, for instance.</p>
-<p><code>While networking standards have progressed over the years, reducing this problem, the fact remains that not all scenarios, loads, and circumstances have been thoroughly tested</code>. Consequently, network packets can occasionally get lost, causing issues.</p>
-<h2 id="references">References</h2>
-<ul>
-<li><a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture</a></li>
-<li><a href="https://medium.com/@vikaskumar4793/the-95th-and-99th-percentiles-are-the-most-crucial-application-metrics-33085d2d3e34">The 95th and 99th percentiles are the most crucial application metrics</a></li>
-<li><a href="https://www.googlecloudcommunity.com/gc/Apigee/What-are-99-percentile-and-95-percentile/td-p/67052">What are 99 percentile and 95 percentile?</a></li>
-</ul>
+<h2 id="history-and-philosophy">History and Philosophy</h2>
+<p>In the late 1990s, the Orchestration-Driven Service-Oriented Architecture emerged as enterprises were rapidly expanding, necessitating sophisticated IT solutions. During this era, <code>companies faced challenges related to limited and expensive computing resources, prompting the adoption of distributed architectures for their scalability benefits</code>. The prevailing constraints were driven by factors such as the cost of operating systems and complex licensing schemes for commercial database servers.</p>
+<p><code>As a result, architects were compelled to maximize reuse</code>. The dominant philosophy underlying this architecture was centered on <code>achieving extensive reuse in all forms, with far-reaching consequences</code>.</p>
+<h2 id="topology">Topology</h2>
+<p>The topology varied among implementations, but the overarching concept involved <code>establishing a taxonomy of services within the architecture, with each layer assigned specific responsibilities</code>.</p>
+<p>This style of architecture is inherently <code>distributed</code>, and the precise delineation of boundaries varied depending on the organization's specific requirements and structure.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><img alt="Topology of orchestration-driven service-oriented architecture from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/orchestration-example.png" /></p>
+<blockquote>
+<p>Topology of orchestration-driven service-oriented architecture from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+</blockquote>
+</div>
+<h2 id="taxonomy">Taxonomy</h2>
+<p><code>The services played a crucial role in this architecture centered around enterprise-level reuse</code>. Many large companies were annoyed at how much they had to continue to rewrite software. The various layers in this taxonomy were designed to support this objective.</p>
+<h3 id="business-servicess">Business Servicess</h3>
+<p>Situated at the <code>top of the architecture</code>, business services <code>served as the entry point and encapsulated domain-specific behavior</code>. Examples like ExecuteTrade or PlaceOrder represented essential business activities. <code>These service definitions, often crafted by business users, contained input, output, and schema information but no actual code</code>.</p>
+<h3 id="enterprise-services">Enterprise Services</h3>
+<p>Found beneath business services, <code>enterprise services housed fine-grained, shared implementations</code>. <code>Development teams focused on creating atomic behavior around specific business domains, such as CreateCustomer or CalculateQuote</code>. <code>These services acted as the foundational building blocks for the broader business services, connected through an orchestration engine</code>. The goal was to foster reuse by developing finely tuned enterprise services that could be leveraged across various business workflows.</p>
+<p>However, the <code>dynamic nature of the business landscape posed challenges to achieving complete stability</code>. Markets, technological advancements, and other factors complicated efforts to establish long-term stability in the software world.</p>
+<h3 id="application-services">Application Services</h3>
+<p><code>Recognizing that not all services required the same level of granularity or reuse, application services were introduced</code>. These were one-off, <code>single-implementation services tailored to specific application needs</code>. For instance, an application might need a geo-location service without the organization investing in making it reusable. Application services were typically owned by a single application team, addressing specific requirements without the expectation of broader reuse.</p>
+<h3 id="infrastructure-services">Infrastructure Services</h3>
+<p>Handling operational concerns like <code>monitoring, logging, authentication, and authorization</code>, infrastructure services constituted the bottom layer. These services provided concrete implementations and were owned by a shared infrastructure team working closely with operations to ensure the smooth functioning of the overall system.</p>
+<h3 id="orchestration-engine">Orchestration Engine</h3>
+<p><code>At the heart of the Orchestration-Driven Service-Oriented Architecture lies the orchestration engine</code>. This pivotal component <code>intricately threads together the implementations of business services</code> through orchestration, encompassing features such as transactional coordination and message transformation.  In contrast to microservices architectures, where each service might maintain its database, <code>this architecture typically relies on a single relational database or a few databases</code>. As a result, <code>transactional behavior is declaratively managed within the orchestration engine rather than in individual databases</code>.</p>
+<p>The orchestration engine plays a pivotal role in <code>defining the relationships between business and enterprise services</code>, determining their alignment, and establishing transaction boundaries. It also operates as an integration hub, facilitating the seamless integration of custom code with packaged and legacy software systems.</p>
+<p>Being the central element of the architecture, <code>the team of integration architects responsible for the orchestration engine tends to emerge as a potent political force within the organization</code>, often evolving into a bureaucratic bottleneck, in line with Conway's law predictions.</p>
+<p>While the notion of off-loading transaction behavior to an orchestration tool seemed promising, practical implementation proved to be challenging. <code>Determining the optimal granularity of transactions became increasingly intricate</code>. While constructing a few services encapsulated in a distributed transaction is feasible, <code>the architecture's complexity heightens as developers grapple with defining appropriate transaction boundaries between services</code>.</p>
+<h3 id="message-flow">Message Flow</h3>
+<p>In this architecture, all requests traverse the orchestration engine, serving as the locus of logic. Consequently, the message flow is directed through the engine even for internal calls.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>The <code>CreateQuote</code> business-level service initiates a call to the service bus, defining the workflow involving calls to <code>CreateCustomer</code> and <code>CalculateQuote</code>. Each of these, in turn, encompasses calls to application services. The service bus acts as the intermediary for all calls, functioning both as an integration hub and an orchestration engine.</p>
+<p><img alt="Message flow with service-oriented architecture from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/orchestration-example-message.png" /></p>
+<blockquote>
+<p>Message flow with service-oriented architecture from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+</blockquote>
+</div>
+<h2 id="reuse-and-coupling-problem">Reuse and Coupling Problem</h2>
+<p>A central objective of this architecture is <code>achieving reuse at the service level, aiming to gradually construct business behavior for incremental reuse over time</code>. Architects were encouraged to actively seek opportunities for reuse in this architecture. However, the realization of negative trade-offs unfolded slowly. <code>Building a system primarily around reuse resulted in significant coupling between components—a consequence of consolidating behavior into a single location</code>. The impracticality of designing an architecture overly focused on technical partitioning became a stark revelation, despite its alignment with separation and reuse philosophies.</p>
+<p><code>Domain concepts</code>, such as CatalogCheckout, <code>suffered from being thinly spread across the architecture</code>, leading to a practical nightmare. Developers found themselves engaged in tasks like "add a new address line to CatalogCheckout," which, in a service-oriented architecture, <code>could involve numerous services across various tiers and changes to a single database schema</code>. If the existing enterprise services lacked the correct transactional granularity, <code>developers faced the dilemma of either altering their design or constructing a new, nearly identical service, undermining the concept of reuse</code>.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Consider a scenario with distinct divisions within an insurance company:</p>
+<ol>
+<li>Auto and Homeowners Insurance Division</li>
+<li>Life Insurance Division</li>
+<li>Commercial Insurance Division</li>
+<li>Disability Insurance Division</li>
+<li>Casualty Insurance Division</li>
+<li>Trave Insurance Division</li>
+</ol>
+<p>An architect identifies that <code>each division involves a concept of Customer</code>. The service-oriented architecture strategy suggests extracting customer elements into a reusable service and letting the original services reference the canonical <code>Customer service</code>. However, <code>any change to the Customer service has a ripple effect on all other services, introducing risk to the change process</code>. Consequently, architects grappled with making incremental changes, leading to significant ripple effects, necessitating coordinated deployments, holistic testing, and other impediments to engineering efficiency.</p>
+<p>To support a unified Customer service, <code>it must encompass all details known about customers</code>. For instance, auto insurance may require driver's license details, which pertain to the person rather than the vehicle. Consequently, the Customer service would need to include details about driver's licenses that the disability insurance division finds irrelevant. This challenge exemplifies the intricate balance between achieving reuse and managing coupling within the architecture.</p>
+</div>
 
 
 

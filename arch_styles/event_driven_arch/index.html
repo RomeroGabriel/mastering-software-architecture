@@ -623,6 +623,49 @@
   
   
     <li class="md-nav__item">
+      <a href="../choosing_arch_style/" class="md-nav__link">
+        Choosing the Appropriate Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+          Architecture Styles Descriptions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_6_5">
+          <span class="md-nav__icon md-icon"></span>
+          Architecture Styles Descriptions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../layered_arch/" class="md-nav__link">
         Layered Architecture Style
       </a>
@@ -850,6 +893,41 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../orchestration_arch/" class="md-nav__link">
+        Orchestration-Driven Service-Oriented Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../microservices/" class="md-nav__link">
+        Microservices Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1015,7 +1093,7 @@
 <h1 id="event-driven-architecture-style">Event-Driven Architecture Style</h1>
 <p>The event-driven architecture style is a well-liked method for <code>building applications that need to be both highly scalable and high-performing</code>. It's quite flexible and can be <code>used for both small and large applications</code>, making it a popular choice across the board. This style involves <code>components that process events independently, without being tightly connected</code>. <code>It can be its own architecture style or be part of other styles</code>, like event-driven microservices architecture.</p>
 <p>In many applications, there's a <code>request-based approach, where a central system manages and directs various requests to the right places</code>. This can be a user interface, an API layer, or an enterprise service bus. <code>These places handle the requests, dealing with tasks like retrieving or updating data in a database</code>.</p>
-<p><img alt="Request-based model from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/event-driven-model.png" /></p>
+<p><img alt="Request-based model from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/event-driven-model.png" /></p>
 <blockquote>
 <p>Request-based model from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
 </blockquote>
@@ -1072,7 +1150,7 @@
 </ol>
 <div class="admonition example">
 <p class="admonition-title">More Deep Example</p>
-<p><img alt="Example of the broker topology Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/event-driven-model-example.png" /></p>
+<p><img alt="Example of the broker topology Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/event-driven-model-example.png" /></p>
 <blockquote>
 <p>Example of the broker topology <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
 </blockquote>
@@ -1197,7 +1275,7 @@
 <p>In a scenario <code>without of error-handling capabilities, an error would surface on the line with SHARES</code>. In this asynchronous context, when an exception occurs, the trade placement service lacks the means for synchronous user intervention. <code>The only recourse might be logging the error condition</code>.</p>
 <p>Integrating the workflow event pattern provides a programmatic resolution to such errors. <code>As the large trading firm lacks control over the trading advisor's data, it must autonomously fix the error itself</code>. When the error occurs (2WE35HF6DHF,BUY,AAPL,8756 SHARES), <code>the Trade Placement service promptly delegates the error via asynchronous messaging to the Trade Placement Error service</code>. This delegation includes the error information.</p>
 <p>The <code>Trade Placement Error</code> service, <code>operating as the workflow delegate</code>, receives and inspects the exception, identifying it as a "SHARES" issue in the shares field. Subsequently, the <code>Trade Placement Error service removes the term "SHARES" and resubmits the trade for reprocessing</code>, effectively addressing the error within the workflow event pattern.</p>
-<p><img alt="Error handling with the workflow event pattern from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/event-driven-model-workflowevent-example.png" /></p>
+<p><img alt="Error handling with the workflow event pattern from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/event-driven-model-workflowevent-example.png" /></p>
 <blockquote>
 <p>Error handling with the workflow event pattern from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
 </blockquote>
@@ -1259,7 +1337,7 @@
 <li>The <code>message consumer</code> receives and processes the message, <code>sending the response to the reply queue</code>.</li>
 <li>Finally, the event producer receives the message containing the response data.</li>
 </ol>
-<p><img alt="Request-reply message processing from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/event-driven-model-requestreply-example.png" /></p>
+<p><img alt="Request-reply message processing from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/event-driven-model-requestreply-example.png" /></p>
 <blockquote>
 <p>Request-reply message processing from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
 </blockquote>
@@ -1283,7 +1361,7 @@
 <li>The <code>event consumer sends the new message (ID 857) to the reply queue</code>.</li>
 <li>The <code>event producer</code>, waiting for a reply, <code>receives the message (ID 857) because the correlation ID (124) matches the message selector from step 2</code>.</li>
 </ol>
-<p><img alt="Request-reply message processing using a correlation ID from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/event-driven-model-requestreply-ID.png.png" /></p>
+<p><img alt="Request-reply message processing using a correlation ID from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/event-driven-model-requestreply-ID.png.png" /></p>
 <blockquote>
 <p>Request-reply message processing using a correlation ID from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
 </blockquote>
@@ -1295,7 +1373,7 @@
 <li>The <code>event producer waits for a reply on the temporary queue</code>. This queue is <code>exclusive to the event producer that initiated the request</code>.</li>
 <li>The <code>event consumer</code> receives the message, processes the request, and sends a response message to the <code>reply queue named in the reply-to header</code>.</li>
 <li>The e<code>vent producer</code>, waiting on the temporary queue, <code>receives the response message and deletes the temporary queue</code>.
-<img alt="Request-reply message processing using a temporary queue from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/event-driven-model-requestreply-queue.png" /><blockquote>
+<img alt="Request-reply message processing using a temporary queue from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/event-driven-model-requestreply-queue.png" /><blockquote>
 <p>Request-reply message processing using a temporary queue from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
 </blockquote>
 </li>

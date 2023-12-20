@@ -9,22 +9,24 @@
       
       
       
+        <link rel="prev" href="../mono_distributed/">
       
-        <link rel="next" href="basic/whats_software_arc/">
       
-      <link rel="icon" href="images/arch.png">
+        <link rel="next" href="../layered_arch/">
+      
+      <link rel="icon" href="../../images/arch.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.17">
     
     
       
-        <title>Mastering Software Architecture</title>
+        <title>Choosing the Appropriate Architecture Style - Mastering Software Architecture</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.26e3688c.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.26e3688c.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.ecc896b0.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ecc896b0.min.css">
       
       
 
@@ -40,9 +42,9 @@
       
     
     
-      <link rel="stylesheet" href="assets/_markdown_exec_ansi.css">
+      <link rel="stylesheet" href="../../assets/_markdown_exec_ansi.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -67,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mastering-software-architecture" class="md-skip">
+        <a href="#choosing-the-appropriate-architecture-style" class="md-skip">
           Skip to content
         </a>
       
@@ -83,9 +85,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Mastering Software Architecture" class="md-header__button md-logo" aria-label="Mastering Software Architecture" data-md-component="logo">
+    <a href="../.." title="Mastering Software Architecture" class="md-header__button md-logo" aria-label="Mastering Software Architecture" data-md-component="logo">
       
-  <img src="images/arch.png" alt="logo">
+  <img src="../../images/arch.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -101,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              Choosing the Appropriate Architecture Style
             
           </span>
         </div>
@@ -157,12 +159,10 @@
         
   
   
-    
-  
 
 
   <li class="md-tabs__item">
-    <a href="." class="md-tabs__link md-tabs__link--active">
+    <a href="../.." class="md-tabs__link">
       Home
     </a>
   </li>
@@ -177,7 +177,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="basic/whats_software_arc/" class="md-tabs__link">
+      <a href="../../basic/whats_software_arc/" class="md-tabs__link">
         Basic
       </a>
     </li>
@@ -193,7 +193,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="modularity/" class="md-tabs__link">
+      <a href="../../modularity/" class="md-tabs__link">
         Modularity
       </a>
     </li>
@@ -206,7 +206,7 @@
 
 
   <li class="md-tabs__item">
-    <a href="components/" class="md-tabs__link">
+    <a href="../../components/" class="md-tabs__link">
       Components
     </a>
   </li>
@@ -221,7 +221,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="arch_characteristics/arch_characteristics/" class="md-tabs__link">
+      <a href="../../arch_characteristics/arch_characteristics/" class="md-tabs__link">
         Architecture Characteristics
       </a>
     </li>
@@ -231,13 +231,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="arch_styles/" class="md-tabs__link">
+      <a href="../" class="md-tabs__link md-tabs__link--active">
         Architecture Styles
       </a>
     </li>
@@ -271,9 +273,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Mastering Software Architecture" class="md-nav__button md-logo" aria-label="Mastering Software Architecture" data-md-component="logo">
+    <a href="../.." title="Mastering Software Architecture" class="md-nav__button md-logo" aria-label="Mastering Software Architecture" data-md-component="logo">
       
-  <img src="images/arch.png" alt="logo">
+  <img src="../../images/arch.png" alt="logo">
 
     </a>
     Mastering Software Architecture
@@ -287,52 +289,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Home
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         Home
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    References
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -372,7 +333,7 @@
   
   
     <li class="md-nav__item">
-      <a href="basic/whats_software_arc/" class="md-nav__link">
+      <a href="../../basic/whats_software_arc/" class="md-nav__link">
         What's Software Architecture?
       </a>
     </li>
@@ -386,7 +347,7 @@
   
   
     <li class="md-nav__item">
-      <a href="basic/expectations_of_architect/" class="md-nav__link">
+      <a href="../../basic/expectations_of_architect/" class="md-nav__link">
         Expectations of an Architect
       </a>
     </li>
@@ -400,7 +361,7 @@
   
   
     <li class="md-nav__item">
-      <a href="basic/architectural_thinking/" class="md-nav__link">
+      <a href="../../basic/architectural_thinking/" class="md-nav__link">
         Architectural Thinking
       </a>
     </li>
@@ -449,7 +410,7 @@
   
   
     <li class="md-nav__item">
-      <a href="modularity/" class="md-nav__link">
+      <a href="../../modularity/" class="md-nav__link">
         Definition
       </a>
     </li>
@@ -463,7 +424,7 @@
   
   
     <li class="md-nav__item">
-      <a href="modularity/measuring/" class="md-nav__link">
+      <a href="../../modularity/measuring/" class="md-nav__link">
         Measuring Modularity
       </a>
     </li>
@@ -485,7 +446,7 @@
   
   
     <li class="md-nav__item">
-      <a href="components/" class="md-nav__link">
+      <a href="../../components/" class="md-nav__link">
         Components
       </a>
     </li>
@@ -527,7 +488,7 @@
   
   
     <li class="md-nav__item">
-      <a href="arch_characteristics/arch_characteristics/" class="md-nav__link">
+      <a href="../../arch_characteristics/arch_characteristics/" class="md-nav__link">
         Definition
       </a>
     </li>
@@ -541,7 +502,7 @@
   
   
     <li class="md-nav__item">
-      <a href="arch_characteristics/identifying_characteristics/" class="md-nav__link">
+      <a href="../../arch_characteristics/identifying_characteristics/" class="md-nav__link">
         Identifying
       </a>
     </li>
@@ -555,7 +516,7 @@
   
   
     <li class="md-nav__item">
-      <a href="arch_characteristics/measuring_governing/" class="md-nav__link">
+      <a href="../../arch_characteristics/measuring_governing/" class="md-nav__link">
         Measuring and Governing
       </a>
     </li>
@@ -569,7 +530,7 @@
   
   
     <li class="md-nav__item">
-      <a href="arch_characteristics/scope/" class="md-nav__link">
+      <a href="../../arch_characteristics/scope/" class="md-nav__link">
         Scope
       </a>
     </li>
@@ -589,14 +550,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
       
       
       
@@ -605,7 +568,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_6">
           <span class="md-nav__icon md-icon"></span>
           Architecture Styles
@@ -618,7 +581,7 @@
   
   
     <li class="md-nav__item">
-      <a href="arch_styles/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -632,7 +595,7 @@
   
   
     <li class="md-nav__item">
-      <a href="arch_styles/foundations/" class="md-nav__link">
+      <a href="../foundations/" class="md-nav__link">
         Foundations
       </a>
     </li>
@@ -646,7 +609,7 @@
   
   
     <li class="md-nav__item">
-      <a href="arch_styles/mono_distributed/" class="md-nav__link">
+      <a href="../mono_distributed/" class="md-nav__link">
         Monolithic vs Distributed Architectures
       </a>
     </li>
@@ -658,11 +621,59 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="arch_styles/choosing_arch_style/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Choosing the Appropriate Architecture Style
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Choosing the Appropriate Architecture Style
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#shifting-fashion-in-architecture" class="md-nav__link">
+    Shifting “Fashion” in Architecture
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#decision-criteria" class="md-nav__link">
+    Decision Criteria
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -701,7 +712,7 @@
   
   
     <li class="md-nav__item">
-      <a href="arch_styles/layered_arch/" class="md-nav__link">
+      <a href="../layered_arch/" class="md-nav__link">
         Layered Architecture Style
       </a>
     </li>
@@ -715,7 +726,7 @@
   
   
     <li class="md-nav__item">
-      <a href="arch_styles/pipeline_arch/" class="md-nav__link">
+      <a href="../pipeline_arch/" class="md-nav__link">
         Pipeline Architecture Style
       </a>
     </li>
@@ -729,7 +740,7 @@
   
   
     <li class="md-nav__item">
-      <a href="arch_styles/microkernel_arch/" class="md-nav__link">
+      <a href="../microkernel_arch/" class="md-nav__link">
         Microkernel Architecture Style
       </a>
     </li>
@@ -743,7 +754,7 @@
   
   
     <li class="md-nav__item">
-      <a href="arch_styles/service_based_arch/" class="md-nav__link">
+      <a href="../service_based_arch/" class="md-nav__link">
         Service-Base Architecture Style
       </a>
     </li>
@@ -757,7 +768,7 @@
   
   
     <li class="md-nav__item">
-      <a href="arch_styles/event_driven_arch/" class="md-nav__link">
+      <a href="../event_driven_arch/" class="md-nav__link">
         Event-Driven Architecture Style
       </a>
     </li>
@@ -771,7 +782,7 @@
   
   
     <li class="md-nav__item">
-      <a href="arch_styles/space_based_arch/" class="md-nav__link">
+      <a href="../space_based_arch/" class="md-nav__link">
         Space-Based Architecture Style
       </a>
     </li>
@@ -785,7 +796,7 @@
   
   
     <li class="md-nav__item">
-      <a href="arch_styles/orchestration_arch/" class="md-nav__link">
+      <a href="../orchestration_arch/" class="md-nav__link">
         Orchestration-Driven Service-Oriented Architecture Style
       </a>
     </li>
@@ -799,7 +810,7 @@
   
   
     <li class="md-nav__item">
-      <a href="arch_styles/microservices/" class="md-nav__link">
+      <a href="../microservices/" class="md-nav__link">
         Microservices Architecture Style
       </a>
     </li>
@@ -847,8 +858,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    References
+  <a href="#shifting-fashion-in-architecture" class="md-nav__link">
+    Shifting “Fashion” in Architecture
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#decision-criteria" class="md-nav__link">
+    Decision Criteria
   </a>
   
 </li>
@@ -868,14 +886,81 @@
                   
 
 
-<h1 id="mastering-software-architecture">Mastering Software Architecture</h1>
-<p>An one-stop Wiki for Software Architecture studies. A centralized repository for all things architecture! 🏛️ #SoftwareArchitectures</p>
-<h2 id="references">References</h2>
-<p>The following is a list of materials utilized for studying and creating this documentation:</p>
-<ul>
-<li><a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture</a></li>
-</ul>
-<p>*and of course chatGPT <img alt="😆" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f606.svg" title=":laughing:" /></p>
+<h1 id="choosing-the-appropriate-architecture-style">Choosing the Appropriate Architecture Style</h1>
+<p><code>Determining the right architecture style can be a bit tricky</code>. With numerous choices available (and new ones popping up almost every day), <code>it's not that straightforward</code>. Choosing the appropriate architectural style <code>involves considering various factors within an organization and the specific software it's developing</code>. This decision-making process requires a careful <code>evaluation of trade-offs related to architectural characteristics, domain considerations, strategic goals, and several other variables</code>.</p>
+<p>Even though the decision is deeply contextual, there are a few <code>pieces of general advice</code> that might come in handy as you navigate the landscape of architectural styles.</p>
+<h2 id="shifting-fashion-in-architecture">Shifting “Fashion” in Architecture</h2>
+<p><code>Understanding the dynamic landscape of architecture trends is crucial for architects</code>, regardless of where an organization currently stands in terms of architectural preferences. The ever-changing nature of preferred architecture styles is influenced by various factors:</p>
+<details class="note">
+<summary>Observations from the past</summary>
+<p><code>New architecture styles often emerge from lessons learned and challenges faced in previous projects</code>. Architects draw from their past experiences to shape future systems, addressing deficiencies and optimizing design based on historical insights.</p>
+</details>
+<details class="note">
+<summary>Changes in the ecosystem</summary>
+<p>The software development ecosystem is marked by <code>constant change, making predictions challenging</code>. Tools and technologies that were once unheard of can quickly become industry standards. For example, the rapid rise of <code>Kubernetes</code>, which few anticipated a few years ago, illustrates the unpredictable nature of ecosystem changes.</p>
+</details>
+<details class="note">
+<summary>Introduction of New Capabilities</summary>
+<p><code>When new capabilities arise, architecture may not merely replace one tool with another but rather shift to an entirely new paradigm</code>. Unexpected advancements, such as the introduction of containerization with Docker, have profound impacts on architects, tools, and engineering practices. <code>Architects must not only monitor new tools but also remain open to paradigmatic changes that might redefine their approach</code>.</p>
+</details>
+<details class="note">
+<summary>Accelerated Rate of Change</summary>
+<p>The rate of change in the ecosystem continues to accelerate, driven by the emergence of new tools, engineering practices, and capabilities. <code>Architects operate in a state of constant flux, adapting to evolving trends and staying agile in response to ongoing transformations</code>.</p>
+</details>
+<details class="note">
+<summary>Domain changes</summary>
+<p><code>Changes in the business domain, driven by factors like business evolution or mergers, can influence the architectural choices made by developers</code>.</p>
+</details>
+<details class="note">
+<summary>Technology changes</summary>
+<p>Organizations strive to keep up with technological advancements that offer obvious benefits. <code>Adopting technologies with clear advantages becomes a strategic move for staying competitive</code>.</p>
+</details>
+<details class="note">
+<summary>External factors</summary>
+<p>External factors, such as changes in licensing costs, <code>may force architects and developers to reconsider their tooling choices and migrate to alternative options</code>.</p>
+</details>
+<h2 id="decision-criteria">Decision Criteria</h2>
+<p>When architects embark on the journey of <code>selecting an architectural style</code>, they must carefully weigh various <code>factors that contribute to shaping the structure of the domain design</code>. At its core, an architect is tasked with designing two fundamental elements: <code>the specified domain and all the supporting structural elements essential for the system's success</code>.</p>
+<p>Architects should approach the decision-making process with a clear understanding of the following key aspects:</p>
+<details class="note">
+<summary>Understanding the Domain</summary>
+<p><code>While architects don't need to be domain experts, they must grasp critical aspects of the domain</code>, particularly those influencing operational architecture characteristics.</p>
+</details>
+<details class="note">
+<summary>Identifying Architecture Characteristics</summary>
+<p><code>Discovering and articulating the architecture characteristics essential to support the domain and external factors is crucial</code>.</p>
+</details>
+<details class="note">
+<summary>Data Architecture</summary>
+<p><code>Collaboration between architects and database administrators is vital for addressing database, schema, and other data-related concerns</code>. Architects must comprehend the potential impact of data design, especially when dealing with legacy data architectures.</p>
+</details>
+<details class="note">
+<summary>Organizational Factors</summary>
+<p>External factors, such as the cost of cloud vendors or organizational plans for mergers and acquisitions, can significantly influence design decisions. <code>Architects need to align their designs with practical considerations</code>.</p>
+</details>
+<details class="note">
+<summary>Knowledge of Process, Teams, and Operational Concerns</summary>
+<p>Project-specific factors, including the software development process, collaboration with operations, and the QA process, <code>play a pivotal role in influencing architectural decisions</code>.</p>
+</details>
+<details class="note">
+<summary>Domain/Architecture Isomorphism</summary>
+<p>This concept explores how the structural characteristics of an architecture correspond to a particular architecture style. <code>Some domains naturally match certain architectural topologies, while others may be ill-suited for specific styles</code>.</p>
+<p>For instance, the <code>microkernel architecture style perfectly fits a system requiring customizability</code>, allowing architects to design plug-in customizations. Another example is genome analysis, where numerous discrete operations are essential, making space-based architecture with multiple discrete processors an ideal choice. Conversely, <code>some problem domains are inherently incompatible with specific architecture styles</code>. Highly scalable systems, for example, face challenges with large monolithic designs, as supporting numerous concurrent users becomes complex in a tightly coupled code base. </p>
+</details>
+<p>Considering these aspects, <code>architects must make several key determinations</code>:</p>
+<div class="admonition info">
+<p class="admonition-title">Monolith vs Distributed Architecture</p>
+<p><code>Deciding whether a single set of architecture characteristics suffices or if different parts of the system require diverse characteristics is crucial</code>. A monolith may be suitable for a unified set, while distributed architecture becomes necessary for diverse characteristics.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Data Storage Decisions</p>
+<p>In a monolithic architecture, a single relational database or a few may suffice, while in a distributed architecture, <code>architects must decide where data should reside and how it flows throughout the system</code>.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Communication Styles between Services—Synchronous or Asynchronous?</p>
+<p><code>Determining the communication style between services is the next consideration</code>. While synchronous communication is more convenient, asynchronous communication offers unique benefits but comes with its set of challenges.</p>
+</div>
+<p><code>The output of this design process encompasses the architecture's topology</code>, including the chosen style and hybridizations, architecture decision records documenting critical design aspects, and architecture fitness functions safeguarding essential principles and operational characteristics.</p>
 
 
 
@@ -913,10 +998,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.tabs.instant", "content.code.copy", "content.code.annotate"], "search": "assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.tabs.instant", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.b425cdc4.min.js"></script>
+      <script src="../../assets/javascripts/bundle.b425cdc4.min.js"></script>
       
     
   </body>
