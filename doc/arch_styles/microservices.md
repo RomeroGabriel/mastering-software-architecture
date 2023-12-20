@@ -17,7 +17,7 @@ While reuse holds clear advantages, it's crucial to remember the First Law of So
 In the realm of microservices, `the architectural topology is characterized by the small size and single-purpose nature of each service`. Unlike other distributed architectures, `microservices envision services as standalone entities, each encapsulating all the essential components needed for independent operation, including databases and other dependencies`.
 
 !!! example
-    ![The topology of the microservices architecture style from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/microservices_arch_example.png)
+    ![The topology of the microservices architecture style from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/microservices_arch_example.png)
     > The topology of the microservices architecture style from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
 ## Distributed
@@ -118,13 +118,13 @@ For `asynchronous` communication, architects often leverage `events and messages
 ??? example "Choreography"
     Suppose a user requests details about a wish list, and the `CustomerWishList` service lacks essential information. In choreography, it would make a `direct call to CustomerDemographics to retrieve the missing data`, delivering the result back to the user.
 
-    ![Using choreography in microservices to manage coordination from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/microservices_choreography_example.png)
+    ![Using choreography in microservices to manage coordination from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/microservices_choreography_example.png)
     > Using choreography in microservices to manage coordination from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
 Because microservices architectures `lacks a global mediator` like in some service-oriented architectures, `allow architects to create localized mediators when coordination across multiple services is necessary`. Developers can design a `service dedicated to coordinating specific calls, such as obtaining comprehensive customer information`. Users then interact with this mediator service, which, in turn, communicates with the required services.
 
 ??? example "Orchestration"
-    ![Using orchestration in microservices from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/microservices_orchestration_example.png)
+    ![Using orchestration in microservices from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/microservices_orchestration_example.png)
     > Using orchestration in microservices from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
 The First Law of Software Architecture acknowledges that `neither choreography nor orchestration is flawless—each comes with trade-offs`. In choreography, architects uphold the highly decoupled philosophy of the architecture, maximizing the benefits it offers. However, `handling common challenges like error management and coordination becomes more intricate in choreographed environments`.
@@ -133,13 +133,13 @@ In scenarios involving complex workflows, `the initial service called may need t
 
 ??? example "Complex Choreography"
 
-    ![Using choreography for a complex business process from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/microservices_choreography_complex_example.png)
+    ![Using choreography for a complex business process from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/microservices_choreography_complex_example.png)
     > Using choreography for a complex business process from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
 On the other hand, `architects may opt for orchestration in handling intricate business processes`. `By constructing a mediator, architects manage the complexity and coordination required for the business workflow`. While this `introduces coupling between services`, it enables architects to concentrate coordination efforts into a single service, minimizing the impact on others. Often, `domain workflows inherently involve some level of coupling, challenging architects to represent that coupling in ways that align with both domain and architectural objectives`.
 
 ??? example "Complex Orchestration"
-    ![Using orchestration in microservices from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/microservices_orchestration_complex_example.png)
+    ![Using orchestration in microservices from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/microservices_orchestration_complex_example.png)
     > Using orchestration in microservices from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
 ### Transactions and SAGAS
@@ -159,13 +159,13 @@ For services that still demanding transactional coordination, `there are pattern
 One prevalent distributed transactional pattern in microservices is the [saga pattern](https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/saga/saga). In this approach, `a service assumes the role of a mediator, orchestrating multiple service calls and coordinating the transaction`. The mediator initiates each part of the transaction, logs success or failure, and manages the overall outcome. `If everything proceeds as planned, all values in the services and their associated databases update synchronously`.
 
 ??? example
-    ![The saga pattern in microservices architecture from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/microservices_saga_example.png)
+    ![The saga pattern in microservices architecture from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/microservices_saga_example.png)
     > The saga pattern in microservices architecture from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
 `In the event of an error, the mediator ensures that no part of the transaction succeeds if another part fails`. If the initial part succeeds but the subsequent part encounters a failure, the mediator `sends a request to all successful parts, instructing them to undo their previous actions`. This style of transactional coordination is known as a `compensating transaction framework`. Typically, developers implement this pattern by `placing each mediator-initiated request in a pending state until the overall success is signaled by the mediator`. However, this design `complexity intensifies when dealing with asynchronous requests`, especially if new requests depend on pending transactional states. It also results in `increased coordination traffic at the network level`.
 
 ??? example
-    ![Saga pattern compensating transactions for error conditions from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/microservices_saga_error_example.png)
+    ![Saga pattern compensating transactions for error conditions from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/microservices_saga_error_example.png)
     > Saga pattern compensating transactions for error conditions from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
 An alternative implementation of a compensating transaction framework involves developers creating both `do` and `undo` operations `for each potentially transactional operation`. While this approach reduces coordination during transactions, `the undo operations tend to be considerably more complex` than their counterpart do operations, essentially doubling the effort required for design, implementation, and debugging.

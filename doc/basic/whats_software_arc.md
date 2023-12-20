@@ -13,33 +13,33 @@ Defining Software Architecture is challenging due to various interpretations. It
 
 One definition in [Fundamentals of Software Architecture](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/) is illustrated on the image bellow. In this definition, software architecture consists of the **structure** of the system, combined with **architecture characteristics** the system must support, **architecture decisions**, and **design principles**.
 
-![Architecture consists of the structure combined with architecture characteristics (“-ilities”), architecture decisions, and design principles](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/basic/arch_definition.png)
+![Architecture consists of the structure combined with architecture characteristics (“-ilities”), architecture decisions, and design principles](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/basic/arch_definition.png)
 > *Architecture consists of the structure combined with architecture characteristics (“-ilities”), architecture decisions, and design principles*
 
 ### Structure
 
-![Structure refers to the type of architecture styles used in the system](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/basic/arch_structure.png)
+![Structure refers to the type of architecture styles used in the system](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/basic/arch_structure.png)
 > *Structure refers to the type of architecture styles used in the system*
 
 The system **structure** refers to the **architecture style**(s) implemented in the system, like microservices, layered, or microkernel. However, it's important to note that the system structure alone does not fully describe a system architecture.
 
 ### Architecture characteristics
 
-![Architecture characteristics refers to the “-ilities” that the system must support](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/basic/arch_charac.png)
+![Architecture characteristics refers to the “-ilities” that the system must support](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/basic/arch_charac.png)
 > *Architecture characteristics refers to the “-ilities” that the system must support*
 
 Architecture characteristics **define the success criteria** for a system, independent of its functionality. They are essential for the system to function correctly and **do not necessarily rely on knowing the specifics of its functionality**.
 
 ### Architecture decisions
 
-![Architecture decisions are rules for constructing systems](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/basic/arch_decision.png)
+![Architecture decisions are rules for constructing systems](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/basic/arch_decision.png)
 > *Architecture decisions are rules for constructing systems*
 
 Architecture decisions establish the **guidelines for system construction**. They impose constraints and provide direction to development teams, outlining **what is permissible and what is not within the system**.
 
 ### Design principles
 
-![Design principles are guidelines for constructing systems](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/basic/arch_principle.png)
+![Design principles are guidelines for constructing systems](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/basic/arch_principle.png)
 > *Design principles are guidelines for constructing systems*
 
 The design principles is a **guideline** rather than a hard-and-fast rule like architecture decisions.

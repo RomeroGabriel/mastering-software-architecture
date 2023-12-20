@@ -6,7 +6,7 @@ In high-volume applications with significant concurrent user loads, the `databas
 
 ??? example "Web-Based Bussiness"
     In web-based businesses, the usual flow involves a `request from a browser hitting the web server, then an application server, and finally, the database server`. This works well for a small user group, but as `users increase, bottlenecks emerge at each layer`—first at the web server, then the application server, and finally, the database server. `Scaling out web servers is a common response, but it often shifts the bottleneck to the application server, which is more complex and costly to scale`. Even if the database is scaled (and even more costly to scale), the result is a `triangle-shaped topology`, with web servers being the easiest to scale and the database the hardest.
-    ![Scalability limits within a traditional web-based topology from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/space-based-web-based-example.png)
+    ![Scalability limits within a traditional web-based topology from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/space-based-web-based-example.png)
     > Scalability limits within a traditional web-based topology from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
 ## General Topology
@@ -21,7 +21,7 @@ Space-based architecture is rooted in the concept of `tuple space`, utilizing mu
 Key components include processing units with application code, virtualized middleware for unit management, data pumps for asynchronous data updates to the database, data writers for database updates, and data readers delivering database data to processing units on startup.
 
 !!! example
-    ![Space-based architecture basic topology from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/space-based-basic-topology.png)
+    ![Space-based architecture basic topology from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/space-based-basic-topology.png)
     > Space-based architecture basic topology from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
 ### Processing Unit
@@ -38,7 +38,7 @@ The virtualized middleware `manages architecture infrastructure, overseeing data
 !!! info "Data Grid"
     The data grid stands out as a `pivotal component` in this architecture style. In modern implementations, `it resides within processing units as a replicated cache`. However, when setups `requiring an external controller or using a distributed cache, this functionality extends to both processing units and the virtualized middleware's data grid component`. As the messaging grid can route requests to any available processing unit, `maintaining identical data in each unit's in-memory grid is crucial`. Despite the synchronous data replication illustration below, actual synchronization is asynchronous and rapid, typically finishing in under 100 milliseconds.
 
-    ![Data grid from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/space-based-data-grid.png)
+    ![Data grid from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/space-based-data-grid.png)
     > Data grid from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
     `Data synchronization occurs among processing units that share the same named data grid`. For instance, consider an internal replicated data grid in processing units containing customer profile information, using Hazelcast. `Changes made to the CustomerProfile named cache in any processing unit replicate to all others with the same named cache`. `Each processing unit can hold multiple replicated caches as needed or request data from another unit (choreography) or leverage the processing grid for orchestration`.
@@ -64,7 +64,7 @@ Typically, `there are multiple data pumps, each dedicated to a specific domain o
 `Data pumps adhere to contracts`, defining actions (add, delete, update) associated with contract data. These contracts may take the form of `JSON` or `XML` schemas, objects, or value-driven messages. `For updates, the data pump message usually contains only the new data values`, such as the updated phone number and customer ID, along with an action to perform the update.
 
 ??? example
-    ![Data pump used to send data to a database from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/space-based-data-pumps.png)
+    ![Data pump used to send data to a database from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/space-based-data-pumps.png)
     > Data pump used to send data to a database from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
 ### Data Writers
@@ -74,9 +74,9 @@ The data writer component plays a `crucial role` by `receiving messages from a d
 A domain-based data writer `encapsulates the required database logic to manage updates within a specific domain`, such as customer information, irrespective of the number of data pumps it handles.
 
 ??? example
-    ![Domain-based data writer from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/space-based-data-writer1.png)
+    ![Domain-based data writer from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/space-based-data-writer1.png)
     > Domain-based data writer from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
-    ![Dedicated data writers for each data pump from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/space-based-data-writer2.png)
+    ![Dedicated data writers for each data pump from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/space-based-data-writer2.png)
     > Dedicated data writers for each data pump from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
 ### Data Readers
@@ -96,7 +96,7 @@ Similar to data writers, `data readers can be domain-based or dedicated to a spe
 `Together, data writers and data readers form a data abstraction layer`, ensuring processing units are decoupled from the underlying database table structures. In space-based architecture, a data abstraction layer allows incremental changes to the database without directly impacting the processing units.
 
 ??? example
-    ![Data reader with reverse data pump from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/space-based-data-reader.png)
+    ![Data reader with reverse data pump from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/space-based-data-reader.png)
     > Data reader with reverse data pump from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
 ## Data Collisions
@@ -272,7 +272,7 @@ In a typical scenario, `systems don't maintain consistent update rates over exte
 A key strength of this architecture lies in the possibility of deploying applications through `processing units and virtualized middleware in managed cloud-based environments while maintaining physical databases and associated data on-premises`. This configuration `facilitates highly efficient cloud-based data synchronization`, leveraging asynchronous data pumps and the eventual consistency model inherent in this architecture. `The setup allows for transactional processing in dynamic and elastic cloud-based environments while upholding the management of physical data, reporting, and data analytics securely within the local and on-premises environments`.
 
 ??? example
-    ![Hybrid cloud-based and on-prem topology from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/space-based-hybrid-cloud.png)
+    ![Hybrid cloud-based and on-prem topology from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/space-based-hybrid-cloud.png)
     > Hybrid cloud-based and on-prem topology from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
 ## Replicated vs Distributed Caching
@@ -289,7 +289,7 @@ Replicated caching is the standard for space-based architecture, but certain sce
 `Distributed caching involves an external server or service dedicated to maintaining a centralized cache`. Processing units access data from this central cache server through a `proprietary protocol`. `While distributed caching ensures high data consistency due to the centralized nature of the data, it comes with performance trade-offs, as accessing cache data remotely adds latency to the system`. `Fault tolerance can be a concern, and mirroring the distributed cache is one approach to mitigate it, though it may introduce consistency issues`.
 
 !!! example
-    ![Distributed caching between processing units from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/space-based-distributed-caching.png)
+    ![Distributed caching between processing units from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/space-based-distributed-caching.png)
     > Distributed caching between processing units from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
 Choosing between replicated and distributed caching depends on factors such as `data consistency needs, performance considerations, and fault tolerance requirements`. `Distributed caching excels in maintaining highly consistent data, while replicated caching offers better performance and fault tolerance`. Often, `both models can be applicable within a single application context`, allowing each to be leveraged based on its specific strengths. For instance, a `distributed caching model may be suitable for maintaining consistently critical data` like inventory counts, while a `replicated cache may be chosen for performance and fault tolerance in managing less dynamic data` like customer profiles.

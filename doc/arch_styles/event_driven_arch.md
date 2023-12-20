@@ -4,7 +4,7 @@ The event-driven architecture style is a well-liked method for `building applica
 
 In many applications, there's a `request-based approach, where a central system manages and directs various requests to the right places`. This can be a user interface, an API layer, or an enterprise service bus. `These places handle the requests, dealing with tasks like retrieving or updating data in a database`.
 
-![Request-based model from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/event-driven-model.png)
+![Request-based model from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/event-driven-model.png)
 > Request-based model from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
 ??? example "Request-Based Example"
@@ -57,7 +57,7 @@ Here's a notable illustration of `architectural extensibility`. `Although it mig
 1. The email information is readily accessible via the email topic, allowing the new analyzer to function without the need for additional infrastructure or changes to other event processors.
 
 !!! example "More Deep Example"
-    ![Example of the broker topology [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/event-driven-model-example.png)
+    ![Example of the broker topology [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/event-driven-model-example.png)
     > Example of the broker topology [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
     1. The `initial event` is "Purchasing Book."
@@ -151,7 +151,7 @@ A noteworthy consequence  of the workflow event pattern is `messages encounterin
 
     The `Trade Placement Error` service, `operating as the workflow delegate`, receives and inspects the exception, identifying it as a "SHARES" issue in the shares field. Subsequently, the `Trade Placement Error service removes the term "SHARES" and resubmits the trade for reprocessing`, effectively addressing the error within the workflow event pattern.
 
-    ![Error handling with the workflow event pattern from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/event-driven-model-workflowevent-example.png)
+    ![Error handling with the workflow event pattern from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/event-driven-model-workflowevent-example.png)
     > Error handling with the workflow event pattern from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
 ## Preventing Data Loss
@@ -206,7 +206,7 @@ In scenarios where it's `essential to receive information`, such as an order ID 
     1. The `message consumer` receives and processes the message, `sending the response to the reply queue`.
     1. Finally, the event producer receives the message containing the response data.
 
-    ![Request-reply message processing from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/event-driven-model-requestreply-example.png)
+    ![Request-reply message processing from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/event-driven-model-requestreply-example.png)
     > Request-reply message processing from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
 `Two primary techniques are commonly used to implement request-reply messaging`. The first and `most common technique involves utilizing a correlation ID` contained in the message header. This correlation ID is a field in the reply message typically set to the message ID of the original request message.
@@ -225,7 +225,7 @@ The second technique for implementing request-reply messaging is to `use a tempo
     1. The `event consumer sends the new message (ID 857) to the reply queue`.
     1. The `event producer`, waiting for a reply, `receives the message (ID 857) because the correlation ID (124) matches the message selector from step 2`.
 
-    ![Request-reply message processing using a correlation ID from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/event-driven-model-requestreply-ID.png.png)
+    ![Request-reply message processing using a correlation ID from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/event-driven-model-requestreply-ID.png.png)
     > Request-reply message processing using a correlation ID from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
 ??? example "Using Temporary and Exclusive Queue"
@@ -233,7 +233,7 @@ The second technique for implementing request-reply messaging is to `use a tempo
     1. The `event producer waits for a reply on the temporary queue`. This queue is `exclusive to the event producer that initiated the request`.
     1. The `event consumer` receives the message, processes the request, and sends a response message to the `reply queue named in the reply-to header`.
     1. The e`vent producer`, waiting on the temporary queue, `receives the response message and deletes the temporary queue`.
-    ![Request-reply message processing using a temporary queue from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/event-driven-model-requestreply-queue.png)
+    ![Request-reply message processing using a temporary queue from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/event-driven-model-requestreply-queue.png)
     > Request-reply message processing using a temporary queue from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
 ## Choosing Between Request-Based and Event-Based

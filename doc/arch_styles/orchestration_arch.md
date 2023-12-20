@@ -16,7 +16,7 @@ The topology varied among implementations, but the overarching concept involved 
 This style of architecture is inherently `distributed`, and the precise delineation of boundaries varied depending on the organization's specific requirements and structure.
 
 !!! example
-    ![Topology of orchestration-driven service-oriented architecture from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/orchestration-example.png)
+    ![Topology of orchestration-driven service-oriented architecture from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/orchestration-example.png)
     > Topology of orchestration-driven service-oriented architecture from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
 ## Taxonomy
@@ -58,7 +58,7 @@ In this architecture, all requests traverse the orchestration engine, serving as
 !!! example
     The `CreateQuote` business-level service initiates a call to the service bus, defining the workflow involving calls to `CreateCustomer` and `CalculateQuote`. Each of these, in turn, encompasses calls to application services. The service bus acts as the intermediary for all calls, functioning both as an integration hub and an orchestration engine.
 
-    ![Message flow with service-oriented architecture from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/orchestration-example-message.png)
+    ![Message flow with service-oriented architecture from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/orchestration-example-message.png)
     > Message flow with service-oriented architecture from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
 ## Reuse and Coupling Problem

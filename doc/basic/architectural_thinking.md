@@ -16,14 +16,14 @@ The distinction between architecture and design can be confusing at times. It ra
 
 ### Traditional and Wrong Thinking
 
-![Traditional view of architecture versus design from Fundamentals of Software Architecture book](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/basic/arch_design_wrong.png)
+![Traditional view of architecture versus design from Fundamentals of Software Architecture book](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/basic/arch_design_wrong.png)
 > Traditional view of architecture versus design from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
 The traditional viewpoint described in the image below is rarely effective. It often leads to a **disconnect between the architect and the development team**. Architectural decisions made by the architect may not reach the development team, and conversely, decisions made by the development team may not be communicated back to the architect. This *lack of communication* and coordination can result in **changes to the architecture that were never intended or considered by the architect**.
 
 ### The Right Thinking
 
-![Making architecture work through collaboration from Fundamentals of Software Architecture book](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/basic/arch_design_right.png)
+![Making architecture work through collaboration from Fundamentals of Software Architecture book](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/basic/arch_design_right.png)
 > Making architecture work through collaboration from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
 For effective architecture, there should be **no barriers between architects and developers**. It is crucial to establish a strong, *bi-directional relationship between them*. This allows architects to provide mentoring and coaching to the development team. **Architecture and design are intertwined aspects within the software project lifecycle and must always collaborate closely.**

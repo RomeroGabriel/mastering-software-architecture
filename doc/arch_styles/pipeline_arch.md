@@ -8,7 +8,7 @@ Developers in many functional programming languages will see parallels between l
 
 The pipeline architecture style comprises two fundamental components: `pipes and filters, each playing a specific role in the communication flow`. The unidirectional nature of pipes and filters within the p`ipeline architecture promotes a design that fosters compositional reuse`. Many developers have discovered this ability using shells.
 
-![Basic topology for pipeline architecture from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/pipe_arch.png)
+![Basic topology for pipeline architecture from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/pipe_arch.png)
 > Basic topology for pipeline architecture from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
 ### Pipes
@@ -39,7 +39,7 @@ The pipeline architecture pattern is `prevalent` in various applications, `parti
 
 To exemplify the practical application of the pipeline architecture, consider the following scenario: `service telemetry information is streamed from multiple services to Apache Kafka`.  Observe the `utilization of the pipeline architecture style to handle diverse data types streamed` to Kafka.
 
-![Pipeline architecture example from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/pipe_arch_example.png)
+![Pipeline architecture example from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/pipe_arch_example.png)
 > Pipeline architecture example from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
 !!! info "Service Info Capture Filter (Producer)"

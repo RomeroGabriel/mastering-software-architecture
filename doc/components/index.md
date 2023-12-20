@@ -6,7 +6,7 @@ Modules are groups of related code, but architects often focus on `components, w
 
 Components provide a language-specific way to group artifacts together, often by nesting them to create layers. It's helpful to divide the concept of components as shown in the image below.
 
-![Different varieties of components from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/components/component_scope.png)
+![Different varieties of components from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/components/component_scope.png)
 > *Different varieties of components from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)*
 
 ??? info "Wrapper of Related Code"
@@ -34,7 +34,7 @@ In software architecture, `there are always trade-offs to consider, including ho
 
 Let's consider two common architecture styles shown below.
 
-![Two types of top-level architecture partitioning: layered and modular from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/components/archit_partitioning.png)
+![Two types of top-level architecture partitioning: layered and modular from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/components/archit_partitioning.png)
 > Two types of top-level architecture partitioning: layered and modular from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
 ??? info "Technical Partitioning as a version of Layer Monolith"
@@ -104,7 +104,7 @@ Architects, often `working with others, establish an initial component design ba
 ??? danger "Entity Trap"
     The entity trap is a common anti-pattern illustrated in the image below.
 
-    ![Building an architecture as an object-relational mapping from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/components/entity_trap.png)
+    ![Building an architecture as an object-relational mapping from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/components/entity_trap.png)
     > *Building an architecture as an object-relational mapping from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)*
 
     It occurs when an architect `creates components for each entity identified in the requirements, resembling an object-relational mapping (ORM) framework for a database`. This approach is not true architecture but rather a way to handle simple database CRUD operations. ORM frameworks are available for this purpose.

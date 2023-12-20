@@ -8,7 +8,7 @@ Service-based architecture represents a `hybrid approach that combines elements 
 
 In this style, the `services, which are like big chunks of the application, are called domain services. These services operate autonomously and are separately deployed. They share one big database`. There are usually 4 to 12 of these services in one application.
 
-![Basic topology of the service-based architecture style [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/service-base-arch.png)
+![Basic topology of the service-based architecture style [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/service-base-arch.png)
 > Basic topology of the service-based architecture style [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
 While a service-based architecture `usually maintains only a single instance of each domain service, multiple instances can exist` based on scalability, fault tolerance, and throughput requirements. `Multiple instances of a service necessitate load-balancing capabilities between the user interface and the domain service` to ensure the interface connects to a healthy and available service instance.
@@ -22,19 +22,19 @@ While a service-based architecture `usually maintains only a single instance of 
 Within the service-based architecture style, various topology variants exist, making it one of the most adaptable styles.
 
 ??? example "Broken User Interface"
-    ![User interface variants from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/service-base-arch-example2.png)
+    ![User interface variants from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/service-base-arch-example2.png)
     > User interface variants from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
 ??? example "Multiple Databases"
     Dividing a single monolithic database into `separate databases, sometimes even establishing domain-specific databases that match each domain service`, similar to how it's done in microservices. `The key here is to ensure that each separate database doesn't contain data needed by another domain service. This approach prevents the need for communication between domain services (something to avoid in service-based architecture) and avoids duplicating data across databases`.
 
-    ![Database variants from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/service-base-arch-example3.png)
+    ![Database variants from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/service-base-arch-example3.png)
     > Database variants from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
 ??? example "API Layer"
     Another possibility is to introduce an `API layer, comprising a reverse proxy or gateway between the user interface and services`. This practice is `beneficial when exposing domain service functions to external systems or consolidating shared cross-cutting concerns`, moving them outside the user interface. Such concerns might include managing metrics, security, auditing requirements, and service discovery.
 
-    ![Adding an API layer between the user interface and domain services from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/service-base-arch-example4.png)
+    ![Adding an API layer between the user interface and domain services from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/service-base-arch-example4.png)
     > Adding an API layer between the user interface and domain services from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
 ## Service and Granularity
@@ -73,5 +73,5 @@ In a service-based architecture, `services often share a single/monolithic datab
     For instance, logical partitioning can be executed by `segmenting the database into distinct domains (such as common, customer, invoicing, order, and tracking), with corresponding shared libraries matching these partitions`. Employing this technique `ensures that changes made to a specific table within a particular domain only affect services associated with that partition`.
     `It's also possible to have a common domain with a common shared library used by all services`. `These tables are shared across all services`, and any changes to these tables require coordination among all services accessing the shared database.
 
-    ![Using multiple shared libraries for database entity objects from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/service-base-arch-example-db.png)
+    ![Using multiple shared libraries for database entity objects from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/service-base-arch-example-db.png)
     > Using multiple shared libraries for database entity objects from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)

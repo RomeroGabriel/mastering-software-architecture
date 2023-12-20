@@ -6,12 +6,12 @@ The concept of the microkernel architecture, often termed the `plug-in architect
 
 Microkernel architecture is a `basic two-components monolithic structure`. It consists of a `core system and plug-in components`. This setup divides the `application logic between the autonomous plug-ins` and the `fundamental core system`, allowing for flexibility, customization, and segregation of application features and specific processing logic.
 
-![Basic components of the microkernel architecture style from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/microkernel_arch_example.png)
+![Basic components of the microkernel architecture style from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/microkernel_arch_example.png)
 > Basic components of the microkernel architecture style from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
 The `core system assumes the responsibility of supplying necessary data to each plug-in`. Decoupling is the main rationale behind this strategy. `Any modifications to the database should only affect the core system`, not the plug-in components. However, `plug-ins can maintain their own distinct data stores accessible solely to their respective plug-ins`.
 
-![Plug-in components can own their own data store from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/microkernel_dbs.png)
+![Plug-in components can own their own data store from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/microkernel_dbs.png)
 > Plug-in components can own their own data store from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
 ### Core System
@@ -23,10 +23,10 @@ Another definition of the core system is the `straightforward path through the a
 Depending on the application's scale, the `core system can be structured as a layered architecture or a modular monolith`. Additionally, it can be split into separately deployed domain services, each containing domain-specific plug-in components.
 
 ??? example
-    ![Variations of the microkernel architecture core system from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/core-example-1.png)
+    ![Variations of the microkernel architecture core system from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/core-example-1.png)
     > Variations of the microkernel architecture core system from [Fundamentals of  Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
-    ![User interface variants from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/core-example-1.png)
+    ![User interface variants from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/core-example-1.png)
     > User interface variants from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
 ### Plug-In Components
@@ -40,7 +40,7 @@ These plug-in components can be either `compile-based or runtime-based`. `Runtim
 In this scenario, `each plug-in functions as a standalone service`, or even a microservice implemented within a container. Although this approach may seem conducive to scalability, it's important to note that this setup `remains a single architecture quantum due to the monolithic core system. Consequently, every request must first pass through the core system to access the plug-in service`.
 
 ??? example
-    ![Remote plug-in access using REST from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/documentation/images/arch_styles/microkernel-rest.png)
+    ![Remote plug-in access using REST from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/arch_styles/microkernel-rest.png)
     > Remote plug-in access using REST from [Fundamentals of  Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
 ### Trade-Offs
