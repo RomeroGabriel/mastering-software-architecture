@@ -30,7 +30,7 @@ nav:
       - Space-Based Architecture Style: arch_styles/space_based_arch.md
       - Orchestration-Driven Service-Oriented Architecture Style: arch_styles/orchestration_arch.md
       - Microservices Architecture Style: arch_styles/microservices.md
-
+  - Architecture Decisions: arch_decisions/index.md
 theme:
   name: material
   language: en
