@@ -40,3 +40,40 @@ The concept of `Architecturally Significant helps delineate which decisions fall
 Lastly, `construction techniques` encompass decisions about `platforms, frameworks, tools, and even processes`. While these decisions may seem technical, `they can have ramifications for various aspects of the architecture`.
 
 `Understanding what constitutes an architecturally significant decision allows architects to focus on the key elements that shape the overall structure, dependencies, interfaces, and construction techniques of a system`. This clarity ensures that architects effectively contribute to the architectural integrity and success of the project.
+
+## Architecture Decision Records
+
+Effectively documenting architecture decisions is crucial for `maintaining clarity and coherence in a project`. [Architecture Decision Records (ADRs)](https://adr.github.io/) provide a structured way to capture and communicate these decisions. ADRs is a concise document typically spanning `one to two pages` that outlines a particular architectural decision. Although ADRs can be composed in `plain text`, they are commonly crafted using text document formats like `AsciiDoc`, `Markdown`, `wiki page template`. Additionally, specialized tools such as [ADR-tools](https://github.com/npryce/adr-tools) exist to facilitate the management of Architecture Decision Records
+
+### Basic Structure
+
+The basic structure of an ADR consists of five main sections: `Title`, `Status`, `Context`, `Decision`, and `Consequences`. Two more sections can be added: `Compliance` and `Notes`. This basic template is flexible enough to `include any other sections that may be deemed necessary`.
+
+!!! note "Title"
+    A concise, `numbered description` of the architecture decision, `providing clarity without ambiguity`.
+
+!!! note "Status"
+    Clearly define the status as `Proposed`, `Accepted`, or `Superseded`. Proposed decisions may require approval, and `Superseded decisions should reference the decision that replaces them`.
+
+!!! note "Context"
+    `Describe the driving forces behind the decision`, outlining the `specific situation` and `possible alternatives`. This section provides context for the decision-making process.
+
+!!! note "Decision"
+    Clearly articulate the decision along with its `justification`. Emphasize the `why` behind the decision rather than the `how`.
+
+!!! note "Consequences"
+    Detail the `impact of the decision`, `considering both positive and negative consequences`. Include `trade-off` analysis to weigh the impacts against the benefits.
+
+!!! note "Compliance"
+    Address how compliance with the decision will be `ensured`. `Specify whether compliance checks are manual or automated using fitness functions`. If automated, provide details on how fitness functions will be written and implemented.
+
+!!! note "Notes"
+    Include `metadata` such as the author's name and any additional relevant information.
+
+### Storing ADRs
+
+Once an architect creates an ADR, it must be `stored` somewhere. Regardless of where ADRs are stored, `each architecture decision should have its own file or wiki page`.
+
+Some architects like to keep ADRs in the `Git repository` with the source code. Keeping ADRs in a Git repository `allows the ADR to be versioned and tracked as well`. However, for larger organizations, caution `against` this practice for several reasons. Firstly, `not everyone who needs to see the architecture decision may have access to the Git repository`. Secondly, the Git repository may not be a suitable place for storing ADRs that have a `context outside of the application Git repository`. This applies to integration architecture decisions, enterprise architecture decisions, or those decisions common to every application.
+
+For these reasons, is recommend storing ADRs either in a `wiki`, using a wiki template, or in a `shared directory on a shared file server`. This ensures accessibility for all stakeholders through a wiki or other document rendering software.
