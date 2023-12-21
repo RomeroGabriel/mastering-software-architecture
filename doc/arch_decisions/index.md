@@ -26,3 +26,17 @@ Not surprisingly, `several pitfalls emerge when architects make decisions`. Thre
     `Effectively communicating architecture decisions is crucial to avoid the Email-Driven Architecture anti-pattern`. Rather than including the decision in the body of an email, `architects should provide a link to a single system of record for the decision, whether it's a wiki page or a document`. This ensures a centralized and accessible repository for the decision and its details. Moreover, `notifying only relevant stakeholders further enhances communication effectiveness, preventing information overload`.
 
 By addressing these anti-patterns, architects can enhance the decision-making process, fostering clarity, collaboration, and successful implementation.
+
+## Architecturally Significant
+
+There exists a common misconception among architects that decisions involving specific technologies are merely technical choices rather than architecture decisions. However, this isn't always the case. `If an architect decides to adopt a particular technology because it directly supports a specific architecture characteristic, such as performance or scalability, then it qualifies as an architecture decision`.
+
+The concept of `Architecturally Significant helps delineate which decisions fall under the architect's purview`. `These decisions notably impact the patterns or styles of architecture in use`. For instance, choosing to share data among a set of microservices is an architecturally significant decision. This choice influences the bounded context of each microservice, thereby affecting the overall structure of the application.
+
+`Dependencies`, another aspect, `revolve around coupling points between components or services within the system`. These dependencies have far-reaching effects on scalability, modularity, agility, testability, reliability, and more.
+
+`Interfaces` represent `how services and components are accessed and orchestrated`, typically through gateways, integration hubs, service buses, or API proxies. `Decisions related to interfaces involve defining contracts, including strategies for versioning and deprecation`. Due to their impact on users within the system, `interfaces are considered architecturally significant`.
+
+Lastly, `construction techniques` encompass decisions about `platforms, frameworks, tools, and even processes`. While these decisions may seem technical, `they can have ramifications for various aspects of the architecture`.
+
+`Understanding what constitutes an architecturally significant decision allows architects to focus on the key elements that shape the overall structure, dependencies, interfaces, and construction techniques of a system`. This clarity ensures that architects effectively contribute to the architectural integrity and success of the project.
