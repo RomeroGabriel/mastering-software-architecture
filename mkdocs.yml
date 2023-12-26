@@ -31,6 +31,7 @@ nav:
       - Orchestration-Driven Service-Oriented Architecture Style: arch_styles/orchestration_arch.md
       - Microservices Architecture Style: arch_styles/microservices.md
   - Architecture Decisions: arch_decisions/index.md
+  - Analyzing Architecture Risk: arch_risk/index.md
 theme:
   name: material
   language: en
