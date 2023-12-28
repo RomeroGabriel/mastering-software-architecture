@@ -46,3 +46,74 @@ In practice, `not all risk analysis results are presented simultaneously`. Filte
     > Showing direction of risk with arrows and numbers from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
 
 Continuous measurements facilitated by [fitness functions](../arch_characteristics/measuring_governing.md#fitness-functions) `shows direction of risk, allowing for trend analysis and determining the directional trajectory of each risk factor`.
+
+## Risk Storming
+
+Risk storming plays `a crucial role in assessing the overall risk of a system, ensuring that no potential areas of concern are overlooked`. A single architect may not possess complete knowledge of every system aspect, making `collaboration essential in this process`.
+
+Risk storming is a `collaborative exercise focuses on specific dimensions of risk`, such as unproven technology, performance, scalability, availability, transitive dependencies, data loss, single points of failure, and security. `Engaging multiple architects, along with senior developers and tech leads, brings diverse perspectives and enhances the understanding of architectural intricacies for everyone`.
+
+The risk storming process comprises `two key phases: individual and collaborative`. In the individual phase, `participants independently assess risk using a` [risk matrix](#risk-matrix), `ensuring unbiased evaluations from anyone`. Subsequently, in the collaborative phase, `participants work together to identify consensus on risk areas`, engage in discussions, and formulate effective solutions for risk mitigation.
+
+Throughout the risk storming effort, `architecture diagrams are indispensable`. Holistic risk assessments utilize comprehensive diagrams, while risk storming within specific application areas employs contextual diagrams. `The architect is responsible for maintaining up-to-date and accessible diagrams for all participants`.
+
+!!! example "Architecture Diagram Risk"
+    In the example, an Elastic Load Balancer, EC2 instances with web servers (Nginx), application services, MySQL database, Redis cache, MongoDB database for logging, and Push Expansion Servers. `This example architecture serves to illustrate the risk storming process`.
+
+    ![Architecture diagram for risk storming example from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/risk/arch-diagram-risk-example.png)
+    > Architecture diagram for risk storming example from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
+
+Risk storming can be broken down into three activities:
+
+1. Identification
+1. Consensus
+1. Mitigation
+
+Identification is always an individual, noncollaborative activity, whereas consensus and mitigation are always collaborative and involve all participants working together.
+
+### Identification
+
+The identification phase of risk storming is a crucial step where `participants individually pinpoint areas of risk within the architecture`. Here's a breakdown of the identification process:
+
+!!! note "Prepartion and Invitation"
+    1. The architect leading the risk storming sends invitations one to two days in advance of the collaborative session.
+    1. `The invitation includes the architecture diagram (or link) and specifies the risk storming dimension to be analyzed`.
+
+!!! note "Individual Analysis"
+    1. Using the [risk matrix](#risk-matrix), participants autonomously assess the architecture, categorizing risk as low (1-2), medium (3-4), or high (6-9).
+
+!!! note "Post-It Note Preparation"
+    1. Participants prepare `small Post-it notes`, each representing an identified risk area, with colors indicating the risk level (green for low, yellow for medium, and red for high).
+
+`It's common for a risk storming session to focus on a single dimension` (e.g., performance), but occasionally, due to resource availability or timing constraints, multiple dimensions may be analyzed simultaneously (e.g., performance, scalability, and data loss).
+
+!!! tip
+    However, whenever feasible, `it's advisable to limit risk storming efforts to a single dimension`. This ensures participants concentrate on specific aspects, preventing confusion regarding multiple risks identified for the same area of the architecture.
+
+### Consensus
+
+The consensus-building phase in the risk storming is a `collaborative effort aimed at achieving agreement among all participants regarding the identified risks` within the architecture.
+
+Upon commencement of the risk storming session, `participants affix their Post-it notes onto the architecture diagram, marking areas where they individually identified risks`.
+
+??? example
+    ![Initial identification of risk areas from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/risk/risk-storming-init-example.png)
+    > Initial identification of risk areas from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
+
+Once all Post-it notes are in place, the collaborative aspect of risk storming initiates. `The team collectively examines the risk areas, striving to reach a consensus on risk qualification`. If an item receives unanimous agreement in terms of risk level, no further discussion is necessary. `Items with divergent results prompt discussion`. Individuals with varying assessments must elucidate their perspectives. In cases where everyone provides different ratings, a comprehensive discussion is required. `Following the discussion, a consensus must be reached`.
+
+??? example "Risk Storming Result"
+    ![Consensus of risk areas from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)](https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/risk/risk-storming-result-example.png)
+    > Consensus of risk areas from [Fundamentals of Software Architecture.](https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/)
+
+### Mitigation
+
+Following unanimous agreement among participants regarding the qualification of risk areas in the architecture, the subsequent and `crucial phase` is risk mitigation. `Mitigating risk in architecture often necessitates alterations or enhancements to specific areas that might have initially been considered flawless`.
+
+This typically collaborative activity `explores ways to diminish or eradicate the identified risks`. Mitigation efforts `can range from comprehensive architectural changes` prompted by risk identification `to more straightforward refactoring`, such as introducing a queue to alleviate throughput bottleneck issues. While these changes enhance the architecture, `they usually come with additional costs`.
+
+!!! example "Cost Negotiation Example"
+    Key stakeholders play a pivotal role in determining whether the incurred cost justifies the risk reduction.
+    For instance, suppose a risk storming session `identifies the central database as a medium risk (4) for overall system availability`. Participants may `propose clustering the database and dividing it into separate physical databases to mitigate the risk`, albeit at a cost of `$20,000`. A negotiation ensues between the architect and key business stakeholders, where the `stakeholders ultimately decide the cost outweighs the risk`. In response, the `architect suggests an alternative approach—skipping clustering and opting for a two-part database split, reducing the cost to $8,000` while still mitigating most of the risk. In this case, the `stakeholders find the compromise acceptable`.
+
+`This scenario illustrates how risk storming not only influences the architecture but also impacts negotiations between architects and business stakeholders`. Risk storming, coupled with the risk assessments, proves to be a `valuable method for identifying and monitoring risk, enhancing architecture, and facilitating negotiations among key stakeholders`.
