@@ -77,7 +77,7 @@ Identifying components is `best achieved through an iterative process that gener
 ??? info "Identifying Initial Components"
     In the early stages of a software project, `architects face the task of determining the initial top-level components`. This choice is `influenced by the type of` [top-level partitioning](#architecture-partitioning) they select. Beyond this, architects have the creative freedom to define components as they see fit, and then align domain functionality with these components to `determine where specific behaviors should reside`.
 
-    It's important to note that `achieving an optimal design with this initial set of components is quite challenging`. This is why architects must engage in an iterative process of component design refinement to enhance the overall system design.
+    It's important to note that `achieving an optimal design with this initial set of components is quite challenging`. This is why architects must engage in an iterative process of component design refinement to enhance the overall [system design](../system_design/index.md#system-design).
 
 ??? info "Assign Requirements to Components"
     Once an architect has identified the initial components, the `next step is to see how the project's requirements or user stories fit with these components`. It might involve creating new components, consolidating existing ones, or even splitting components if they carry too much responsibility.
