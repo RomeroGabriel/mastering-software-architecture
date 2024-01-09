@@ -9,17 +9,17 @@
       
       
       
-        <link rel="prev" href="../basic/architectural_thinking/">
+        <link rel="prev" href="../arch_styles/microservices/">
       
       
-        <link rel="next" href="measuring/">
+        <link rel="next" href="../arch_risk/">
       
       <link rel="icon" href="../images/arch.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.17">
     
     
       
-        <title>Definition - Mastering Software Architecture</title>
+        <title>Architecture Decisions - Mastering Software Architecture</title>
       
     
     
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#modularity" class="md-skip">
+        <a href="#architecture-decisions" class="md-skip">
           Skip to content
         </a>
       
@@ -103,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Definition
+              Architecture Decisions
             
           </span>
         </div>
@@ -187,15 +187,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="./" class="md-tabs__link md-tabs__link--active">
+      <a href="../modularity/" class="md-tabs__link">
         Modularity
       </a>
     </li>
@@ -249,10 +247,12 @@
         
   
   
+    
+  
 
 
   <li class="md-tabs__item">
-    <a href="../arch_decisions/" class="md-tabs__link">
+    <a href="./" class="md-tabs__link md-tabs__link--active">
       Architecture Decisions
     </a>
   </li>
@@ -417,16 +417,14 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
       
       
       
@@ -435,7 +433,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
           Modularity
@@ -446,52 +444,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Definition
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../modularity/" class="md-nav__link">
         Definition
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#definition" class="md-nav__link">
-    Definition
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -503,7 +460,7 @@
   
   
     <li class="md-nav__item">
-      <a href="measuring/" class="md-nav__link">
+      <a href="../modularity/measuring/" class="md-nav__link">
         Measuring Modularity
       </a>
     </li>
@@ -866,11 +823,86 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../arch_decisions/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Architecture Decisions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Architecture Decisions
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-decision-anti-patterns" class="md-nav__link">
+    Architecture Decision Anti-Patterns
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecturally-significant" class="md-nav__link">
+    Architecturally Significant
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-decision-records" class="md-nav__link">
+    Architecture Decision Records
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture Decision Records">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-structure" class="md-nav__link">
+    Basic Structure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storing-adrs" class="md-nav__link">
+    Storing ADRs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -932,9 +964,43 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#definition" class="md-nav__link">
-    Definition
+  <a href="#architecture-decision-anti-patterns" class="md-nav__link">
+    Architecture Decision Anti-Patterns
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecturally-significant" class="md-nav__link">
+    Architecturally Significant
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-decision-records" class="md-nav__link">
+    Architecture Decision Records
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture Decision Records">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-structure" class="md-nav__link">
+    Basic Structure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storing-adrs" class="md-nav__link">
+    Storing ADRs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -953,16 +1019,71 @@
                   
 
 
-<h1 id="modularity">Modularity</h1>
-<blockquote>
-<p>95% of the words [about software architecture] are spent extolling the benefits of “modularity” and that little, if anything, is said about how to achieve it.</p>
-</blockquote>
-<p>Modularity is a <code>fundamental organizing principle</code> in software architecture. If an architect neglects how the components of a system interconnect, it can lead to numerous problems.</p>
-<p>Although the concept of modularity is widely recognized in software architecture, it can be elusive to precisely define. These modules serve as a <code>means of encapsulating functionality, promoting code organization, and enhancing maintainability</code>.</p>
-<p>Maintaining good modularity embodies an <code>implicit architectural characteristic</code>: most projects may not explicitly demand the architect to ensure it, but <strong>sustainable code bases necessitate order and consistency in modular distinction and communication</strong>. A well-organized system with clear boundaries between modules fosters code reusability, ease of maintenance, and scalability, contributing to the long-term success of the project.</p>
-<h2 id="definition">Definition</h2>
-<p>Modularity refers to the <code>logical grouping of related code</code>, whether it's classes in an object-oriented language or functions in a structured or functional language. Developers commonly employ modules to organize and group related code together.</p>
-<p>For architects, understanding how developers package code is crucial, as it significantly impacts the architecture. <code>Tight coupling between packages can make it challenging to reuse one of them for related tasks</code>.</p>
+<h1 id="architecture-decisions">Architecture Decisions</h1>
+<p>Architects play a pivotal role in making crucial architecture decisions that shape the application or system. <code>While these decisions primarily influence the structure of the application or system, they might also extend to technology choices, especially when they impact essential architectural characteristics</code>. Regardless of the context, a good architecture decision serves as a guiding force for development teams, helping them in making in making the right technical choices. The process involves <code>gathering relevant information, providing clear justifications, documenting decisions, and ensuring effective communication with the pertinent stakeholders</code>.</p>
+<h2 id="architecture-decision-anti-patterns">Architecture Decision Anti-Patterns</h2>
+<p>Not surprisingly, <code>several pitfalls emerge when architects make decisions</code>. Three major architecture anti-patterns that often unfold during decision-making are the <code>Covering Your Assets</code> anti-pattern, the <code>Groundhog Day</code> anti-pattern, and the <code>Email-Driven Architecture</code> anti-pattern. These typically follow a progression: <code>overcoming the first leads to the second, and overcoming the second leads to the third</code>. Navigating architecture decisions successfully requires architects to address each of these anti-patterns.</p>
+<div class="admonition note">
+<p class="admonition-title">1. Covering Your Assets Anti-Pattern</p>
+<p><code>This occurs when architects avoid or delay decisions due to the fear of making the wrong choice</code>. To overcome this anti-pattern, <code>architects can either wait until the last responsible moment to decide or collaborate continually with development teams to ensure the decision aligns with implementation realities</code>.</p>
+<p><code>Waiting until the last responsible moment means gathering enough information to justify and validate the decision without causing delays or succumbing to analysis paralysis</code>. Collaborating with development teams is crucial because architects can't possibly anticipate every detail about a technology. <code>Close collaboration enables swift adjustments to the decision if issues arise</code>.</p>
+<p>For instance, if an architect decides to cache product-related reference data in all service instances using a read-only replicated cache, collaboration with development teams may reveal scalability issues that prompt a revision of the decision.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">2. Groundhog Day Anti-Pattern</p>
+<p>Once architects overcome the first anti-pattern, they may encounter the Groundhog Day anti-pattern. <code>This unfolds when people repeatedly discuss a decision without a clear understanding of why it was made</code>.</p>
+<p>The Groundhog Day anti-pattern <code>arises when architects fail to provide a comprehensive justification for their decisions</code>. When justifying architecture decisions, <code>it's crucial to offer both technical and business justifications</code>.</p>
+<p>For instance, a decision to break apart a monolithic application into separate services <code>should not only highlight technical benefits but also articulate the business value, such as faster delivery of new functionality or cost reduction</code>. Providing business value is a litmus test for determining the validity of an architecture decision. If a decision lacks business value, it might not be a sound one and should be reconsidered.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">3. Email-Driven Architecture Anti-Pattern</p>
+<p>Once architects make decisions and fully justify them, a third architecture anti-pattern emerges: Email-Driven Architecture. <code>This anti-pattern occurs when people are unaware of an architecture decision, leading to implementation challenges</code>.</p>
+<p><code>Effectively communicating architecture decisions is crucial to avoid the Email-Driven Architecture anti-pattern</code>. Rather than including the decision in the body of an email, <code>architects should provide a link to a single system of record for the decision, whether it's a wiki page or a document</code>. This ensures a centralized and accessible repository for the decision and its details. Moreover, <code>notifying only relevant stakeholders further enhances communication effectiveness, preventing information overload</code>.</p>
+</div>
+<p>By addressing these anti-patterns, architects can enhance the decision-making process, fostering clarity, collaboration, and successful implementation.</p>
+<h2 id="architecturally-significant">Architecturally Significant</h2>
+<p>There exists a common misconception among architects that decisions involving specific technologies are merely technical choices rather than architecture decisions. However, this isn't always the case. <code>If an architect decides to adopt a particular technology because it directly supports a specific architecture characteristic, such as performance or scalability, then it qualifies as an architecture decision</code>.</p>
+<p>The concept of <code>Architecturally Significant helps delineate which decisions fall under the architect's purview</code>. <code>These decisions notably impact the patterns or styles of architecture in use</code>. For instance, choosing to share data among a set of microservices is an architecturally significant decision. This choice influences the bounded context of each microservice, thereby affecting the overall structure of the application.</p>
+<p><code>Dependencies</code>, another aspect, <code>revolve around coupling points between components or services within the system</code>. These dependencies have far-reaching effects on scalability, modularity, agility, testability, reliability, and more.</p>
+<p><code>Interfaces</code> represent <code>how services and components are accessed and orchestrated</code>, typically through gateways, integration hubs, service buses, or API proxies. <code>Decisions related to interfaces involve defining contracts, including strategies for versioning and deprecation</code>. Due to their impact on users within the system, <code>interfaces are considered architecturally significant</code>.</p>
+<p>Lastly, <code>construction techniques</code> encompass decisions about <code>platforms, frameworks, tools, and even processes</code>. While these decisions may seem technical, <code>they can have ramifications for various aspects of the architecture</code>.</p>
+<p><code>Understanding what constitutes an architecturally significant decision allows architects to focus on the key elements that shape the overall structure, dependencies, interfaces, and construction techniques of a system</code>. This clarity ensures that architects effectively contribute to the architectural integrity and success of the project.</p>
+<h2 id="architecture-decision-records">Architecture Decision Records</h2>
+<p>Effectively documenting architecture decisions is crucial for <code>maintaining clarity and coherence in a project</code>. <a href="https://adr.github.io/">Architecture Decision Records (ADRs)</a> provide a structured way to capture and communicate these decisions. ADRs is a concise document typically spanning <code>one to two pages</code> that outlines a particular architectural decision. Although ADRs can be composed in <code>plain text</code>, they are commonly crafted using text document formats like <code>AsciiDoc</code>, <code>Markdown</code>, <code>wiki page template</code>. Additionally, specialized tools such as <a href="https://github.com/npryce/adr-tools">ADR-tools</a> exist to facilitate the management of Architecture Decision Records</p>
+<h3 id="basic-structure">Basic Structure</h3>
+<p>The basic structure of an ADR consists of five main sections: <code>Title</code>, <code>Status</code>, <code>Context</code>, <code>Decision</code>, and <code>Consequences</code>. Two more sections can be added: <code>Compliance</code> and <code>Notes</code>. This basic template is flexible enough to <code>include any other sections that may be deemed necessary</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Title</p>
+<p>A concise, <code>numbered description</code> of the architecture decision, <code>providing clarity without ambiguity</code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Status</p>
+<p>Clearly define the status as <code>Proposed</code>, <code>Accepted</code>, or <code>Superseded</code>. Proposed decisions may require approval, and <code>Superseded decisions should reference the decision that replaces them</code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Context</p>
+<p><code>Describe the driving forces behind the decision</code>, outlining the <code>specific situation</code> and <code>possible alternatives</code>. This section provides context for the decision-making process.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Decision</p>
+<p>Clearly articulate the decision along with its <code>justification</code>. Emphasize the <code>why</code> behind the decision rather than the <code>how</code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Consequences</p>
+<p>Detail the <code>impact of the decision</code>, <code>considering both positive and negative consequences</code>. Include <code>trade-off</code> analysis to weigh the impacts against the benefits.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Compliance</p>
+<p>Address how compliance with the decision will be <code>ensured</code>. <code>Specify whether compliance checks are manual or automated using fitness functions</code>. If automated, provide details on how fitness functions will be written and implemented.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Notes</p>
+<p>Include <code>metadata</code> such as the author's name and any additional relevant information.</p>
+</div>
+<h3 id="storing-adrs">Storing ADRs</h3>
+<p>Once an architect creates an ADR, it must be <code>stored</code> somewhere. Regardless of where ADRs are stored, <code>each architecture decision should have its own file or wiki page</code>.</p>
+<p>Some architects like to keep ADRs in the <code>Git repository</code> with the source code. Keeping ADRs in a Git repository <code>allows the ADR to be versioned and tracked as well</code>. However, for larger organizations, caution <code>against</code> this practice for several reasons. Firstly, <code>not everyone who needs to see the architecture decision may have access to the Git repository</code>. Secondly, the Git repository may not be a suitable place for storing ADRs that have a <code>context outside of the application Git repository</code>. This applies to integration architecture decisions, enterprise architecture decisions, or those decisions common to every application.</p>
+<p>For these reasons, is recommend storing ADRs either in a <code>wiki</code>, using a wiki template, or in a <code>shared directory on a shared file server</code>. This ensures accessibility for all stakeholders through a wiki or other document rendering software.</p>
 
 
 

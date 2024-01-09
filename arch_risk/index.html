@@ -1,0 +1,1226 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../arch_decisions/">
+      
+      
+        <link rel="next" href="../system_design/">
+      
+      <link rel="icon" href="../images/arch.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.17">
+    
+    
+      
+        <title>Analyzing Architecture Risk - Mastering Software Architecture</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.26e3688c.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_markdown_exec_ansi.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="blue">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#analyzing-architecture-risk" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Mastering Software Architecture" class="md-header__button md-logo" aria-label="Mastering Software Architecture" data-md-component="logo">
+      
+  <img src="../images/arch.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Mastering Software Architecture
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Analyzing Architecture Risk
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../basic/whats_software_arc/" class="md-tabs__link">
+        Basic
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../modularity/" class="md-tabs__link">
+        Modularity
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../components/" class="md-tabs__link">
+      Components
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../arch_characteristics/arch_characteristics/" class="md-tabs__link">
+        Architecture Characteristics
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../arch_styles/" class="md-tabs__link">
+        Architecture Styles
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../arch_decisions/" class="md-tabs__link">
+      Architecture Decisions
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="./" class="md-tabs__link md-tabs__link--active">
+      Analyzing Architecture Risk
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../system_design/" class="md-tabs__link">
+      System Design
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Mastering Software Architecture" class="md-nav__button md-logo" aria-label="Mastering Software Architecture" data-md-component="logo">
+      
+  <img src="../images/arch.png" alt="logo">
+
+    </a>
+    Mastering Software Architecture
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Basic
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Basic
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic/whats_software_arc/" class="md-nav__link">
+        What's Software Architecture?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic/expectations_of_architect/" class="md-nav__link">
+        Expectations of an Architect
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic/architectural_thinking/" class="md-nav__link">
+        Architectural Thinking
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Modularity
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Modularity
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modularity/" class="md-nav__link">
+        Definition
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modularity/measuring/" class="md-nav__link">
+        Measuring Modularity
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../components/" class="md-nav__link">
+        Components
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          Architecture Characteristics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Architecture Characteristics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arch_characteristics/arch_characteristics/" class="md-nav__link">
+        Definition
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arch_characteristics/identifying_characteristics/" class="md-nav__link">
+        Identifying
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arch_characteristics/measuring_governing/" class="md-nav__link">
+        Measuring and Governing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arch_characteristics/scope/" class="md-nav__link">
+        Scope
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          Architecture Styles
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Architecture Styles
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arch_styles/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arch_styles/foundations/" class="md-nav__link">
+        Foundations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arch_styles/mono_distributed/" class="md-nav__link">
+        Monolithic vs Distributed Architectures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arch_styles/choosing_arch_style/" class="md-nav__link">
+        Choosing the Appropriate Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+          Architecture Styles Descriptions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_5">
+          <span class="md-nav__icon md-icon"></span>
+          Architecture Styles Descriptions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arch_styles/layered_arch/" class="md-nav__link">
+        Layered Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arch_styles/pipeline_arch/" class="md-nav__link">
+        Pipeline Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arch_styles/microkernel_arch/" class="md-nav__link">
+        Microkernel Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arch_styles/service_based_arch/" class="md-nav__link">
+        Service-Base Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arch_styles/event_driven_arch/" class="md-nav__link">
+        Event-Driven Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arch_styles/space_based_arch/" class="md-nav__link">
+        Space-Based Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arch_styles/orchestration_arch/" class="md-nav__link">
+        Orchestration-Driven Service-Oriented Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arch_styles/microservices/" class="md-nav__link">
+        Microservices Architecture Style
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arch_decisions/" class="md-nav__link">
+        Architecture Decisions
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Analyzing Architecture Risk
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Analyzing Architecture Risk
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#risk-matrix" class="md-nav__link">
+    Risk Matrix
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#risk-assessments" class="md-nav__link">
+    Risk Assessments
+  </a>
+  
+    <nav class="md-nav" aria-label="Risk Assessments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tracking-trends-improvement-or-deterioration" class="md-nav__link">
+    Tracking Trends: Improvement or Deterioration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#risk-storming" class="md-nav__link">
+    Risk Storming
+  </a>
+  
+    <nav class="md-nav" aria-label="Risk Storming">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#identification" class="md-nav__link">
+    Identification
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consensus" class="md-nav__link">
+    Consensus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mitigation" class="md-nav__link">
+    Mitigation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system_design/" class="md-nav__link">
+        System Design
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#risk-matrix" class="md-nav__link">
+    Risk Matrix
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#risk-assessments" class="md-nav__link">
+    Risk Assessments
+  </a>
+  
+    <nav class="md-nav" aria-label="Risk Assessments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tracking-trends-improvement-or-deterioration" class="md-nav__link">
+    Tracking Trends: Improvement or Deterioration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#risk-storming" class="md-nav__link">
+    Risk Storming
+  </a>
+  
+    <nav class="md-nav" aria-label="Risk Storming">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#identification" class="md-nav__link">
+    Identification
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consensus" class="md-nav__link">
+    Consensus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mitigation" class="md-nav__link">
+    Mitigation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="analyzing-architecture-risk">Analyzing Architecture Risk</h1>
+<p><code>Every architectural design carries inherent risks</code>, whether they involving to availability, scalability, or data integrity. <code>Analyzing these risks constitutes a crucial aspect of the architectural process</code>. <code>Continuous risk analysis empowers architects to identify weaknesses within the design and proactively take corrective measures to mitigate potential issues</code>.</p>
+<h2 id="risk-matrix">Risk Matrix</h2>
+<p><code>An initial challenge in evaluating architecture risks lies in the subjective classification of risks as low, medium, or high</code>. This subjectiveness can lead to ambiguity regarding the true risk levels in different parts of the architecture. <code>Architects can utilize a risk matrix to inject objectivity into the process and categorize risks</code> associated with specific architectural components.</p>
+<p><code>The architecture risk matrix employs two dimensions to assess risk: the overall impact of risk and the likelihood of its occurrence</code>. Each dimension is assigned a rating of low (1), medium (2), or high (3). These ratings are multiplied within each matrix grid, yielding an objective numerical representation of the risk.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><img alt="Matrix for determining architecture risk from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/risk/matrix-risk.png" /></p>
+<blockquote>
+<p>Matrix for determining architecture risk from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+</blockquote>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Database Risk</p>
+<p>Consider a scenario where there are concerns about the availability of a central database in the application. Initially, assess the impact dimension by <code>evaluating the potential consequences if the database were to go down</code>. An architect may determine this as a high-risk scenario, assigning a rating of 3 (medium), 6 (high), or 9 (high). However, <code>factoring in the second dimension, which evaluates the likelihood of the risk occurring</code>, the architect may realize that the database is hosted on highly available servers in a clustered configuration, minimizing the chances of unavailability. Consequently, <code>the intersection between high impact and low likelihood results in an overall risk rating of 3 (medium risk)</code>.</p>
+</div>
+<h2 id="risk-assessments">Risk Assessments</h2>
+<p><code>A risk assessment serves as a concise overview of an architecture's overall risk</code>, contextualized against specific assessment criteria. Leveraging the <a href="#risk-matrix">risk matrix</a> becomes pivotal in constructing meaningful risk assessments.</p>
+<p>While the format of risk assessments can vary, <code>they generally encapsulate the risk, as qualified by the risk matrix, associated with particular assessment criteria within the application's services or domain areas</code>. The typical report format employs use (1-2) denoting <code>low risk</code>, (3-4) indicating <code>medium risk</code>, and (6-9) signifying <code>high risk</code>. Often color-coded as green (low), yellow (medium), and red (high), these shades facilitate interpretation for both color and non-color users. <code>Cumulative risk can be calculated for each criterion and service/domain area</code>.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><img alt="Example of a standard risk assessment from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/risk/assess-example.png" /></p>
+<blockquote>
+<p>Example of a standard risk assessment from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+</blockquote>
+<p>Notice the accumulated risk for data integrity is the highest at 17, while availability registers the least risk at 10. Relative risk for each domain area can also be determined with customer registration posing the highest risk and order fulfillment the lowest.</p>
+</div>
+<p><code>These numbers offer a basis for tracking improvements or deteriorations within specific risk categories or domain areas</code>.</p>
+<p>In practice, <code>not all risk analysis results are presented simultaneously</code>. Filtering becomes imperative to convey a targeted message in a given context. For instance, <code>in a meeting focusing on high-risk areas, filtering can spotlight only those areas, enhancing clarity and maintaining a favorable signal-to-noise ratio and presenting a clear picture of the state of the system (good or bad)</code>.</p>
+<h3 id="tracking-trends-improvement-or-deterioration">Tracking Trends: Improvement or Deterioration</h3>
+<p><code>The presented assessment report offers a snapshot in time, lacking insights into whether conditions are improving or getting worse</code>. To address this, incorporate directional indicators such as plus (+) and minus (-) signs next to the risk ratings.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><img alt="Showing direction of risk with plus and minus signs from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/risk/assess-example-sinal.png" /></p>
+<blockquote>
+<p>Showing direction of risk with plus and minus signs from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+</blockquote>
+<p>Examining the example, <code>while the performance for customer registration is medium (4), the minus sign signifies a worsening trend, approaching high risk</code>. Conversely, the high scalability rating for catalog checkout is accompanied by a plus sign, signaling improvement. <code>Ratings without directional signs indicate stable risk conditions, neither improving nor worsening</code>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">An Alternative Approach</p>
+<p><img alt="Showing direction of risk with arrows and numbers from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/risk/assess-example-sinal-alt.png" /></p>
+<blockquote>
+<p>Showing direction of risk with arrows and numbers from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+</blockquote>
+</div>
+<p>Continuous measurements facilitated by <a href="../arch_characteristics/measuring_governing/#fitness-functions">fitness functions</a> <code>shows direction of risk, allowing for trend analysis and determining the directional trajectory of each risk factor</code>.</p>
+<h2 id="risk-storming">Risk Storming</h2>
+<p>Risk storming plays <code>a crucial role in assessing the overall risk of a system, ensuring that no potential areas of concern are overlooked</code>. A single architect may not possess complete knowledge of every system aspect, making <code>collaboration essential in this process</code>.</p>
+<p>Risk storming is a <code>collaborative exercise focuses on specific dimensions of risk</code>, such as unproven technology, performance, scalability, availability, transitive dependencies, data loss, single points of failure, and security. <code>Engaging multiple architects, along with senior developers and tech leads, brings diverse perspectives and enhances the understanding of architectural intricacies for everyone</code>.</p>
+<p>The risk storming process comprises <code>two key phases: individual and collaborative</code>. In the individual phase, <code>participants independently assess risk using a</code> <a href="#risk-matrix">risk matrix</a>, <code>ensuring unbiased evaluations from anyone</code>. Subsequently, in the collaborative phase, <code>participants work together to identify consensus on risk areas</code>, engage in discussions, and formulate effective solutions for risk mitigation.</p>
+<p>Throughout the risk storming effort, <code>architecture diagrams are indispensable</code>. Holistic risk assessments utilize comprehensive diagrams, while risk storming within specific application areas employs contextual diagrams. <code>The architect is responsible for maintaining up-to-date and accessible diagrams for all participants</code>.</p>
+<div class="admonition example">
+<p class="admonition-title">Architecture Diagram Risk</p>
+<p>In the example, an Elastic Load Balancer, EC2 instances with web servers (Nginx), application services, MySQL database, Redis cache, MongoDB database for logging, and Push Expansion Servers. <code>This example architecture serves to illustrate the risk storming process</code>.</p>
+<p><img alt="Architecture diagram for risk storming example from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/risk/arch-diagram-risk-example.png" /></p>
+<blockquote>
+<p>Architecture diagram for risk storming example from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+</blockquote>
+</div>
+<p>Risk storming can be broken down into three activities:</p>
+<ol>
+<li>Identification</li>
+<li>Consensus</li>
+<li>Mitigation</li>
+</ol>
+<p>Identification is always an individual, noncollaborative activity, whereas consensus and mitigation are always collaborative and involve all participants working together.</p>
+<h3 id="identification">Identification</h3>
+<p>The identification phase of risk storming is a crucial step where <code>participants individually pinpoint areas of risk within the architecture</code>. Here's a breakdown of the identification process:</p>
+<div class="admonition note">
+<p class="admonition-title">Prepartion and Invitation</p>
+<ol>
+<li>The architect leading the risk storming sends invitations one to two days in advance of the collaborative session.</li>
+<li><code>The invitation includes the architecture diagram (or link) and specifies the risk storming dimension to be analyzed</code>.</li>
+</ol>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Individual Analysis</p>
+<ol>
+<li>Using the <a href="#risk-matrix">risk matrix</a>, participants autonomously assess the architecture, categorizing risk as low (1-2), medium (3-4), or high (6-9).</li>
+</ol>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Post-It Note Preparation</p>
+<ol>
+<li>Participants prepare <code>small Post-it notes</code>, each representing an identified risk area, with colors indicating the risk level (green for low, yellow for medium, and red for high).</li>
+</ol>
+</div>
+<p><code>It's common for a risk storming session to focus on a single dimension</code> (e.g., performance), but occasionally, due to resource availability or timing constraints, multiple dimensions may be analyzed simultaneously (e.g., performance, scalability, and data loss).</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>However, whenever feasible, <code>it's advisable to limit risk storming efforts to a single dimension</code>. This ensures participants concentrate on specific aspects, preventing confusion regarding multiple risks identified for the same area of the architecture.</p>
+</div>
+<h3 id="consensus">Consensus</h3>
+<p>The consensus-building phase in the risk storming is a <code>collaborative effort aimed at achieving agreement among all participants regarding the identified risks</code> within the architecture.</p>
+<p>Upon commencement of the risk storming session, <code>participants affix their Post-it notes onto the architecture diagram, marking areas where they individually identified risks</code>.</p>
+<details class="example">
+<summary>Example</summary>
+<p><img alt="Initial identification of risk areas from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/risk/risk-storming-init-example.png" /></p>
+<blockquote>
+<p>Initial identification of risk areas from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+</blockquote>
+</details>
+<p>Once all Post-it notes are in place, the collaborative aspect of risk storming initiates. <code>The team collectively examines the risk areas, striving to reach a consensus on risk qualification</code>. If an item receives unanimous agreement in terms of risk level, no further discussion is necessary. <code>Items with divergent results prompt discussion</code>. Individuals with varying assessments must elucidate their perspectives. In cases where everyone provides different ratings, a comprehensive discussion is required. <code>Following the discussion, a consensus must be reached</code>.</p>
+<details class="example">
+<summary>Risk Storming Result</summary>
+<p><img alt="Consensus of risk areas from Fundamentals of Software Architecture." src="https://raw.githubusercontent.com/RomeroGabriel/mastering-software-architecture/main/doc/images/risk/risk-storming-result-example.png" /></p>
+<blockquote>
+<p>Consensus of risk areas from <a href="https://learning.oreilly.com/library/view/fundamentals-of-software/9781492043447/">Fundamentals of Software Architecture.</a></p>
+</blockquote>
+</details>
+<h3 id="mitigation">Mitigation</h3>
+<p>Following unanimous agreement among participants regarding the qualification of risk areas in the architecture, the subsequent and <code>crucial phase</code> is risk mitigation. <code>Mitigating risk in architecture often necessitates alterations or enhancements to specific areas that might have initially been considered flawless</code>.</p>
+<p>This typically collaborative activity <code>explores ways to diminish or eradicate the identified risks</code>. Mitigation efforts <code>can range from comprehensive architectural changes</code> prompted by risk identification <code>to more straightforward refactoring</code>, such as introducing a queue to alleviate throughput bottleneck issues. While these changes enhance the architecture, <code>they usually come with additional costs</code>.</p>
+<div class="admonition example">
+<p class="admonition-title">Cost Negotiation Example</p>
+<p>Key stakeholders play a pivotal role in determining whether the incurred cost justifies the risk reduction.
+For instance, suppose a risk storming session <code>identifies the central database as a medium risk (4) for overall system availability</code>. Participants may <code>propose clustering the database and dividing it into separate physical databases to mitigate the risk</code>, albeit at a cost of <code>$20,000</code>. A negotiation ensues between the architect and key business stakeholders, where the <code>stakeholders ultimately decide the cost outweighs the risk</code>. In response, the <code>architect suggests an alternative approach—skipping clustering and opting for a two-part database split, reducing the cost to $8,000</code> while still mitigating most of the risk. In this case, the <code>stakeholders find the compromise acceptable</code>.</p>
+</div>
+<p><code>This scenario illustrates how risk storming not only influences the architecture but also impacts negotiations between architects and business stakeholders</code>. Risk storming, coupled with the risk assessments, proves to be a <code>valuable method for identifying and monitoring risk, enhancing architecture, and facilitating negotiations among key stakeholders</code>.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.tabs.instant", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.b425cdc4.min.js"></script>
+      
+    
+  </body>
+</html>
