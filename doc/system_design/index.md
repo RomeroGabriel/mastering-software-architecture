@@ -30,7 +30,7 @@ The objectives of system design include `practicality`, `accuracy`, `completenes
 ## Steps, Techniques, and Methodologies
 
 !!! note "Requirements"
-    This step involves `gathering information` about the `problem space`, `performance requirements`, `scalability needs`, and `security concerns`. You need to `understand what the system is supposed to do`, who `will use it`, and `how it should perform`. More information in [requirements](#requirements) section.
+    This step involves `gathering information` about the `problem space`, `performance requirements`, `scalability needs`, and `security concerns`. You need to `understand what the system is supposed to do`, who `will use it`, and `how it should perform`. More information in [requirements](requirements.md#requirements) section.
 
 !!! note "Identify Major Components"
     `Determine the relationships between different components and how they contribute to the overall functionality of the system`. You break down the system into smaller parts, identify their interactions, and understand how they collectively `achieve the desired functionality`. This could involve creating diagrams or models to visualize the system's structure.
@@ -45,7 +45,7 @@ The objectives of system design include `practicality`, `accuracy`, `completenes
     This step involves `defining the interface between different components` of the system, including `APIs`, `protocols`, and `data formats`. The interface is `crucial for communication and interaction between different parts` of the system. You need to `decide how data will be passed` between components, `how errors will be handled`, and `how the system will respond to different events`.
 
 !!! note "Capacity Estimates"
-    It involves `estimating the maximum load that a system can handle`, including the number of users, transactions, or data that the system can process `without performance degradation`. Effective capacity planning `can help avoid bottlenecks`, `ensure system scalability`, and prevent costly resource over-allocation.
+    It involves `estimating the maximum load that a system can handle`, including the number of users, transactions, or data that the system can process `without performance degradation`. Effective capacity planning `can help avoid bottlenecks`, `ensure system scalability`, and prevent costly resource over-allocation. More information in [capacity plan](capacity_plan.md#capacity-plan) section.
 
 !!! note "Test and Validate"
     After the design is finalized, you `test the system with realistic data and use cases`. This helps to identify any issues or bottlenecks in the system. `You need to ensure that the system meets all the requirements and performs well under different conditions`. Any issues found during testing are addressed and the design is validated.
@@ -53,27 +53,7 @@ The objectives of system design include `practicality`, `accuracy`, `completenes
 !!! note "Deploy and Maintain the System"
     After the design has been tested and validated, the system is `deployed`. However, the system needs to be `maintained over time`, including fixing bugs, updating components, and adding new features as needed. This involves `monitoring` the system's `performance`, making necessary adjustments, and planning for `future improvements`.
 
-## Requirements
-
-Requirements in system design refer to the `specifications that define what the system should do and how it should behave`. There are two main types of requirements: functional and non-functional. Both functional and non-functional requirements are `vital for a successful` system design. They guide the development process, helping to `ensure that the system meets the needs of its users and achieves its intended purpose`.
-
-### Functional Requirements
-
-Functional requirements `specify what a system must do`. `They are essentially the behaviors of the system and define the system's functionality`. They are usually `stated in terms of user actions or events` that the system should respond to.
-
-!!! example
-    The system should allow users to create accounts and log in using credentials like email and password or through social media integration.
-
-### Non-Functional Requirements
-
-Non-functional requirements `define how the system should perform`. They are not related to the system's functionality but rather `define the system's behavior`. They are crucial for ensuring the system's usability, reliability, and efficiency, often influencing the overall user experience.
-
-!!! example
-    1. Performance (e.g., the system should load within 3 seconds when the number of simultaneous users exceeds 10,000)
-    1. Security (e.g., emails should be sent with a latency of no greater than 12 hours from such an activity)
-    1. Usability (e.g., the system should be user-friendly and meet users' needs).
-
-### CAP Theorem
+## CAP Theorem
 
 The CAP theorem is a `concept in distributed systems that states a system can only guarantee two out of the following three properties`: Consistency, Availability, and Partition Tolerance.
 
@@ -90,14 +70,30 @@ The CAP theorem states that in the event of a `network partition`, a system can 
 
 It's important to note that the CAP theorem `does not imply that it's impossible to build a system that satisfies all three properties`. Rather, it `states that in the face of a network partition, a system can only guarantee two out of the three properties`. Therefore, when designing a `distributed system`, developers must make a conscious decision about which two properties they want to prioritize.
 
+## System's Metadata to Consider
+
+When implementing a system design, `metadata can provide valuable insights into the system's behavior and performance`, which can inform decisions about system architecture, scaling, and optimization. These pieces of metadata can provide valuable insights for system design and `can help inform decisions about things like load balancing, data partitioning, and resource allocation`. It's important to regularly monitor and analyze this metadata to understand the system's behavior and performance, and to make informed decisions about system design and optimization.
+
+Here are some common types of metadata used in system design:
+
+!!! info "Daily Active Users (DAU)"
+    `This refers to the number of unique users who engage with the system on a given day`. It's a key metric for understanding user activity and growth. High DAU indicates a large user base and active engagement, while low DAU suggests fewer users or less engagement.
+
+!!! info "Average Requests by User"
+    `This refers to the number of requests made by each user`. It can provide insights into user behavior and usage patterns.
+
+!!! info "Average Request Data Size"
+    `This refers to the size of the data included in each request`. It's important for `understanding the volume of data being processed and can impact system performance and scalability`. Larger request sizes can increase the load on the system and slow down response times.
+
+!!! info "Read vs Write"
+    `This refers to the ratio of read operations to write operations in the system`. The ratio can `provide insights into the system's usage patterns` and can impact system performance and scalability. For example, a higher `read-to-write` ratio might suggest a system that primarily retrieves data rather than updates it.
+
 ## References
 
 1. [What is System Design – Learn System Design](https://www.geeksforgeeks.org/what-is-system-design-learn-system-design/)
 1. [System Design Tutorial](https://www.geeksforgeeks.org/system-design-tutorial/)
 1. [The complete guide to System Design in 2024](https://www.educative.io/blog/complete-guide-to-system-design)
 1. [SEH 4.0 System Design Processes](https://www.nasa.gov/reference/4-0-system-design-processes/)
-1. [Functional vs Non Functional Requirements](https://www.geeksforgeeks.org/functional-vs-non-functional-requirements/)
-1. [What are Non Functional Requirements — With Examples](https://www.perforce.com/blog/alm/what-are-non-functional-requirements-examples)
 1. [What is the CAP theorem?](https://www.ibm.com/topics/cap-theorem)
 1. [System design fundamentals: What is the CAP theorem?](https://www.educative.io/blog/what-is-cap-theorem)
 
