@@ -32,7 +32,10 @@ nav:
       - Microservices Architecture Style: arch_styles/microservices.md
   - Architecture Decisions: arch_decisions/index.md
   - Analyzing Architecture Risk: arch_risk/index.md
-  - System Design: system_design/index.md
+  - System Design: 
+    - System Design: system_design/index.md
+    - Requirements: system_design/requirements.md
+    - Capacity Plan: system_design/capacity_plan.md
 theme:
   name: material
   language: en
