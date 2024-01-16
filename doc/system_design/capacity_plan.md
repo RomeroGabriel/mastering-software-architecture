@@ -82,11 +82,39 @@ OR
 
 ## Calculate Peak Query Per Second (QPS)
 
+## Bandwidth
+
+`Bandwidth refers to the maximum rate of data transfer across a given path`. It's typically measured in bits per second (bps), kilobits per second (Kbps), megabits per second (Mbps), gigabits per second (Gbps), or terabits per second (Tbps). Bandwidth is a crucial factor in system design as it `directly influences the system's performance and scalability`.
+
+!!! note "Steps to Calculate"
+    1. `Identify the Data Transfer Rate`: This is the `speed at which data is transferred over the network`. It's usually provided by the network service provider and is typically measured in bits per second (bps). For example, a 1 Gbps network has a data transfer rate of 1,000,000,000 bits per second.
+    1. `Calculate the Number of Users`: This is the number of `users that will be using the network simultaneously`. For example, if you have a network with a data transfer rate of 1 Gbps and you have 100 users, `each user will have a bandwidth of 10 Mbps` (1 Gbps / 100 users)
+    1. `Calculate the Bandwidth Usage Per User`: This is the `amount of data that each user will be transferring over the network`. For example, if each user is transferring 10 MB of data per second, the bandwidth usage per user will be 10 Mbps.
+    1. `Calculate the Total Bandwidth Usage`: This is the `total amount of data that will be transferred over the network`. It's `calculated by multiplying the bandwidth usage per user by the number of users`. For example, if each user is using 10 Mbps and there are 100 users, the total bandwidth usage will be 1 Gbps.
+
+!!! example "First Example"
+    Suppose you have a network with a `data transfer rate of 1 Gbps` (1,000,000,000 bits per second). You have `100 users`, each of whom will be `transferring 10 MB of data per second`. The `total bandwidth usage would be 1 Gbps` (10 Mbps \* 100 users).
+
+!!! example "Second Example"
+    Considering:
+
+    1. 50 request per second (rps)
+    1. Each request size is 50Kb
+
+    Calculate:
+
+    1. 50rps * 50kb = 2500Kb/s
+    or
+    1. 2500Kb/s / 1000 = 2.5Mb/s
+    or
+    1. 2.5*10^3 / 10^3 = 2.5*10^(3-3) = 2.5Mb/s
+
 ## References
 
 1. [System Design — Capacity Estimation](https://medium.com/@cribeirorodrigues/system-design-capacity-estimation-a34309f88914)
 1. [System Design: Capacity Planning basics](https://dballona.com/system-design-capacity-planning-basics)
 1. [Capacity Planning](https://blog.bytebytego.com/p/capacity-planning)
 1. [Back-of-the-envelope Estimation](https://bytebytego.com/courses/system-design-interview/back-of-the-envelope-estimation)
+1. [How to calculate network bandwidth requirements](https://www.techtarget.com/searchnetworking/tip/How-to-calculate-network-bandwidth-requirements)
 
 <!-- Commonly asked back-of-the-envelope estimations: QPS, peak QPS, storage, cache, number of servers, etc. You can practice these calculations when preparing for an interview. Practice makes perfect. -->
