@@ -36,23 +36,23 @@ Here are some key steps involved in capacity planning:
 !!! note "Rounding and Approximation"
     It is difficult to perform complicated math operations during the interview. `There is no need to spend valuable time to solve complicated math problems. Precision is not expected`. Use round numbers and approximation to your advantage.
 
-## Calculate Request By Second(RPS)
+## Calculate Request per Second(RPS)
 
 Calculating the number of requests per second (RPS) is a critical part of system design and performance estimation. `It helps determine how many requests your system can handle in a single second`.
 
 Considering:
 
 1. 1Mi DAU (Daily Active Users)
-1. 5 request by user on daily average
-1. 100.000 seconds by day or 10^5
+1. 5 request per user on daily average
+1. 100.000 seconds per day or 10^5
 
-!!! tip "Seconds by Day Calculation"
+!!! tip "Seconds per Day Calculation"
     Normaly, one day has 86.500 seconds. However, as mentioned in Round and Approximation note in [Key Steps](#key-steps) is normal to round to facilitate the calculation. So there is no problem to say that one day has 100.000 seconds or 10^5.
 
 Calculating:
 
-1. 1.000.000 * 5 = 5.000.000 `requests by day`
-1. 5.000.000 / 100.000 = 50 `requests by second (RPS)`
+1. 1.000.000 * 5 = 5.000.000 `requests per day`
+1. 5.000.000 / 100.000 = 50 `requests per second (RPS)`
 
 OR
 
@@ -69,7 +69,7 @@ OR
     1. Writes = 50rps * 0.1 = 5rps
     1. Read = 50 * 0.9 = 45rps
 
-!!! example "Purchases by Seconds"
+!!! example "Purchases per Seconds"
     Considering:
 
     1. 5% of users buy something
@@ -77,8 +77,8 @@ OR
     Calculate:
 
     1. `5% of 1Mi = 50.000 per day` or `5% of 10^6 = 5*10^4`
-    1. 5\*10^4 / 10^5 (secods by day) = 5\*10(4-5) = 5\10^-1
-    1. `0.5 purchases by seconds`
+    1. 5\*10^4 / 10^5 (secods per day) = 5\*10(4-5) = 5\10^-1
+    1. `0.5 purchases per seconds`
 
 ## Calculate Peak Query Per Second (QPS)
 
@@ -109,6 +109,47 @@ OR
     or
     1. 2.5*10^3 / 10^3 = 2.5*10^(3-3) = 2.5Mb/s
 
+## Storage
+
+Storage in system design refers to the `amount of data that the system will need to store over time`. It's crucial for understanding the system's `scalability` and `performance`, and it often plays a `key role in the system's cost and infrastructure requirements`.
+
+!!! note "Steps to Calculate"
+    1. `Identify the Amount of Data Each User Will Generate`: This is the amount of data each user will generate and store in the system. For example, each user generates `1 MB` of data per day.
+    1. `Estimate the Number of Users`: This is the number of users that will be using the system. For example, if you have a social media platform with `100 million daily active users (DAUs)`.
+    1. `Calculate the Total Data Generation Per Day`: This is the total amount of data that will be generated and stored in the system each day. `It's calculated by multiplying the amount of data each user will generate by the number of users`. For example, if each user generates 1 MB of data per day and there are 100 million users, then the total data generation per day will be 100,000 MB, or 100 GB.
+    1. `Estimate the Retention Period`: This is the length of time that the system will retain user data. For example, the system retains user data for 3 years.
+    1. `Calculate the Total Storage Requirement`: This is the total amount of storage that the system will need to store user data over the entire retention period. `It's calculated by multiplying the total data generation per day by the number of days in the retention period`. For example, if the system generates 100 GB of data per day and retains data for 3 years (approximately 1095 days), then the total storage requirement will be 109,500 GB, or 109.5 TB.
+    1. `Replication factor`: The Replication Factor (RF) is equivalent to the `number of nodes where data (rows and partitions) are replicated`.
+
+!!! example "First Example"
+    Considering:
+
+    1. A social media platform with 10 million daily activate users (DAUs).
+    1. Each user generates 1 MB of data per second.
+    1. Replication factor is 3
+    1. Retention period of 3 years.
+
+    Calculate:
+
+    10 million → 10.000.000 = 10 ^ 7
+
+    1 day → 10 ^ 5 seconds
+
+    1 year → 10 ^ 5 * 3.65 ^ 2 = 3.65*10^7 seconds
+
+    1 MB → TB = MB/10^6
+
+    1GB → TB = GB/10^3
+
+    1. Storage per second(SPS) = data per second * RF = 1 MB/s * 3 = `3 MB/s`
+    1. Storage per day(SPD) = SPS * Seconds per day = 3 MB/s * 10 ^ 5 = `300.000` MB or `300GB`
+    1. Storage per year(SPY) 
+        - SPS * Seconds per year = 3 MB/s * 3.65*10^7 = `10.95^7MB` or 10.95 ^ 7 / 10 ^ 6 = 10.95 * 10 = `109.5TB`
+        - SPD * Days per year = 300 GB * 365 = `109500GB` OR 10.95 * 10 ^ 4 / 10 ^ 3 = 10.95 * 10 = `109.5TB`
+    1. Storage per Retention Period = SPY * Retention Period = 109.5TB * 3 = 328.5TB
+
+<!-- TO DO: Add second example -->
+
 ## References
 
 1. [System Design — Capacity Estimation](https://medium.com/@cribeirorodrigues/system-design-capacity-estimation-a34309f88914)
@@ -116,5 +157,4 @@ OR
 1. [Capacity Planning](https://blog.bytebytego.com/p/capacity-planning)
 1. [Back-of-the-envelope Estimation](https://bytebytego.com/courses/system-design-interview/back-of-the-envelope-estimation)
 1. [How to calculate network bandwidth requirements](https://www.techtarget.com/searchnetworking/tip/How-to-calculate-network-bandwidth-requirements)
-
-<!-- Commonly asked back-of-the-envelope estimations: QPS, peak QPS, storage, cache, number of servers, etc. You can practice these calculations when preparing for an interview. Practice makes perfect. -->
+1. [Back-of-the-Envelope Calculation in System Design Interviews: A Comprehensive Guide](https://www.designgurus.io/blog/Back-of-the-Envelope-System-Design-Interview)
