@@ -12,12 +12,14 @@
         <link rel="prev" href="../arch_risk/">
       
       
+        <link rel="next" href="requirements/">
+      
       <link rel="icon" href="../images/arch.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.17">
     
     
       
-        <title>System Design - Mastering Software Architecture</title>
+        <title>Introduction - Mastering Software Architecture</title>
       
     
     
@@ -101,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              System Design
+              Introduction
             
           </span>
         </div>
@@ -273,11 +275,15 @@
   
 
 
-  <li class="md-tabs__item">
-    <a href="./" class="md-tabs__link md-tabs__link--active">
-      System Design
-    </a>
-  </li>
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
+        System Design
+      </a>
+    </li>
+  
 
       
     </ul>
@@ -854,6 +860,35 @@
     
   
   
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+          System Design
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          System Design
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
@@ -863,12 +898,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          System Design
+          Introduction
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        System Design
+        Introduction
       </a>
       
         
@@ -894,6 +929,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#steps-techniques-and-methodologies" class="md-nav__link">
+    Steps, Techniques, and Methodologies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#references" class="md-nav__link">
     References
   </a>
@@ -904,6 +946,55 @@
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="requirements/" class="md-nav__link">
+        Requirements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cap_theorem/" class="md-nav__link">
+        CAP Theorem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="capacity_plan/" class="md-nav__link">
+        Capacity Plan
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -937,6 +1028,13 @@
         <li class="md-nav__item">
   <a href="#goal" class="md-nav__link">
     Goal
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steps-techniques-and-methodologies" class="md-nav__link">
+    Steps, Techniques, and Methodologies
   </a>
   
 </li>
@@ -995,10 +1093,57 @@
 <p class="admonition-title">Scalability</p>
 <p>Scalability ensures the system is adaptable with time as per different user needs.</p>
 </div>
+<h2 id="steps-techniques-and-methodologies">Steps, Techniques, and Methodologies</h2>
+<div class="admonition note">
+<p class="admonition-title">Requirements</p>
+<p>This step involves <code>gathering information</code> about the <code>problem space</code>, <code>performance requirements</code>, <code>scalability needs</code>, and <code>security concerns</code>. You need to <code>understand what the system is supposed to do</code>, who <code>will use it</code>, and <code>how it should perform</code>. More information in <a href="requirements/#requirements">requirements</a> section.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Identify Major Components</p>
+<p><code>Determine the relationships between different components and how they contribute to the overall functionality of the system</code>. You break down the system into smaller parts, identify their interactions, and understand how they collectively <code>achieve the desired functionality</code>. This could involve creating diagrams or models to visualize the system's structure.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Choose Appropriate Technology</p>
+<p>Based on the requirements and components identified, you <code>choose the appropriate hardware and software platforms</code>, <code>databases</code>, <code>programming languages</code>, and <code>tools</code>. This decision <code>depends on various factors</code> like <code>cost</code>, <code>performance</code>, <code>scalability</code>, and the <code>expertise available</code>. You need to <code>balance the trade-offs between these factors</code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Design Data Model</p>
+<p>This involves designing the data model for the system, including the <code>schema for the database</code>, the <code>structure of data files</code>, and the <code>data flow between components</code>. The data model is central to the functioning of the system, as it <code>determines how data is stored</code>, <code>retrieved</code>, and <code>processed</code>. You need to <code>consider factors like data integrity</code>, <code>consistency</code>, and <code>access patterns</code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Define Interfaces</p>
+<p>This step involves <code>defining the interface between different components</code> of the system, including <code>APIs</code>, <code>protocols</code>, and <code>data formats</code>. The interface is <code>crucial for communication and interaction between different parts</code> of the system. You need to <code>decide how data will be passed</code> between components, <code>how errors will be handled</code>, and <code>how the system will respond to different events</code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Capacity Estimates</p>
+<p>It involves <code>estimating the maximum load that a system can handle</code>, including the number of users, transactions, or data that the system can process <code>without performance degradation</code>. Effective capacity planning <code>can help avoid bottlenecks</code>, <code>ensure system scalability</code>, and prevent costly resource over-allocation. More information in <a href="capacity_plan/#capacity-plan">capacity plan</a> section.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Test and Validate</p>
+<p>After the design is finalized, you <code>test the system with realistic data and use cases</code>. This helps to identify any issues or bottlenecks in the system. <code>You need to ensure that the system meets all the requirements and performs well under different conditions</code>. Any issues found during testing are addressed and the design is validated.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Deploy and Maintain the System</p>
+<p>After the design has been tested and validated, the system is <code>deployed</code>. However, the system needs to be <code>maintained over time</code>, including fixing bugs, updating components, and adding new features as needed. This involves <code>monitoring</code> the system's <code>performance</code>, making necessary adjustments, and planning for <code>future improvements</code>.</p>
+</div>
+<!-- 
+- System Design prática:
+    - Chekcar Ponto único de falha
+    - Lentidão no sistema
+    - Garantir escalabilidade
+    - Garantir performance
+    - https://nealford.com/katas/list.html
+    - https://www.architecturalkatas.com/index.html
+-->
+
 <h2 id="references">References</h2>
 <ol>
 <li><a href="https://www.geeksforgeeks.org/what-is-system-design-learn-system-design/">What is System Design – Learn System Design</a></li>
+<li><a href="https://www.geeksforgeeks.org/system-design-tutorial/">System Design Tutorial</a></li>
+<li><a href="https://www.educative.io/blog/complete-guide-to-system-design">The complete guide to System Design in 2024</a></li>
+<li><a href="https://www.nasa.gov/reference/4-0-system-design-processes/">SEH 4.0 System Design Processes</a></li>
 </ol>
+<!-- https://www.phind.com/search?cache=dpyqfx0bzr047uhi0dllwnwk -->
 
 
 
