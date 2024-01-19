@@ -70,23 +70,15 @@ The CAP theorem states that in the event of a `network partition`, a system can 
 
 It's important to note that the CAP theorem `does not imply that it's impossible to build a system that satisfies all three properties`. Rather, it `states that in the face of a network partition, a system can only guarantee two out of the three properties`. Therefore, when designing a `distributed system`, developers must make a conscious decision about which two properties they want to prioritize.
 
-## System's Metadata to Consider
-
-When implementing a system design, `metadata can provide valuable insights into the system's behavior and performance`, which can inform decisions about system architecture, scaling, and optimization. These pieces of metadata can provide valuable insights for system design and `can help inform decisions about things like load balancing, data partitioning, and resource allocation`. It's important to regularly monitor and analyze this metadata to understand the system's behavior and performance, and to make informed decisions about system design and optimization.
-
-Here are some common types of metadata used in system design:
-
-!!! info "Daily Active Users (DAU)"
-    `This refers to the number of unique users who engage with the system on a given day`. It's a key metric for understanding user activity and growth. High DAU indicates a large user base and active engagement, while low DAU suggests fewer users or less engagement.
-
-!!! info "Average Requests by User"
-    `This refers to the number of requests made by each user`. It can provide insights into user behavior and usage patterns.
-
-!!! info "Average Request Data Size"
-    `This refers to the size of the data included in each request`. It's important for `understanding the volume of data being processed and can impact system performance and scalability`. Larger request sizes can increase the load on the system and slow down response times.
-
-!!! info "Read vs Write"
-    `This refers to the ratio of read operations to write operations in the system`. The ratio can `provide insights into the system's usage patterns` and can impact system performance and scalability. For example, a higher `read-to-write` ratio might suggest a system that primarily retrieves data rather than updates it.
+<!-- 
+- System Design prática:
+    - Chekcar Ponto único de falha
+    - Lentidão no sistema
+    - Garantir escalabilidade
+    - Garantir performance
+    - https://nealford.com/katas/list.html
+    - https://www.architecturalkatas.com/index.html
+-->
 
 ## References
 

@@ -36,6 +36,24 @@ Here are some key steps involved in capacity planning:
 !!! note "Rounding and Approximation"
     It is difficult to perform complicated math operations during the interview. `There is no need to spend valuable time to solve complicated math problems. Precision is not expected`. Use round numbers and approximation to your advantage.
 
+## System's Metadata to Consider
+
+When implementing a system design, `metadata can provide valuable insights into the system's behavior and performance`, which can inform decisions about system architecture, scaling, and optimization. These pieces of metadata can provide valuable insights for system design and `can help inform decisions about things like load balancing, data partitioning, and resource allocation`. It's important to regularly monitor and analyze this metadata to understand the system's behavior and performance, and to make informed decisions about system design and optimization.
+
+Here are some common types of metadata used in system design:
+
+!!! info "Daily Active Users (DAU)"
+    `This refers to the number of unique users who engage with the system on a given day`. It's a key metric for understanding user activity and growth. High DAU indicates a large user base and active engagement, while low DAU suggests fewer users or less engagement.
+
+!!! info "Average Requests by User"
+    `This refers to the number of requests made by each user`. It can provide insights into user behavior and usage patterns.
+
+!!! info "Average Request Data Size"
+    `This refers to the size of the data included in each request`. It's important for `understanding the volume of data being processed and can impact system performance and scalability`. Larger request sizes can increase the load on the system and slow down response times.
+
+!!! info "Read vs Write"
+    `This refers to the ratio of read operations to write operations in the system`. The ratio can `provide insights into the system's usage patterns` and can impact system performance and scalability. For example, a higher `read-to-write` ratio might suggest a system that primarily retrieves data rather than updates it.
+
 ## Calculate Request per Second(RPS)
 
 Calculating the number of requests per second (RPS) is a critical part of system design and performance estimation. `It helps determine how many requests your system can handle in a single second`.
