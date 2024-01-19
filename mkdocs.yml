@@ -33,8 +33,9 @@ nav:
   - Architecture Decisions: arch_decisions/index.md
   - Analyzing Architecture Risk: arch_risk/index.md
   - System Design: 
-    - System Design: system_design/index.md
+    - Introduction: system_design/index.md
     - Requirements: system_design/requirements.md
+    - CAP Theorem: system_design/cap_theorem.md
     - Capacity Plan: system_design/capacity_plan.md
 theme:
   name: material
